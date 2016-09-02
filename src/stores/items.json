@@ -1,0 +1,20 @@
+[
+	{
+		id: 1,
+		name: 'Item 1',
+		desc: 'this is the first item',
+		image: '1'
+	},
+	{
+		id: 2,
+		name: 'Item 2',
+		desc: 'this is the second item',
+		image: '2'
+	},
+	{
+		id: 3,
+		name: 'Item 3',
+		desc: 'this is the third item',
+		image: '3'
+	}
+]

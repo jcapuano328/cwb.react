@@ -1,0 +1,6 @@
+{
+    item: 1,
+    turn: 1,
+    phase: 0,
+    player: 'first'
+}
