@@ -65,13 +65,14 @@ var TurnView = React.createClass({
     },
     render() {
         //console.log(this.props);
+        let turn = this.state.turn ? this.state.turn.format('MMM DD, YYYY HH:mm') : '';
         return (
             <View style={{flexDirection: 'row', height: 90, marginTop: 60, marginLeft: 10, marginRight: 10}}>
                 <View style={{flex: 1}}>
                     <Image style={{width: 96,height: 88,resizeMode: 'contain'}} source={this.props.logo}/>
                 </View>
                 <View style={{flex: 4}}>
-                    <SpinSelect value={this.state.turn} onPrev={this.onPrevTurn} onNext={this.onNextTurn} />
+                    <SpinSelect value={turn} onPrev={this.onPrevTurn} onNext={this.onNextTurn} />
                     <SpinSelect value={this.state.phase} onPrev={this.onPrevPhase} onNext={this.onNextPhase} />
                 </View>
                 <View style={{flex: 1}}>

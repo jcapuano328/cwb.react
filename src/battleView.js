@@ -7,10 +7,10 @@ var TurnView = require('./turnView');
 var Current = require('./services/current');
 var icons = require('./widgets/icons');
 
-var ItemView = React.createClass({
+var BattleView = React.createClass({
     getInitialState() {
         return {
-            item: this.props.item,
+            battle: this.props.battle,
             initialPage: 0
         };
     },
@@ -21,7 +21,7 @@ var ItemView = React.createClass({
         return true;
     },
     onReset() {
-        Current.reset(this.props.item)
+        Current.reset(this.props.battle)
         .then((current) => {
             this.props.events.emit('reset');
         })
@@ -30,23 +30,24 @@ var ItemView = React.createClass({
     onChangeTab({i, ref}) {
     },
     render() {
-        let item = this.state.item || {};
+        let battle = this.state.battle || {};
         return (
             <View style={{flex: 1,backgroundColor: 'rgba(0,0,0,0.01)'}}>
-                <TurnView logo={icons[item.image]} events={this.props.events} />
+                <TurnView logo={icons[battle.image]} events={this.props.events} />
                 <ScrollableTabView
                     style={{backgroundColor: '#fff'}}
                     onChangeTab={this.onChangeTab}
                     initialPage={this.state.initialPage}
                 >
-                    <Text tabLabel="Tab 1" events={this.props.events} />
-                    <Text tabLabel="Tab 2" events={this.props.events} />
-                    <Text tabLabel="Tab 3" events={this.props.events} />
-                    <Text tabLabel="Tab 4" events={this.props.events} />
+                    <Text tabLabel="Orders" events={this.props.events} />
+                    <Text tabLabel="Roster" events={this.props.events} />
+                    <Text tabLabel="Fire" events={this.props.events} />
+                    <Text tabLabel="Close Combat" events={this.props.events} />
+                    <Text tabLabel="Morale" events={this.props.events} />
                 </ScrollableTabView>
             </View>
         );
     }
 });
 
-module.exports = ItemView;
+module.exports = BattleView;

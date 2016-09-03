@@ -6,17 +6,18 @@ var PATH = RNFS.DocumentDirectoryPath + '/' + FILE;
 var log = require('../services/log.js');
 
 var blank = require('./current.json');
+let clone = require('../services/clone');
 
 module.exports = {
 	load() {
 		// read the file
-		log.debug('Load current from ' + PATH);
+		//log.debug('Load current from ' + PATH);
 		return RNFS.readFile(PATH)
 		.then((data) => {
 			if (data) {
 				log.debug('Current retrieved');
 				let current = JSON.parse(data);
-				log.debug(current);
+				//log.debug(current);
 				return current;
 			}
 			log.debug('No Current item');
@@ -29,8 +30,8 @@ module.exports = {
 	},
 	save(current) {
 		// write the file
-		log.debug('Save Current to ' + PATH);
-		log.debug(current);
+		//log.debug('Save Current to ' + PATH);
+		//log.debug(current);
 		return RNFS.writeFile(PATH, JSON.stringify(current))
 		.then((success) => {
 			log.debug('Current saved');
@@ -40,7 +41,7 @@ module.exports = {
 		});
 	},
 	remove() {
-		log.debug('Remove Current from ' + PATH)
+		//log.debug('Remove Current from ' + PATH)
 		return RNFS.unlink(PATH)
 		.then((result) => {
 	    	let success = result[0], path = result[1];
@@ -52,6 +53,9 @@ module.exports = {
 		});
 	},
 	reset(data) {
+		blank.scenario = data.scenario.id;
+		blank.orders = clone(data.scenario.defaultOrders);
+		blank.armies = clone(data.armies);
 		return this.save(blank)
 		.then(() => {
 			return blank;

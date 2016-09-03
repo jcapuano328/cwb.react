@@ -57,24 +57,23 @@ var AboutView = React.createClass({
                 <View style={{flex: 1, flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
                     <Image style={{width: 96,height: 96,resizeMode: 'stretch'}} source={Icons.logo}/>
                     <View style={{flex:1}}>
-                        <Text style={{fontSize: 18,fontWeight: 'bold',marginLeft: 15}}>{'About La Bataille Assistant'}</Text>
+                        <Text style={{fontSize: 18,fontWeight: 'bold',marginLeft: 15}}>{'About CWB Assistant'}</Text>
                         <Text style={{fontSize: 14,marginLeft: 15}}>{'Version: 2.0.0'}</Text>
                         <Text style={{fontSize: 14,marginLeft: 15}}>{'Release: April 21, 2016'}</Text>
                     </View>
                 </View>
                 <View style={{flex: .75}}>
-                    <Text style={{fontSize: 18}}>{'A no frills assistant for the La Bataille conglomeration of wargames.'}</Text>
+                    <Text style={{fontSize: 18}}>{'A no frills assistant for the Civil War, Brigade conglomeration of wargames.'}</Text>
                 </View>
-                <View style={{flex: 1}}>
+				<View style={{flex: 1}}>
                     <Text style={{fontSize: 18}}>{'All glory to them that made it possible!'}</Text>
-                    <OpenURLButton label={'Marshal Enterprises'} url={'http://www.labataille.me/Home_Page.php'}/>
-                    <OpenURLButton label={'Clash of Arms'} url={'http://www.clashofarms.com/'}/>
+                    <OpenURLButton label={'MultiMan Publishing'} url={'http://www.multimanpublishing.com/'}/>
                 </View>
                 <View style={{flex: 1}}>
                     <Text style={{fontSize: 18}}>{'And of course check out the discussions and extras'}</Text>
-                    <OpenURLButton label={'ConsimWorld Forum'} url={'http://talk.consimworld.com/WebX?13@@.ee6c73b/31887'}/>
-                    <OpenURLButton label={'La Bataille Extras'} url={'http://labataille.us/'}/>
-                </View>
+                    <OpenURLButton label={'ConsimWorld Forum'} url={'http://talk.consimworld.com/WebX/.ee6b46d/19422'}/>
+                    <OpenURLButton label={'The Gamers Archive'} url={'http://www.gamersarchive.net/theGamers/archive/cwb.htm'}/>
+                </View>				
                 <View style={{flex: 1}}>
                     <Text style={{fontSize: 14}}>{'Built with React Native and these helpful modules:'}</Text>
                     <Text style={{fontSize: 12}}>{'apsl-react-native-button'}</Text>

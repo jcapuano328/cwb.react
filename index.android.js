@@ -2,4 +2,4 @@
 import {AppRegistry} from 'react-native';
 let main = require('./src/mainView');
 
-AppRegistry.registerComponent('appstarter', () => main);
+AppRegistry.registerComponent('cwb', () => main);

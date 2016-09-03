@@ -1,10 +1,16 @@
 var phases = [
-	"Phase 1",
-	"Phase 2",
-	"Phase 3",
-	"Phase 4",
-	"Phase 5",
-	"Phase 6"
+	'Order Issue',
+	'Corps Attack Stoppage Check',
+	'Initiative Order Determination',
+	'Delay Reduction',
+	'New Order Acceptance',
+	'Straggler Recovery Placement',
+	'Movement / Close Combat',
+	'Ammo Resupply',
+	'Defensive Fire',
+	'Offensive Fire',
+	'Straggler Recovery',
+	'Rally'
 ];
 
 module.exports = {

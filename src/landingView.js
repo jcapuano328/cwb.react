@@ -9,7 +9,7 @@ var LandingView = React.createClass({
             //Icons.splash
             <View style={{
                 flex: 1,
-                marginTop: 30,
+                marginTop: 35,
                 //backgroundColor: 'rgba(0,0,0,0.01)',
             }}>
                 <Image source={Icons.splash} style={{

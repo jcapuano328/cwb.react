@@ -4,14 +4,14 @@ var React = require('react');
 import { View, Text, Navigator } from 'react-native';
 var DrawerLayout = require('./widgets/drawerLayout');
 var NavMenu = require('./widgets/navMenu');
-var NavMenuItem = require('./widgets/navMenuItem');
+var NavMenuItem = require('./battleNavMenuItem');
 var TitleBar = require('./widgets/titleBar');
 import { MenuContext } from 'react-native-menu';
 var EventEmitter = require('EventEmitter');
 var LandingView = require('./landingView');
 var AboutView = require('./aboutView');
-var ItemView = require('./itemView');
-var Items = require('./services/items');
+var BattleView = require('./battleView');
+var Battles = require('./services/battles');
 var Current = require('./services/current');
 var log = require('./services/log');
 
@@ -20,8 +20,8 @@ var MainView = React.createClass({
         return {
             drawer: false,
             routes: {
-                landing: {index: 0, name: 'landing', title: 'Welcome', subtitle: 'Select an item', onMenu: this.navMenuHandler},
-                item: {index: 1, name: 'item', title: 'Item', onMenu: this.navMenuHandler, onRefresh: this.onReset, onInfo: this.onAbout},
+                landing: {index: 0, name: 'landing', title: 'Welcome', subtitle: 'Select a battle', onMenu: this.navMenuHandler},
+                battle: {index: 1, name: 'battle', title: 'Battle', onMenu: this.navMenuHandler, onRefresh: this.onReset, onInfo: this.onAbout},
                 about: {index: 7, name: 'about', title: 'About'}
             },
             version: '0.0.1'
@@ -30,12 +30,12 @@ var MainView = React.createClass({
     fetch() {
         Current.load()
         //new Promise((a,r)=> a())
-        .then((data) => {
+        .then((data) => {            
             if (data) {
-                this.state.routes.item.data = Items.get(data.id);
-                this.refs.navigator.resetTo(this.state.routes.item);
+                this.state.routes.battle.data = Battles.get(data.scenario);
+                this.refs.navigator.resetTo(this.state.routes.battle);
             } else {
-                log.debug('mainView: no current item');
+                log.debug('mainView: no current battle');
             }
         })
         .done();
@@ -65,12 +65,12 @@ var MainView = React.createClass({
         if (e == 'About') {
             this.refs.navigator.push(this.state.routes.about);
         }
-        else if (e == 'item') {
-            this.state.routes.item.data = Items.get(id);
-            Current.reset(this.state.routes.item.data)
+        else if (e == 'battle') {
+            this.state.routes.battle.data = Battles.get(id);
+            Current.reset(this.state.routes.battle.data)
             .then(() => {
                 this.eventEmitter.emit('reset');
-                this.refs.navigator.resetTo(this.state.routes.item);
+                this.refs.navigator.resetTo(this.state.routes.battle);
             });
         }
         this.toggleDrawer();
@@ -97,11 +97,11 @@ var MainView = React.createClass({
             );
         }
 
-        if (route.name == 'item') {
-            this.state.routes.item.title = route.data.name;
-            this.state.routes.item.subtitle = route.data.desc;
+        if (route.name == 'battle') {
+            this.state.routes.battle.title = route.data.name;
+            this.state.routes.battle.subtitle = route.data.scenario.name;
             return (
-                <ItemView item={route.data} events={this.eventEmitter} />
+                <BattleView battle={route.data} events={this.eventEmitter} />
             );
         }
 
@@ -125,10 +125,9 @@ var MainView = React.createClass({
                     onDrawerSlide={(e) => this.setState({drawerSlideOutput: JSON.stringify(e.nativeEvent)})}
                     onDrawerStateChanged={(e) => this.setState({drawerStateChangedOutput: JSON.stringify(e)})}
                     drawerWidth={300}
-                    renderNavigationView={() => <NavMenu items={Items.items.map((item,i) => {
-                        console.log(item);
+                    renderNavigationView={() => <NavMenu items={Battles.battles.map((battle,i) => {
                             return (
-                                <NavMenuItem key={i+1} item={item} onPress={this.navMenuHandler} />
+                                <NavMenuItem key={i+1} battle={battle} onPress={this.navMenuHandler} />
                             );
                         })} /> }>
                     <MenuContext style={{flex: 1}}>
