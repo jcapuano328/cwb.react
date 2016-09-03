@@ -6,6 +6,7 @@ var ScrollableTabView = require('react-native-scrollable-tab-view');
 var TurnView = require('./turnView');
 var Current = require('./services/current');
 var icons = require('./widgets/icons');
+var OrdersView = require('./ordersView');
 
 var BattleView = React.createClass({
     getInitialState() {
@@ -39,7 +40,7 @@ var BattleView = React.createClass({
                     onChangeTab={this.onChangeTab}
                     initialPage={this.state.initialPage}
                 >
-                    <Text tabLabel="Orders" events={this.props.events} />
+                    <OrdersView tabLabel="Orders" events={this.props.events} />
                     <Text tabLabel="Roster" events={this.props.events} />
                     <Text tabLabel="Fire" events={this.props.events} />
                     <Text tabLabel="Close Combat" events={this.props.events} />

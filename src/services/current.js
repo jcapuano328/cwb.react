@@ -154,5 +154,20 @@ module.exports = {
 		}
 		log.debug('current player: ' + _current.player + '/' + player);
 		return player;
+	},
+	armies() {
+		return _current.armies.map((a) => {
+			return {
+				name: a.name,
+				country: a.country,
+				commander: a.commander
+			};
+		}) || [];
+	},
+	orders(country,army) {
+		let o = _current.orders.find((o) => {
+			return o.country == country && o.army == army;
+		}) || {orders: []};
+		return o.orders;
 	}
 };

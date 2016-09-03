@@ -14,6 +14,11 @@ module.exports = {
 	"checked": require('../res/checked_checkbox.png'),
 	"unchecked": require('../res/unchecked_checkbox.png'),
 
+	"select": require('../res/select.png'),
+	"add": require('../res/add.png'),
+	"remove": require('../res/remove.png'),
+	"accept": require('../res/accept.png'),
+	"discard": require('../res/reject.png'),
 
 	"1": require('../res/1.png'),
 	"2": require('../res/2.png'),
@@ -55,5 +60,5 @@ module.exports = {
 	"sevenpines": require('../res/sevenpines.jpg'),
 	"strikethemablow": require('../res/strikethemablow.jpg'),
 	"threebattlesofmanassas": require('../res/threebattlesofmanassas.jpg'),
-	"thunderatthecrossroads": require('../res/thunderatthecrossroads.jpg')	
+	"thunderatthecrossroads": require('../res/thunderatthecrossroads.jpg')
 };
