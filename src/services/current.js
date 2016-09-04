@@ -48,6 +48,7 @@ module.exports = {
 	battle() {
 		return Battles.get(_current.scenario) || {};
 	},
+	getTimeIncrement: getTimeIncrement,
 	turn() {
 		let battle = this.battle();
 		let st = moment(new Date(battle.scenario.startDateTime));
@@ -165,9 +166,31 @@ module.exports = {
 		}) || [];
 	},
 	orders(country,army) {
-		let o = _current.orders.find((o) => {
+		return _current.orders.find((o) => {
 			return o.country == country && o.army == army;
 		}) || {orders: []};
-		return o.orders;
+	},
+	order(o,remove) {
+		let orders = this.orders(o.country,o.army);
+		if (!orders.country || !orders.army) {
+			orders.country = o.country;
+			orders.army = o.army;
+			_current.orders.push(orders);
+		}
+		if (o.id) {
+            // update existing
+			let idx = orders.orders.findIndex((order) => order.id == o.id);
+			if (idx >= 0) {
+				if (!remove) {
+					orders.orders[idx] = o;
+				} else {
+					orders.orders.splice(idx,1);
+				}
+			}
+        } else {
+            // add new
+			o.id = orders.orders.length;
+			orders.orders.push(o);
+        }
 	}
 };

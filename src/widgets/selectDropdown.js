@@ -2,6 +2,7 @@
 
 var React = require('react');
 import { View, Text, Picker } from 'react-native';
+var Icons = require('./icons');
 
 let SelectDropdown = React.createClass({
     render() {
@@ -13,7 +14,9 @@ let SelectDropdown = React.createClass({
                 <View style={{flex:2}}>
                     <Picker style={{marginRight: 25}}
                         selectedValue={this.props.value} onValueChange={this.props.onSelected}>
-                        {this.props.values.map((o,i) => <Picker.Item key={i} label={o} value={o} />)}
+                        {this.props.values.map((o,i) =>
+                            <Picker.Item key={i} label={o} value={o} />                            
+                        )}
                     </Picker>
                 </View>
             </View>

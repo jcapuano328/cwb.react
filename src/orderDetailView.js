@@ -1,141 +1,186 @@
 'use strict'
 
-var React = require('react-native');
-var { View, ScrollView, Switch, Text, TextInput, Alert } = React;
-var DateTimePicker = require('./widgets/datetimePicker');
+var React = require('react');
+import { View, Text, TextInput, Image, TouchableOpacity } from 'react-native';
+var SpinSelect = require('./widgets/spinSelect');
+var SelectDropdown = require('./widgets/selectDropdown');
 var IconButton = require('./widgets/iconButton');
-var PatientMedsView = require('./widgets/patientMedsView');
-var Patients = require('./stores/patients');
+var Button = require('apsl-react-native-button');
+var Icons = require('./widgets/icons');
+var Current = require('./services/current');
+var Orders = require('./services/orders');
+var Roster = require('./services/roster');
+var moment = require('moment');
 var log = require('./services/log');
 
-var PatientDetailView = React.createClass({
+var OrderDetailView = React.createClass({
     getInitialState() {
+        let order = this.props.order || {};
         return {
-            name: this.props.patient.name,
-            dob: this.props.patient.dob,
-            status: this.props.patient.status,
-            created: this.props.patient.created,
-            modified: this.props.patient.modified,
-            meds: this.props.patient.meds
+            id: order.id,
+            country: order.country || this.props.country,
+            army: order.army || this.props.army,
+            sender: order.sender || '',
+            receiver: order.receiver || '',
+            dateTime: moment(order.dateTime || Current.turn()),
+            type: order.type || Orders.types[0].type,
+            method: order.method || Orders.methods[0].method,
+            //force: order.force,
+            status: order.status || Orders.statuses[0].type,
+            text: order.text
         };
     },
-    componentWillMount() {
-        this.props.events.once('acceptpatient', this.onAccept);
-        this.props.events.once('discardpatient', this.onDiscard);
+    onNextStatus() {
+        this.setState({status: Orders.nextStatus(this.state.status)});
     },
-    onChangeName(v) {
-        this.setState({name: v});
-        this.props.events && this.props.events.emit('patientchanged', this.props.patient, {field: 'name', value: v});
+    onChangeSender(v) {
+        this.setState({sender: v});
     },
-    onChangeDob(v) {
-        this.setState({dob: v});
-        this.props.events && this.props.events.emit('patientchanged', this.props.patient, {field: 'dob', value: v});
+    onChangeReceiver(v) {
+        this.setState({receiver: v});
     },
-    onStatusChanged(v) {
-        let status = v ? 'active' : 'inactive';
-        this.setState({status: status});
-        this.props.events && this.props.events.emit('patientchanged', this.props.patient, {field: 'status', value: status});
-    },
-    onMedSelected(med) {
-        this.setState({currentMed: med});
-        this.props.events.once('savemed', this.onAcceptMed);
-        this.props.events.emit('changeroute','med', med);
-        //this.props.onSelected && this.props.onSelected(med);
-    },
-    onMedAdd() {
-        let med = Patients.createNewMed('');
-        this.setState({currentMed: med});
-        this.props.events.once('savemed', this.onAcceptMed);
-        this.props.events.emit('changeroute','med', med);
-    },
-    onMedRemove(med) {
-        Alert.alert('Remove Medication ' + med.name + '?', 'The medication will be permanently removed', [
-            {text: 'No', style: 'cancel'},
-            {text: 'Yes', onPress: () => {
-                log.debug('*********** remove medication ' + med.name);
-                var idx = this.state.meds.indexOf(med);
-                if (idx > -1) {
-                    this.state.meds.splice(idx,1);
-                    this.setState({meds: this.state.meds});
-                    this.props.events && this.props.events.emit('patientchanged', this.props.patient, {field: 'meds', value: this.state.meds});
-                }
-            }}
-        ]);
-    },
-    onMedStatusChanged(med, e) {
-        let f = e.field;
-        let v = e.value;
-        var idx = this.state.meds.indexOf(med);
-        if (idx > -1) {
-            this.state.meds[idx][f] = v;
-            this.setState({meds: this.state.meds});
+    onChangeDate(mod) {
+        return () => {
+            let battle = Current.battle();
+            let st = moment(battle.scenario.startDateTime);
+            let et = moment(battle.scenario.endDateTime);
+            let dt = moment(this.state.dateTime);
+            dt.add(mod,'days');
+            if (dt.isBefore(st)) {
+                dt = st;
+            } else if (dt.isAfter(et)) {
+                dt = et;
+            }
+            let now = {
+                year: dt.year(),
+                month: dt.month(),
+                day: dt.date(),
+                hour: dt.hour(),
+                minute: dt.minute()
+            };
+            this.setState({dateTime: moment(now)});
         }
-        //this.props.onChanged && this.props.onChanged({name: f, value: v});
     },
-    onAcceptMed(med) {
-        log.debug(med);
-        let idx = this.state.meds.indexOf(this.state.currentMed);
-        if (idx < 0) {
-            //log.debug('adding new med');
-            this.state.meds.push(med);
-        } else {
-            //log.debug('updating existing med');
-            Object.assign(this.state.meds[idx], med);
+    onChangeTime(mod) {
+        return () => {
+            let battle = Current.battle();
+            let st = moment(battle.scenario.startDateTime);
+            let et = moment(battle.scenario.endDateTime);
+            let dt = moment(this.state.dateTime);
+            let incr = Current.getTimeIncrement(dt,battle);
+            dt.add(mod*incr,'minutes');
+            if (dt.isBefore(st)) {
+                dt = st;
+            } else if (dt.isAfter(et)) {
+                dt = et;
+            }
+            let now = {
+                year: dt.year(),
+                month: dt.month(),
+                day: dt.date(),
+                hour: dt.hour(),
+                minute: dt.minute()
+            };
+            this.setState({dateTime: moment(now)});
         }
-        this.setState({meds: this.state.meds, currentMed: null});
-        this.props.events && this.props.events.emit('patientchanged', this.props.patient, {field: 'meds', value: this.state.meds});
     },
-    onDiscardMed(med) {
-        this.props.events.removeListener('savemed', this.onAcceptMed);
+    onChangedType(v) {
+        this.setState({type: Orders.getTypeByDesc(v).type || this.state.type});
+    },
+    onChangeMethod(v) {
+        this.setState({method: Orders.getMethodByDesc(v).method || this.state.method});
+    },
+    onChangeText(v) {
+        this.setState({text: v});
     },
     onAccept() {
-        log.debug('======= patient detail saving patient ' + this.state.name);
-        this.props.events.emit('savepatient', {
-            _id: this.props.patient._id,
-            name: this.state.name,
-            dob: this.state.dob,
+        this.props.onAccept({
+            id: this.state.id,
+            country: this.state.country,
+            army: this.state.army,
+            sender: this.state.sender,
+            receiver: this.state.receiver,
+            dateTime: this.state.dateTime,
+            type: this.state.type,
+            method: this.state.method,
+            //force: this.state.force,
             status: this.state.status,
-            created: this.state.created,
-            modified: this.state.modified,
-            meds: this.state.meds
+            text: this.state.text
         });
-        this.props.events.removeAllListeners('discardpatient');
-        this.props.events.removeAllListeners('savemed');
     },
-    onDiscard() {
-        //log.debug('unsubscribing from savepatient for ' + this.state.name);
-        this.props.events.removeAllListeners('savepatient');
-        this.props.events.removeAllListeners('acceptpatient');
-        this.props.events.removeAllListeners('savemed');
+    isValid() {
+        return (this.state.sender &&
+            this.state.receiver &&
+            this.state.dateTime &&
+            this.state.type &&
+            this.state.method &&
+            //this.state.force &&
+            this.state.status &&
+            this.state.text);
     },
     render() {
         return (
-            <View style={{
-                flex: 1,
-                marginTop: 50,
-                //backgroundColor: 'rgba(0,0,0,0.01)',
-            }}>
-                <View style={{flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
-                    <TextInput style={{flex: 3, margin: 10, fontSize: 20}} placeholder={'Name'} onChangeText={this.onChangeName}>{this.state.name}</TextInput>
-                    <View style={{flex:1, alignItems: 'center', justifyContent: 'center'}}>
-                        <Text>Active</Text>
-                        <Switch value={this.state.status == 'active'} onValueChange={this.onStatusChanged} />
+            <View style={{flex: 1}}>
+                <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start'}}>
+                    <View style={{flex:1, justifyContent: 'center', alignItems: 'center'}}>
+                        <Image style={{flex: 1,marginRight: 15, width: 64,height: 64,resizeMode: 'contain'}} source={Icons[this.props.country]} />
+                    </View>
+                    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+                        <Text style={{marginTop: 25, fontSize: 24, fontWeight: 'bold'}}>{this.props.army}</Text>
+                    </View>
+                    <View style={{flex: 1, marginTop: 15, justifyContent: 'center', alignItems: 'center'}}>
+                        <TouchableOpacity onPress={this.onNextStatus} >
+                            <Image style={{width: 48,height: 48,resizeMode: 'stretch'}} source={Icons[this.state.status]}/>
+                        </TouchableOpacity>
                     </View>
                 </View>
-                <View style={{flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
-                    <DateTimePicker label={'DOB'} value={this.state.dob} date={true} time={false} onChanged={this.onChangeDob} />
+                <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start'}}>
+                    <View style={{flex:1, justifyContent: 'center', alignItems: 'center'}}>
+                        <SelectDropdown label={'Sender'} value={this.state.sender} values={[''].concat(Roster.getSuperiorLeaders(this.props.country,this.props.army))}
+                            onSelected={this.onChangeSender}/>
+                    </View>
+                    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+                        <SelectDropdown label={'Receiver'} value={this.state.receiver} values={[''].concat(Roster.getSubordinateLeaders(this.props.country,this.props.army))}
+                            onSelected={this.onChangeReceiver}/>
+                    </View>
                 </View>
-                <View style={{flex: 8}}>
-                    <PatientMedsView meds={this.state.meds} events={this.props.events}
-                        onAdd={this.onMedAdd}
-                        onRemove={this.onMedRemove}
-                        onSelected={this.onMedSelected}
-                        onChanged={this.onMedStatusChanged}
-                        />
+                <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
+                    <View style={{flex:1}}>
+                        <Text style={{marginLeft: 10}}>Arrival</Text>
+                    </View>
+                    <View style={{flex:2, marginTop: 15}}>
+                        <SpinSelect value={this.state.dateTime.format('MMM DD, YYYY')} onPrev={this.onChangeDate(-1)} onNext={this.onChangeDate(1)} />
+                    </View>
+                    <View style={{flex:2, marginTop: 15}}>
+                        <SpinSelect value={this.state.dateTime.format('HH:mm')} onPrev={this.onChangeTime(-1)} onNext={this.onChangeTime(1)} />
+                    </View>
+                </View>
+
+                <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start'}}>
+                    <View style={{flex:1, justifyContent: 'center', alignItems: 'center'}}>
+                        <SelectDropdown label={'Type'} value={Orders.getType(this.state.type).desc} values={[''].concat(Orders.types.map((t) => t.desc))}
+                            onSelected={this.onChangeType}/>
+                    </View>
+                    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+                        <SelectDropdown label={'Method'} value={Orders.getMethod(this.state.method).desc} values={[''].concat(Orders.methods.map((m) => m.desc))}
+                            onSelected={this.onChangeMethod}/>
+                    </View>
+                </View>
+
+                <View style={{flex: 3}}>
+                    <TextInput style={{margin: 10, fontSize: 20}} placeholder={'Instructions'} multiline={true} onChangeText={this.onChangeText}>{this.state.text}</TextInput>
+                </View>
+
+                <View style={{flex: 1, flexDirection: 'row'}}>
+                    <Button style={{flex:1, marginLeft: 10, marginRight: 5, backgroundColor: 'lightgreen'}}
+                        isDisabled={!this.isValid()}
+                        textStyle={{color:'black'}} onPress={this.onAccept}>{'Accept'}</Button>
+                    <Button style={{flex:1, marginLeft: 5, marginRight: 10, backgroundColor: 'lightcoral'}}
+                        textStyle={{color:'white'}} onPress={this.props.onDiscard}>{'Cancel'}</Button>
                 </View>
             </View>
         );
     }
 });
 
-module.exports = PatientDetailView;
+module.exports = OrderDetailView;

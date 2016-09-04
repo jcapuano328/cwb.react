@@ -13,6 +13,8 @@ module.exports = {
 	"nextButton": require('../res/ic_action_next_item.png'),
 	"checked": require('../res/checked_checkbox.png'),
 	"unchecked": require('../res/unchecked_checkbox.png'),
+	"calendar": require('../res/calendar.png'),
+	"clock": require('../res/clock.png'),
 
 	"select": require('../res/select.png'),
 	"add": require('../res/add.png'),
@@ -49,7 +51,7 @@ module.exports = {
 	"Delay1": require('../res/Delay1.png'),
 	"Delay2": require('../res/Delay2.png'),
 	"Distorted": require('../res/Distorted.png'),
-	"Stopped": require('../res/Stopped.png'),
+	"Stopped": require('../res/Stop.png'),
 
 	"aprilsharvest": require('../res/aprilsharvest.jpg'),
 	"augustfury": require('../res/augustfury.jpg'),
