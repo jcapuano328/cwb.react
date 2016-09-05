@@ -192,5 +192,11 @@ module.exports = {
 			o.id = orders.orders.length;
 			orders.orders.push(o);
         }
-	}
+	},
+	roster(country,army) {
+		return _current.armies.find((a) => {
+			return a.country == country && a.name == army;
+		}) || {roster: {}};
+	},
+
 };

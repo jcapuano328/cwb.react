@@ -7,12 +7,13 @@ var TurnView = require('./turnView');
 var Current = require('./services/current');
 var icons = require('./widgets/icons');
 var OrdersView = require('./ordersView');
+var RosterView = require('./rosterView');
 
 var BattleView = React.createClass({
     getInitialState() {
         return {
             battle: this.props.battle,
-            initialPage: 0
+            initialPage: 1
         };
     },
     componentWillMount: function() {
@@ -41,7 +42,7 @@ var BattleView = React.createClass({
                     initialPage={this.state.initialPage}
                 >
                     <OrdersView tabLabel="Orders" events={this.props.events} />
-                    <Text tabLabel="Roster" events={this.props.events} />
+                    <RosterView tabLabel="Roster" events={this.props.events} />
                     <Text tabLabel="Fire" events={this.props.events} />
                     <Text tabLabel="Close Combat" events={this.props.events} />
                     <Text tabLabel="Morale" events={this.props.events} />

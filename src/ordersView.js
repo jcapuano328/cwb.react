@@ -9,7 +9,6 @@ var log = require('./services/log');
 
 var OrdersView = React.createClass({
     getInitialState() {
-        console.log('intitial orders view');
         return {
             armies: Current.armies()
         };
@@ -21,7 +20,6 @@ var OrdersView = React.createClass({
         return true;
     },
     onReset() {
-        console.log('reset orders view');
         this.setState({armies: Current.armies()});
     },
     onSelect(country,army,order) {
@@ -48,7 +46,6 @@ var OrdersView = React.createClass({
         ]);
     },
     onAccept(o) {
-        //console.log(o);
         Current.order(o);
         Current.save()
         .then(() => {
@@ -67,7 +64,6 @@ var OrdersView = React.createClass({
               initialRoute={{name: 'list', index: 0}}
               renderScene={(route, navigator) => {
                   if (route.name == 'order') {
-                      console.log('orders view render detail');
                       return (
                           <OrderDetailView country={route.country} army={route.army} order={route.order} events={this.props.events}
                             onAccept={this.onAccept}
@@ -75,7 +71,6 @@ var OrdersView = React.createClass({
                           />
                       );
                   }
-                  console.log('orders view render list');
                   return (
                       <OrderListView armies={this.state.armies} events={this.props.events}
                         onSelect={this.onSelect}
