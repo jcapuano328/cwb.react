@@ -40,22 +40,23 @@ var RosterListArmyView = React.createClass({
         if (!this.state.expanded) {
             return (<Text />);
         }
+
         let roster = Current.roster(this.props.army.country, this.props.army.name).roster;
         return (
             <View style={{marginLeft: 20}}>
                 {(roster.corps||[]).map((c,i) => {
                     return (
-                        <RosterListCorpsView key={i} country={this.props.army.country} corps={c} />
+                        <RosterListCorpsView key={i} country={this.props.army.country} army={this.props.army.name} corps={c} events={this.props.events} />
                     );
                 })}
                 {(roster.divisions||[]).map((d,i) => {
                     return (
-                        <RosterListDivisionView key={i} country={this.props.army.country} division={d} />
+                        <RosterListDivisionView key={i} country={this.props.army.country} army={this.props.army.name} division={d} events={this.props.events} />
                     );
                 })}
                 {(roster.independents||[]).map((b,i) => {
                     return (
-                        <RosterListBrigadeView key={i} country={this.props.army.country} brigade={b} />
+                        <RosterListBrigadeView key={i} country={this.props.army.country} army={this.props.army.name} brigade={b} events={this.props.events} />
                     );
                 })}
             </View>

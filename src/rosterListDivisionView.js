@@ -60,7 +60,7 @@ var RosterListDivisionView = React.createClass({
             <View style={{marginLeft: 20}}>
                 {this.props.division.brigades.map((b,i) => {
                     return (
-                        <RosterListBrigadeView key={i} country={this.props.country} brigade={b} />
+                        <RosterListBrigadeView key={i} country={this.props.country} army={this.props.army} brigade={b} events={this.props.events} />
                     );
                 })}
             </View>

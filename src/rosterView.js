@@ -14,6 +14,7 @@ var RosterView = React.createClass({
     },
     componentDidMount() {
         this.props.events.addListener('reset', this.onReset);
+        this.props.events.addListener('rosterchange', this.onReset);
     },
     shouldComponentUpdate(nextProps, nextState) {
         return true;
