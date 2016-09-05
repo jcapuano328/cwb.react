@@ -11,8 +11,7 @@ var Current = require('./services/current');
 var RosterListArmyView = React.createClass({
     getInitialState() {
         return {
-            expanded: false,
-            roster: Current.roster(this.props.army.country, this.props.army.name).roster
+            expanded: false
         };
     },
     onPress() {
@@ -41,20 +40,20 @@ var RosterListArmyView = React.createClass({
         if (!this.state.expanded) {
             return (<Text />);
         }
-
+        let roster = Current.roster(this.props.army.country, this.props.army.name).roster;
         return (
-            <View style={{marginLeft: 40}}>
-                {this.state.roster.corps.map((c,i) => {
+            <View style={{marginLeft: 20}}>
+                {(roster.corps||[]).map((c,i) => {
                     return (
                         <RosterListCorpsView key={i} country={this.props.army.country} corps={c} />
                     );
                 })}
-                {this.state.roster.divisions.map((d,i) => {
+                {(roster.divisions||[]).map((d,i) => {
                     return (
                         <RosterListDivisionView key={i} country={this.props.army.country} division={d} />
                     );
                 })}
-                {this.state.roster.independents.map((b,i) => {
+                {(roster.independents||[]).map((b,i) => {
                     return (
                         <RosterListBrigadeView key={i} country={this.props.army.country} brigade={b} />
                     );

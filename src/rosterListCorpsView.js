@@ -4,7 +4,9 @@ var React = require('react');
 import { View, TouchableOpacity, Text, Image } from 'react-native';
 var RosterListDivisionView = require('./rosterListDivisionView');
 var RosterListBrigadeView = require('./rosterListBrigadeView');
+var RosterBoxes = require('./rosterBoxes');
 var icons = require('./widgets/icons');
+var Roster = require('./services/roster');
 
 var RosterListCorpsView = React.createClass({
     getInitialState() {
@@ -28,6 +30,9 @@ var RosterListCorpsView = React.createClass({
                             <Text style={{flex: 1, fontSize: 20,textAlign: 'center',margin: 10}}>{this.props.corps.name}</Text>
                             <Text style={{flex: 1, fontSize: 15,textAlign: 'center',margin: 10}}>{this.props.corps.commander}</Text>
                         </View>
+                        <View style={{flex: 1, alignItems: 'flex-end'}}>
+                            <RosterBoxes total={this.props.corps.divisions.length} casualties={Roster.wreckedDivisions(this.props.corps)} />
+                        </View>
                     </View>
                     {this.renderSubordinates()}
                 </View>
@@ -40,13 +45,13 @@ var RosterListCorpsView = React.createClass({
         }
 
         return (
-            <View style={{marginLeft: 40}}>
-                {this.props.corps.divisions.map((d,i) => {
+            <View style={{marginLeft: 20}}>
+                {(this.props.corps.divisions||[]).map((d,i) => {
                     return (
                         <RosterListDivisionView key={i} country={this.props.country} division={d} />
                     );
                 })}
-                {this.props.corps.independents.map((b,i) => {
+                {(this.props.corps.independents||[]).map((b,i) => {
                     return (
                         <RosterListBrigadeView key={i} country={this.props.country} brigade={b} />
                     );

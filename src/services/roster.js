@@ -88,12 +88,28 @@ module.exports = {
     getSubordinateLeaders(country,army) {
 		return getCommandersForArmy(country,army);
     },
+    wreckedDivisions(item) {
+        return item.divisions.reduce((p,c) => {
+            return p + (this.wreckedBrigades(c)>=c.wreckLosses?1:0);
+        }, 0);
+    	return (item.losses + item.stragglers) >= item.wreckLosses;
+    },
+    wreckedBrigades(item) {
+        return (item.brigades||item.independents).reduce((p,c) => {
+            return p + (this.isWrecked(c)?1:0);
+        }, 0);
+    },
+    destroyedBrigades(item) {
+        return (item.brigades||item.independents).reduce((p,c) => {
+            return p + (this.isDestroyed(c)?1:0);
+        }, 0);
+    },
     isWrecked(item) {
     	return (item.losses + item.stragglers) >= item.wreckLosses;
     },
     isDestroyed(item) {
     	return (item.losses + item.stragglers) >= item.totalStrength;
-	},
+    },
     getFireLevels(strength) {
         let idx = fireLevels.findIndex((firelevel) => strength > firelevel.strength);
         return fireLevels.slice(idx);
