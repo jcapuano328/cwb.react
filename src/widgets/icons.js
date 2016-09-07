@@ -48,6 +48,9 @@ module.exports = {
 	"straggler": require('../res/straggler.png'),
 	"skull": require('../res/skull.png'),
 
+	"cc-Attacker": require('../res/cc-attacker.png'),
+	"cc-Defender": require('../res/cc-defender.png'),
+
 	"CSA": require('../res/CSA.png'),
 	"USA": require('../res/USA.png'),
 

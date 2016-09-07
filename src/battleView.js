@@ -10,12 +10,13 @@ var OrdersView = require('./ordersView');
 var RosterView = require('./rosterView');
 var FireCombatView = require('./fireCombatView');
 var MoraleView = require('./moraleView');
+var CloseCombatView = require('./closeCombatView');
 
 var BattleView = React.createClass({
     getInitialState() {
         return {
             battle: this.props.battle,
-            initialPage: 3
+            initialPage: 4
         };
     },
     componentWillMount: function() {
@@ -47,7 +48,7 @@ var BattleView = React.createClass({
                     <RosterView tabLabel="Roster" events={this.props.events} />
                     <FireCombatView tabLabel="Fire" events={this.props.events} />
                     <MoraleView tabLabel="Morale" events={this.props.events} />
-                    <Text tabLabel="Close Combat" events={this.props.events} />
+                    <CloseCombatView tabLabel="Close Combat" events={this.props.events} />
                     <Text tabLabel="Victory" events={this.props.events} />
                 </ScrollableTabView>
             </View>
