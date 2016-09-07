@@ -234,8 +234,23 @@ var results = [
     }
 ];
 
+var modifiers = [
+	'Low Ammo',
+	'w/Unlimb Arty',
+	'Trench',
+	'Col/Limb/Flank',
+	'Night',
+	'Wrecked Bde',
+	'Wrecked Div',
+	'CC Attack',
+	'CC Attack Special',
+	'CC Defend',
+	'Leader Loss'
+];
+
 module.exports = {
 	levels: levels,
+	modifiers: modifiers,
 	states: states,
 	getState(code) {
 		return states.find((s) => s.code == code) || {};
@@ -261,7 +276,6 @@ module.exports = {
 	noResult: cResultNE,
 	check(dice, level, leaderrating, leaderloss, state, unlimbarty, wreckedbde, wreckeddiv, trench,
 			night, column, lowammo, ccdefender, ccattacker, ccattackerspecial, mod) {
-
 		let result = cResultNE;
 
 		if (this.isRouted(state)) {
@@ -345,7 +359,6 @@ module.exports = {
 				result = mr.result;
 			}
 		}
-
 		return result;
 	},
 

@@ -32,6 +32,8 @@ module.exports = {
 	"straggler-3": require('../res/straggler3.png'),
 	"straggler-4": require('../res/straggler4.png'),
 	"straggler-5": require('../res/straggler5.png'),
+	"N": require('../res/state-normal.png'),
+	"NE": require('../res/state-normal.png'),
 	"BL": require('../res/state-bloodlust.png'),
 	"SH": require('../res/state-shaken.png'),
 	"DG": require('../res/state-disorganized.png'),

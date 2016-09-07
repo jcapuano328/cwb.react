@@ -43,7 +43,6 @@ let FireCombatView = React.createClass({
             stragglers: 0,
             morale: '',
             retreat: '',
-            stars: '',
             lowammo: false,
             leaderloss: false,
 
@@ -90,15 +89,15 @@ let FireCombatView = React.createClass({
             this.setState({csaartyammo: v});
         });
     },
-    onChangeAttackMod(m,v) {
-        this.state.attackmods[m.name] = v;
+    onChangeAttackMod(m) {
+        this.state.attackmods[m.name] = m.selected;
         this.resolve();
     },
-    onChangedefendmoralelevel(v) {
+    onChangeDefendMoraleLevel(v) {
         this.state.defendmoralelevel = v;
         this.resolve();
     },
-    onChangedefendmoralestate(v) {
+    onChangeDefendMoraleState(v) {
         this.state.defendmoralestate = v;
         this.resolve();
     },
@@ -106,8 +105,8 @@ let FireCombatView = React.createClass({
         this.state.defendleader = v;
         this.resolve();
     },
-    onChangeDefendMod(m,v) {
-        this.state.defendmods[m.name] = v;
+    onChangeDefendMod(m) {
+        this.state.defendmods[m.name] = m.selected;
         this.resolve();
     },
 
@@ -141,7 +140,7 @@ let FireCombatView = React.createClass({
         let defendmods = this.getModifiers(this.state.defendmods);
         let results = FireCombat.resolve(this.state.die1+this.state.die2,this.state.die3,this.state.die4,this.state.die5*10+this.state.die6,this.state.die7+this.state.die8,
     			this.state.attackstrength,attackmods['Up Slope'],attackmods['Low Ammo'],attackmods['DG'],attackmods['CC Flank'],attackmods['Swamp'],attackmods['Night'],
-    			this.state.defendmoralelevel,this.state.defendleader,this.state.defendmoralestate,
+    			this.state.defendmoralelevel,+this.state.defendleader,this.state.defendmoralestate,
                 defendmods['Low Ammo'],defendmods['Trench'],defendmods['Mounted'],defendmods['Col/Limb/Flank'],defendmods['w/Unlimb Arty'],
                 defendmods['Wrecked Bde'],defendmods['Wrecked Div'],defendmods['CC Attack'],defendmods['CC Defend'],defendmods['CC Attack Special']);
 
@@ -190,7 +189,7 @@ let FireCombatView = React.createClass({
                         </View>
 
                         <View style={{flex: 6, justifyContent: 'flex-start', alignItems: 'flex-start', flexDirection: 'row'}}>
-                            <MultiSelectList title={'Modifiers'} items={FireCombat.attackModifiers.map((m) => {return {name: m.name, selected: this.state.attackmods[m.name]};})} onChanged={this.onChangeAttackMods}/>
+                            <MultiSelectList title={'Modifiers'} items={FireCombat.attackModifiers.map((m) => {return {name: m.name, selected: this.state.attackmods[m.name]};})} onChanged={this.onChangeAttackMod}/>
                         </View>
                     </View>
                     <View style={{flex:1}}>
@@ -198,10 +197,10 @@ let FireCombatView = React.createClass({
                             <Text>Defend</Text>
                         </View>
                         <View style={{flex: 1, flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'flex-start'}}>
-                            <SelectDropdown label={'Morale'} values={Morale.levels} value={this.state.defendmoralelevel} onSelected={this.onChangedefendmoralelevel} />
+                            <SelectDropdown label={'Morale'} values={Morale.levels} value={this.state.defendmoralelevel} onSelected={this.onChangeDefendMoraleLevel} />
                         </View>
                         <View style={{flex: 1, flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'flex-start'}}>
-                            <SelectDropdown label={'State'} values={Morale.states.map((s) => s.desc)} value={this.state.defendmoralestate} onSelected={this.onChangedefendmoralestate} />
+                            <SelectDropdown label={'State'} values={Morale.states.map((s) => s.desc)} value={this.state.defendmoralestate} onSelected={this.onChangeDefendMoraleState} />
                         </View>
                         <View style={{flex: 1, flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'flex-start'}}>
                             <View style={{flex: 1, justifyContent: 'flex-end', marginLeft: 10, marginTop: 20}}>
@@ -212,7 +211,7 @@ let FireCombatView = React.createClass({
                             </View>
                         </View>
                         <View style={{flex: 6, justifyContent: 'flex-start', alignItems: 'flex-start', flexDirection: 'row'}}>
-                            <MultiSelectList title={'Modifiers'} items={FireCombat.defendModifiers.map((m) => {return {name: m.name, selected: this.state.defendmods[m.name]};})} onChanged={this.onChangeDefendMods}/>
+                            <MultiSelectList title={'Modifiers'} items={FireCombat.defendModifiers.map((m) => {return {name: m.name, selected: this.state.defendmods[m.name]};})} onChanged={this.onChangeDefendMod}/>
                         </View>
                     </View>
                 </View>

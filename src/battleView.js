@@ -9,12 +9,13 @@ var icons = require('./widgets/icons');
 var OrdersView = require('./ordersView');
 var RosterView = require('./rosterView');
 var FireCombatView = require('./fireCombatView');
+var MoraleView = require('./moraleView');
 
 var BattleView = React.createClass({
     getInitialState() {
         return {
             battle: this.props.battle,
-            initialPage: 2
+            initialPage: 3
         };
     },
     componentWillMount: function() {
@@ -45,8 +46,9 @@ var BattleView = React.createClass({
                     <OrdersView tabLabel="Orders" events={this.props.events} />
                     <RosterView tabLabel="Roster" events={this.props.events} />
                     <FireCombatView tabLabel="Fire" events={this.props.events} />
+                    <MoraleView tabLabel="Morale" events={this.props.events} />
                     <Text tabLabel="Close Combat" events={this.props.events} />
-                    <Text tabLabel="Morale" events={this.props.events} />
+                    <Text tabLabel="Victory" events={this.props.events} />
                 </ScrollableTabView>
             </View>
         );

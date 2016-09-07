@@ -235,9 +235,6 @@ module.exports = {
 							defendunlimbarty, defendwreckedbde, defendwreckeddiv,
 							defendtrench, attacknight, defendcolumn, defendlowammo,
 							defendccdefend, defendccattack, defendccattackspecial, moralemod);
-
-				console.log('FIRE');
-				console.log(morale);
 				straggler += morale.stragglers;
 			}
 		}
@@ -246,10 +243,9 @@ module.exports = {
 			casualty: casualty,
 			straggler: straggler,
 			morale: morale.morale,
-			retreat: morale.retreat,			
+			retreat: morale.retreat,
 			leaderloss: leaderloss,
 			lowammo: lowammo
 		};
 	}
-
 };
