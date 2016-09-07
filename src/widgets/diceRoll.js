@@ -4,7 +4,6 @@ var React = require('react');
 import { View, Text, TouchableOpacity, Image } from 'react-native';
 var Button = require('apsl-react-native-button');
 var Dice = require('../services/dice');
-var range = require('../services/range');
 var Images = require('./dieImages');
 
 var DieButton = React.createClass({
@@ -17,7 +16,7 @@ var DieButton = React.createClass({
     render() {
         let image = Images(this.props.image);
         return (
-            <TouchableOpacity style={{marginRight: 5}} onPress={this.onPress} >
+            <TouchableOpacity onPress={this.onPress} >
                 <Image source={image} />
             </TouchableOpacity>
         );
@@ -37,26 +36,28 @@ var DiceRoll = React.createClass({
     },
     render() {
         this.dice = new Dice.Dice(this.props.dice);
-        //style={{flex: 1,padding: 5, alignItems: 'center'}}
-        //, alignItems: 'center'
         return (
-          <View style={{flex: 1, flexDirection: 'row'}}>
-            <View style={{flex: 1, flexDirection: 'row', justifyContent: 'flex-end', marginTop: 12}}>
+            <View style={{flex: 1, flexDirection: 'row', justifyContent: 'flex-end', alignItems: 'center'}}>
                 {this.dice.map((die, i) => {
                     if (i<this.props.values.length) {
                         die.value(this.props.values[i]);
                     }
                     return (
-                        <DieButton key={i} die={i+1} image={die.image()} onPress={this.onDie} />
+                        <View key={i} style={{flex:1}}>
+                            <DieButton die={i+1} image={die.image()} onPress={this.onDie} />
+                        </View>
                     );
                 })}
+                <View style={{flex:1}}>
+                    <Button
+                        style={{width: this.props.buttonWidth || 96,height: this.props.buttonHeight || 64,
+                                marginTop: 5,
+                                backgroundColor: this.props.buttonBackgroundColor || '#3F51B5'}}
+                        textStyle={{fontSize: 18,color: this.props.buttonColor || '#FFF'}} onPress={this.onRoll}>
+                        Roll
+                    </Button>
+                </View>
             </View>
-            <Button
-                style={{width: 96,height: 64,marginTop: 12,marginRight: 5,backgroundColor: '#3F51B5'}}
-                textStyle={{fontSize: 18,color: '#FFF'}} onPress={this.onRoll}>
-                Roll
-            </Button>
-          </View>
         );
     }
 });
