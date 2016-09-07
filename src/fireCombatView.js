@@ -24,16 +24,20 @@ let FireCombatView = React.createClass({
         {num: 1, low: 1, high: 6, color: 'white'}
     ],
     getInitialState() {
+        let battle = Current.battle();
         return {
             attackstrength: FireCombat.defaultPoints.code,
             attackmods: {},
-            attackartyammo: '0',
 
             defendmoralelevel: Morale.levels[1],
             defendmoralestate: Morale.states[1].desc,
             defendleader: '1',
             defendmods: {},
-            defendartyammo: '0',
+
+            usaartyammo: Current.USAArtyAmmo().toString(),
+            usaartyammomax: battle.scenario.unionAmmo,
+            csaartyammo: Current.CSAArtyAmmo().toString(),
+            csaartyammomax: battle.scenario.confederateAmmo,
 
             casualties: 0,
             stragglers: 0,
@@ -53,9 +57,38 @@ let FireCombatView = React.createClass({
             die8: 1
         };
     },
+    componentDidMount() {
+        this.props.events.addListener('reset', this.onReset);
+    },
+    shouldComponentUpdate(nextProps, nextState) {
+        return true;
+    },
+    onReset() {
+        let battle = Current.battle();
+        this.setState({
+            usaartyammo: Current.USAArtyAmmo().toString(),
+            usaartyammomax: battle.scenario.unionAmmo,
+            csaartyammo: Current.CSAArtyAmmo().toString(),
+            csaartyammomax: battle.scenario.confederateAmmo
+        });
+    },
     onChangeAttackStrength(v) {
         this.state.attackstrength = v;
         this.resolve();
+    },
+    onChangeUSAArtyAmmo(v) {
+        Current.USAArtyAmmo(v);
+        Current.save()
+        .then(() => {
+            this.setState({usaartyammo: v});
+        });
+    },
+    onChangeCSAArtyAmmo(v) {
+        Current.CSAArtyAmmo(v);
+        Current.save()
+        .then(() => {
+            this.setState({csaartyammo: v});
+        });
     },
     onChangeAttackMod(m,v) {
         this.state.attackmods[m.name] = v;
@@ -112,9 +145,6 @@ let FireCombatView = React.createClass({
                 defendmods['Low Ammo'],defendmods['Trench'],defendmods['Mounted'],defendmods['Col/Limb/Flank'],defendmods['w/Unlimb Arty'],
                 defendmods['Wrecked Bde'],defendmods['Wrecked Div'],defendmods['CC Attack'],defendmods['CC Defend'],defendmods['CC Attack Special']);
 
-        console.log('>>>> RESOLVE');
-        console.log(results);
-
         this.state.casualties = results.casualty;
         this.state.stragglers = results.straggler;
         this.state.morale = results.morale;
@@ -139,9 +169,26 @@ let FireCombatView = React.createClass({
                         <View style={{flex: .25, alignItems: 'center'}}>
                             <Text>Attack</Text>
                         </View>
-                        <View style={{flex: 3, flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'flex-start'}}>
+                        <View style={{flex: 1, flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'flex-start'}}>
                             <SelectDropdown label={'Points'} values={FireCombat.points.map((p) => p.code)} value={this.state.attackstrength} onSelected={this.onChangeAttackStrength} />
                         </View>
+                        <View style={{flex: 1, flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'flex-start'}}>
+                            <View style={{flex: 1, justifyContent: 'flex-end', marginLeft: 10, marginTop: 10}}>
+                                <Text>USA Arty Ammo</Text>
+                            </View>
+                            <View style={{flex: 3}}>
+                                <SpinNumeric value={this.state.usaartyammo} min={0} max={this.state.usaartyammomax} onChanged={this.onChangeUSAArtyAmmo} />
+                            </View>
+                        </View>
+                        <View style={{flex: 1, flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'flex-start'}}>
+                            <View style={{flex: 1, justifyContent: 'flex-end', marginLeft: 10, marginTop: 10}}>
+                                <Text>CSA Arty Ammo</Text>
+                            </View>
+                            <View style={{flex: 3}}>
+                                <SpinNumeric value={this.state.csaartyammo} min={0} max={this.state.csaartyammomax} onChanged={this.onChangeCSAArtyAmmo} />
+                            </View>
+                        </View>
+
                         <View style={{flex: 6, justifyContent: 'flex-start', alignItems: 'flex-start', flexDirection: 'row'}}>
                             <MultiSelectList title={'Modifiers'} items={FireCombat.attackModifiers.map((m) => {return {name: m.name, selected: this.state.attackmods[m.name]};})} onChanged={this.onChangeAttackMods}/>
                         </View>

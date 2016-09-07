@@ -56,6 +56,8 @@ module.exports = {
 		blank.scenario = data.scenario.id;
 		blank.orders = clone(data.scenario.defaultOrders);
 		blank.armies = clone(data.armies);
+		blank.confederateAmmo = data.scenario.confederateAmmo;
+		blank.unionAmmo = data.scenario.unionAmmo;
 		return this.save(blank)
 		.then(() => {
 			return blank;

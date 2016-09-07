@@ -198,5 +198,16 @@ module.exports = {
 			return a.country == country && a.name == army;
 		}) || {roster: {}};
 	},
-
+	USAArtyAmmo(v) {
+		if (typeof v != 'undefined') {
+			_current.unionAmmo = v;
+		}
+		return _current.unionAmmo;
+	},
+	CSAArtyAmmo(v) {
+		if (typeof v != 'undefined') {
+			_current.confederateAmmo = v;
+		}
+		return _current.confederateAmmo;
+	}
 };
