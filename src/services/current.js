@@ -209,5 +209,17 @@ module.exports = {
 			_current.confederateAmmo = v;
 		}
 		return _current.confederateAmmo;
+	},
+	USAVictoryPoints(v) {
+		if (typeof v != 'undefined') {
+			_current.unionVP = v;
+		}
+		return _current.unionVP;
+	},
+	CSAVictoryPoints(v) {
+		if (typeof v != 'undefined') {
+			_current.confederateVP = v;
+		}
+		return _current.confederateVP;
 	}
 };

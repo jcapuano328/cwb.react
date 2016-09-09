@@ -4,10 +4,8 @@
 	phase: 0,
 	player: 'first',
 	confederateAmmo: 0,
-	confederateCasualty: 0,
 	confederateVP: 0,
 	unionAmmo: 0,
-	unionCasualty: 0,
 	unionVP: 0,
 	orders: [],
 	armies: []

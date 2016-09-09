@@ -81,12 +81,54 @@ let getCommandersForArmy = (country,army,superiors) => {
     ).reduce((a,b) => a.concat(b),[]));
 }
 
+let isWrecked = (item, bycasualty) => {
+    if (bycasualty) {
+        item.losses >= item.wreckLosses;
+    }
+    return (item.losses + item.stragglers) >= item.wreckLosses;
+}
+let isDestroyed = (item) => {
+    return (item.losses + item.stragglers) >= item.totalStrength;
+}
+
+let totalWreckedInBrigades = (brigades, bycasualty) => {
+    return (brigades||[]).reduce((p,c) => {
+        return p + isWrecked(c, bycasualty);
+    }, 0);
+}
+
+let totalWreckedInDivisions = (divisions, bycasualty) => {
+    return (divisions||[]).reduce((p,c) => {
+        return p + totalWreckedBrigades(c.brigades, bycasualty);
+    }, 0);
+}
+
+let totalWreckedInCorps = (corps, bycasualty) => {
+    return corps.reduce((p,c) => {
+        return p + totalWreckedInDivisions(c.divisions, bycasualty) +
+            totalWreckedBrigades(c.independents, bycasualty);
+    }, 0);
+}
+
+let totalWreckedInArmy = (a, bycasualty) => {
+    return totalWreckedInCorps(a.corps, bycasualty) +
+        totalWreckedInDivisions(a.divisions, bycasualty) +
+        totalWreckedBrigades(a.independents);
+}
+
 module.exports = {
 	getSuperiorLeaders(country,army) {
         return getCommandersForArmy(country,army,true);
     },
     getSubordinateLeaders(country,army) {
 		return getCommandersForArmy(country,army);
+    },
+    totalWrecked(country) {
+        let battle = Current.battle();
+        let armies = battle.armies.filter((a) => a.country == country) || [];
+        return armies.reduce((p,c) => {
+            return p + totalWreckedInArmy(c);
+        }, 0);
     },
     wreckedDivisions(item) {
         return item.divisions.reduce((p,c) => {
@@ -96,20 +138,16 @@ module.exports = {
     },
     wreckedBrigades(item) {
         return (item.brigades||item.independents).reduce((p,c) => {
-            return p + (this.isWrecked(c)?1:0);
+            return p + (isWrecked(c)?1:0);
         }, 0);
     },
     destroyedBrigades(item) {
         return (item.brigades||item.independents).reduce((p,c) => {
-            return p + (this.isDestroyed(c)?1:0);
+            return p + (isDestroyed(c)?1:0);
         }, 0);
     },
-    isWrecked(item) {
-    	return (item.losses + item.stragglers) >= item.wreckLosses;
-    },
-    isDestroyed(item) {
-    	return (item.losses + item.stragglers) >= item.totalStrength;
-    },
+    isWrecked: isWrecked,
+    isDestroyed: isDestroyed,
     getFireLevels(strength) {
         let idx = fireLevels.findIndex((firelevel) => strength > firelevel.strength);
         return fireLevels.slice(idx);

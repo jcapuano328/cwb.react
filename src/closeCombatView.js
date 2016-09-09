@@ -68,7 +68,6 @@ let CloseCombatView = React.createClass({
         this.state.results = CloseCombat.resolve(this.state.die1, this.state.die2,
             [this.state.attackstrength],attackmods['Wrecked Bde'],
             this.getModifiers(this.state.defendstrength),defendmods['Trench'],defendmods['Wrecked Bde'],defendmods['Wrecked Div']);
-console.log(this.state);
         this.setState(this.state);
     },
     render() {
