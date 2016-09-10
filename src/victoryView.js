@@ -7,6 +7,47 @@ var Icons = require('./widgets/icons');
 var Current = require('./services/current');
 var Roster = require('./services/roster');
 
+let ArmyVictoryView = React.createClass({
+    render() {
+        let wreckedbycasualty = Roster.totalWrecked(this.props.army,true);
+        return (
+            <View style={{flex:1, justifyContent: 'flex-start', alignItems: 'center'}}>
+                <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+                    <Image style={{height: 64, width: 96, resizeMode: 'stretch'}} source={Icons[this.props.army]} />
+                </View>
+                <View style={{flex: 1, flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
+                    <View style={{flex: 1, marginLeft: 10}}>
+                        <Text>Victory Points</Text>
+                    </View>
+                    <View style={{flex: 2}}>
+                        <SpinNumeric value={this.props.vp} min={0} max={100} onChanged={this.props.onChangeVP} />
+                    </View>
+                    <View style={{flex:1, marginLeft: 10}}><Text style={{color: 'transparent'}}>by Casualty</Text></View>
+                </View>
+                <View style={{flex: .5, flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
+                    <View style={{flex: 1, marginLeft: 10}}>
+                        <Text>Wrecked</Text>
+                    </View>
+                    <View style={{flex: 2}}>
+                        <Text style={{textAlign: 'center'}}>{this.props.wrecked}</Text>
+                    </View>
+                    <View style={{flex:1, marginLeft: 10}}><Text style={{color: 'transparent'}}>by Casualty</Text></View>
+                </View>
+                <View style={{flex: .5, flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
+                    <View style={{flex:1, marginLeft: 10}}><Text style={{color: 'transparent'}}>Wrecked</Text></View>
+                    <View style={{flex: 2}}>
+                        <Text style={{textAlign: 'center'}}>{wreckedbycasualty}</Text>
+                    </View>
+                    <View style={{flex: 1, marginLeft: 10}}>
+                        <Text>by Casualty</Text>
+                    </View>
+                </View>
+                <View style={{flex:6}} />
+            </View>
+        );
+    }
+});
+
 let VictoryView = React.createClass({
     getInitialState() {
         let battle = Current.battle();
@@ -55,75 +96,10 @@ let VictoryView = React.createClass({
         });
     },
     render() {
-        let usawreckedbycasualty = Roster.totalWrecked('USA',true);
-        let csawreckedbycasualty = Roster.totalWrecked('CSA',true);
         return (
             <View style={{flex: 1, flexDirection: 'row'}}>
-                <View style={{flex:1, justifyContent: 'flex-start', alignItems: 'center', borderRightColor: 'gray', borderRightWidth: 1}}>
-                    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-                        <Image style={{height: 64, width: 64, resizeMode: 'stretch'}} source={Icons['USA']} />
-                    </View>
-                    <View style={{flex: 1, flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'flex-start'}}>
-                        <View style={{flex: 1, justifyContent: 'flex-end', marginLeft: 10, marginTop: 10}}>
-                            <Text>Victory Points</Text>
-                        </View>
-                        <View style={{flex: 3}}>
-                            <SpinNumeric value={this.state.usavp} min={0} max={100} onChanged={this.onChangeUSAVP} />
-                        </View>
-                        <View style={{flex:1}} />
-                    </View>
-                    <View style={{flex: 1, flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'flex-start'}}>
-                        <View style={{flex: 1, justifyContent: 'flex-end', marginLeft: 10, marginTop: 10}}>
-                            <Text>Wrecked</Text>
-                        </View>
-                        <View style={{flex: 3}}>
-                            <Text>{this.state.usawrecked}</Text>
-                        </View>
-                        <View style={{flex:1}} />
-                    </View>
-                    <View style={{flex: 1, flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'flex-start'}}>
-                        <View style={{flex:1}} />
-                        <View style={{flex: 3}}>
-                            <Text>{this.state.usawreckedbycasualty}</Text>
-                        </View>
-                        <View style={{flex: 1, justifyContent: 'flex-end', marginLeft: 10, marginTop: 10}}>
-                            <Text>by Casualty</Text>
-                        </View>
-                    </View>
-                </View>
-
-                <View style={{flex:1, justifyContent: 'flex-start', alignItems: 'center', borderRightColor: 'gray', borderRightWidth: 1}}>
-                    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-                        <Image style={{height: 64, width: 64, resizeMode: 'stretch'}} source={Icons['CSA']} />
-                    </View>
-                    <View style={{flex: 1, flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'flex-start'}}>
-                        <View style={{flex: 1, justifyContent: 'flex-end', marginLeft: 10, marginTop: 10}}>
-                            <Text>Victory Points</Text>
-                        </View>
-                        <View style={{flex: 3}}>
-                            <SpinNumeric value={this.state.csavp} min={0} max={100} onChanged={this.onChangeCSAVP} />
-                        </View>
-                        <View style={{flex:1}} />
-                    </View>
-                    <View style={{flex: 1, flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'flex-start'}}>
-                        <View style={{flex: 1, justifyContent: 'flex-end', marginLeft: 10, marginTop: 10}}>
-                            <Text>Wrecked</Text>
-                        </View>
-                        <View style={{flex: 3}}>
-                            <Text>{this.state.csawrecked}</Text>
-                        </View>
-                        <View style={{flex:1}} />
-                    </View>
-                    <View style={{flex: 1, flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'flex-start'}}>
-                        <View style={{flex:1}} />
-                        <View style={{flex: 3}}>
-                            <Text>{this.state.csawreckedbycasualty}</Text>
-                        </View>
-                        <View style={{flex: 1, justifyContent: 'flex-end', marginLeft: 10, marginTop: 10}}>
-                            <Text>by Casualty</Text>
-                        </View>
-                    </View>
-                </View>
+                <ArmyVictoryView army={'USA'} vp={this.state.usavp} wrecked={this.state.usawrecked} onChangeVP={this.onChangeUSAVP}/>
+                <ArmyVictoryView army={'CSA'} vp={this.state.csavp} wrecked={this.state.csawrecked} onChangeVP={this.onChangeCSAVP}/>
             </View>
         );
     }

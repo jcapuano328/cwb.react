@@ -87,11 +87,14 @@ let isWrecked = (item, bycasualty) => {
     }
     return (item.losses + item.stragglers) >= item.wreckLosses;
 }
-let isDestroyed = (item) => {
+let isDestroyed = (item, bycasualty) => {
+    if (bycasualty) {
+        return item.losses >= item.totalStrength;
+    }
     return (item.losses + item.stragglers) >= item.totalStrength;
 }
 
-let totalWreckedInBrigades = (brigades, bycasualty) => {
+let totalWreckedBrigades = (brigades, bycasualty) => {
     return (brigades||[]).reduce((p,c) => {
         return p + isWrecked(c, bycasualty);
     }, 0);
@@ -110,10 +113,10 @@ let totalWreckedInCorps = (corps, bycasualty) => {
     }, 0);
 }
 
-let totalWreckedInArmy = (a, bycasualty) => {
-    return totalWreckedInCorps(a.corps, bycasualty) +
-        totalWreckedInDivisions(a.divisions, bycasualty) +
-        totalWreckedBrigades(a.independents);
+let totalWreckedInArmy = (army, bycasualty) => {
+    return totalWreckedInCorps(army.roster.corps, bycasualty) +
+        totalWreckedInDivisions(army.roster.divisions, bycasualty) +
+        totalWreckedBrigades(army.roster.independents);
 }
 
 module.exports = {
