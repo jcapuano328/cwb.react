@@ -7,7 +7,7 @@
     "debug": "node node_modules/react-native/local-cli/cli.js run-android",
     "get-js": "curl \"http://localhost:8081/index.android.bundle?platform=android&dev=false&minify=true\" -o \"android/app/src/main/assets/index.android.bundle\"",
 	"genkey": "keytool -genkey -v -keystore cwb.keystore -alias cwb -keyalg RSA -keysize 2048 -validity 10000",
-    "release": "cd android && gradlew assembleRelease && cd ..",
+    "build-rel": "cd android && gradlew assembleRelease && cd ..",
     "install-dbg": "adb install -r android/app/build/outputs/apk/cwb-debug-1.0.apk",
     "install-rel": "adb install -r android/app/build/outputs/apk/cwb-release-1.0.apk",
     "bridge": "adb reverse tcp:8081 tcp:8081",
