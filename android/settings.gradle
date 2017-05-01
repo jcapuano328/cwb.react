@@ -1,7 +1,5 @@
 rootProject.name = 'CWB Assistant'
+include ':react-native-sound'
+project(':react-native-sound').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-sound/android')
 
 include ':app'
-include ':react-native-fs'
-include ':RNAudioPlayer', ':app'
-project(':react-native-fs').projectDir = new File(settingsDir, '../node_modules/react-native-fs/android')
-project(':RNAudioPlayer').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-audioplayer/android')

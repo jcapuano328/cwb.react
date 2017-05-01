@@ -1,0 +1,53 @@
+{
+    "armies" : [{
+            "id" : 13,
+            "name" : "ANVa",
+            "country" : "CSA",
+            "commander" : "Lee",
+            "roster" : {}
+
+        }, {
+            "id" : 14,
+            "name" : "APot",
+            "country" : "USA",
+            "commander" : "McClellan",
+            "roster" : {}
+
+        }
+    ],
+    "scenarios" : [
+        {
+            "id" : 11,
+            "firstPlayer" : "USA",
+            "csaAmmo" : 150,
+            "csaCasualty" : 0,
+            "usaAmmo" : 250,
+            "usaCasualty" : 0,
+            "defaultOrders" : [{
+                    "country" : "USA",
+                    "army" : "APot",
+                    "orders" : []
+                }, {
+                    "country" : "CSA",
+                    "army" : "ANVa",
+                    "orders" : []
+                }]
+        }, {
+            "id" : 12,
+            "firstPlayer" : "USA",
+            "csaAmmo" : 150,
+            "csaCasualty" : 0,
+            "usaAmmo" : 250,
+            "usaCasualty" : 0,
+            "defaultOrders" : [{
+                    "country" : "USA",
+                    "army" : "APot",
+                    "orders" : []
+                }, {
+                    "country" : "CSA",
+                    "army" : "ANVa",
+                    "orders" : []
+                }]
+        }
+    ]    
+}

@@ -1,30 +1,38 @@
-'use strict';
-
-var battles = require('../stores/battles.json');
+var battles = require('../data/battles.json');
+var battledetails = {
+    "intheirquietfields": require('../data/intheirquietfields.json'),
+    "augustfury": require('../data/augustfury.json'),
+    "aprilsharvest": require('../data/aprilsharvest.json'),
+    "championhill": require('../data/championhill.json'),
+    "nobetterplacetodie": require('../data/nobetterplacetodie.json'),
+    "sevenpines": require('../data/sevenpines.json'),
+    "sevendays": require('../data/sevendays.json'),
+    "strikethemablow": require('../data/strikethemablow.json'),
+    "threebattlesofmanassas": require('../data/threebattlesofmanassas.json')
+};
 
 module.exports = {
     battles: battles,
-    get(id) {
-        let scenario = null;
-        let battle = battles.find((b,i) => {
-            scenario = b.scenarios.find((s,j) => {
-                return s.id === id;
-            });
-            return !!scenario;
-        });
-        if (battle) {
+    battle(battleid) {
+        return battles.find((b,i) => b.id == battleid) || {scenarios:[]};
+    },
+    scenario(battle, scenarioid) {
+        return battle.scenarios.find((s) => s.id === scenarioid) || {};
+    },
+    scenariodetails(battle, scenarioid) {
+        let details = (battle && battle.image && battledetails[battle.image]) ? battledetails[battle.image] : null;        
+        if (details) {
+            let scenario = details.scenarios.find((s) => s.id === scenarioid);
             return {
-                id: battle.id,
-                name: battle.name,
-                image: battle.image,
-                armies: battle.armies,
-                scenario: scenario,
-                dayTimeIncr: battle.dayTimeIncr,
-        		nightTimeIncr: battle.nightTimeIncr,
-        		dawnTime: battle.dawnTime,
-        		duskTime: battle.duskTime,
-        		randomEvents: battle.randomEvents
+                armies: details.armies,
+                firstPlayer: scenario.firstPlayer,
+                csaAmmo: scenario.csaAmmo,
+                csaCasualty: scenario.csaCasualty,
+                usaAmmo: scenario.usaAmmo,
+                usaCasualty: scenario.usaCasualty,
+                defaultOrders: scenario.defaultOrders                    
             };
         }
+        return {};
     }
 };

@@ -1,0 +1,19 @@
+{
+	"battle": 0,
+	"scenario": 0,
+	"turn": 1,
+	"phase": 0,
+	"player": "first",
+	"usa": {
+		"roster": [],
+		"orders": [],
+		"ammo": 0,
+		"vp": 0
+	},
+	"csa": {
+		"roster": [],
+		"orders": [],                
+		"ammo": 0,
+		"vp": 0
+	}
+}
