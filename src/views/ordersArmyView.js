@@ -1,11 +1,11 @@
 import React from 'react';
-import { View, TouchableOpacity, Text, Image, ListView } from 'react-native';
+import { View, TouchableOpacity, Text, Image } from 'react-native';
 import { connect } from 'react-redux';
 import {Arrow,IconButton,Style} from 'react-native-nub';
 import Icons from '../res';
-import OrderListItemView from './orderListItemView';
+import OrdersItemView from './ordersItemView';
 
-var OrderListArmyHeader = React.createClass({
+var OrdersArmyHeader = React.createClass({
     render() {
         return (
             <View style={{
@@ -40,7 +40,7 @@ var OrderListArmyHeader = React.createClass({
     }
 });
 
-var OrderListArmyView = React.createClass({
+var OrdersArmyView = React.createClass({
     getInitialState() {
         return {
             expanded: false,
@@ -49,15 +49,6 @@ var OrderListArmyView = React.createClass({
     onPress() {
         this.setState({expanded: !this.state.expanded});
     },
-    onSelect(order) {
-        this.props.onSelect && this.props.onSelect(this.props.army.country, this.props.army.name, order);
-    },
-    onAdd() {
-        this.props.onAdd && this.props.onAdd(this.props.army.country, this.props.army.name);
-    },
-    onRemove(order) {
-        this.props.onRemove && this.props.onRemove(this.props.army.country, this.props.army.name, order);
-    },
     render() {        
         let orders = this.state.expanded ? 
             ((this.props[this.props.army.country.toLowerCase()] || []).find((o) => o.army == this.props.army.name) || {orders:[]}).orders
@@ -65,9 +56,9 @@ var OrderListArmyView = React.createClass({
         return (
             <TouchableOpacity onPress={this.onPress}>
                 <View style={{flex: 1}}>
-                    <OrderListArmyHeader army={this.props.army} expanded={this.state.expanded} onAdd={this.onAdd} />
+                    <OrdersArmyHeader army={this.props.army} expanded={this.state.expanded} onAdd={this.onAdd} />
                     {this.state.expanded
-                        ? orders.map((o,i) => <OrderListItemView key={i} order={o} onSelect={this.onSelect} onRemove={this.onRemove} />)
+                        ? orders.map((o,i) => <OrdersItemView key={i} army={this.props.army} order={o} />)
                         : <Text/>
                     }
                 </View>
@@ -83,4 +74,4 @@ const mapStateToProps = (state) => ({
 
 module.exports = connect(
   mapStateToProps
-)(OrderListArmyView);
+)(OrdersArmyView);

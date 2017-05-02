@@ -1,0 +1,106 @@
+import React from 'react';
+import { View, Text, TextInput, Image, TouchableOpacity } from 'react-native';
+import { connect } from 'react-redux';
+import {SpinSelect,SelectDropdown,IconButton,Style} from 'react-native-nub';
+import Icons from '../res';
+import moment from 'moment';
+import getGame from '../selectors/game';
+import Orders from './services/orders';
+import Roster from './services/roster';
+import {setSender,setReceiver,setDateTime,setType,setMethod,setForce,setText,setStatus,adjustDate,adjustTime} from '../actions/order';
+
+var OrderDetailView = React.createClass({
+    onNextStatus() {
+        this.props.setStatus(Orders.nextStatus(this.props.order.status));
+    },
+    onChangeSender(v) {
+        this.props.setSender(v);
+    },
+    onChangeReceiver(v) {
+        this.props.setReceiver(v);
+    },
+    onChangeDate(mod) {
+        return () => {
+            this.props.adjustDate(this.props.order.dateTime,mod);
+        }
+    },
+    onChangeTime(mod) {
+        return () => {
+            this.props.adjustTime(this.props.order.dateTime,mod);
+        }
+    },
+    onChangedType(v) {
+        this.props.setType(Orders.getTypeByDesc(v).type || this.props.order.type);
+    },
+    onChangeMethod(v) {
+        this.props.setMethod(Orders.getMethodByDesc(v).method || this.props.order.method);        
+    },
+    onChangeText(v) {
+        this.props.setText(v);
+    },
+    render() {
+        return (
+            <View style={{flex: 1}}>
+                <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start'}}>
+                    <View style={{flex:1, justifyContent: 'center', alignItems: 'center'}}>
+                        <Image style={{flex: 1,marginRight: 15, width: 64,height: 64,resizeMode: 'contain'}} source={Icons[this.props.order.country]} />
+                    </View>
+                    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+                        <Text style={{marginTop: 25, fontSize: Style.Font.large(), fontWeight: 'bold'}}>{this.props.order.army}</Text>
+                    </View>
+                    <View style={{flex: 1, marginTop: 15, justifyContent: 'center', alignItems: 'center'}}>
+                        <TouchableOpacity onPress={this.onNextStatus} >
+                            <Image style={{width: 48,height: 48,resizeMode: 'stretch'}} source={Icons[this.props.order.status]}/>
+                        </TouchableOpacity>
+                    </View>
+                </View>
+                <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start'}}>
+                    <View style={{flex:1, justifyContent: 'center', alignItems: 'center'}}>
+                        <SelectDropdown label={'Sender'} value={this.props.order.sender} values={[''].concat(Roster.getSuperiorLeaders(this.props.battle,this.props.order.country,this.props.order.army))}
+                            onSelected={this.onChangeSender}/>
+                    </View>
+                    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+                        <SelectDropdown label={'Receiver'} value={this.props.order.receiver} values={[''].concat(Roster.getSubordinateLeaders(this.props.battle,this.props.order.country,this.props.order.army))}
+                            onSelected={this.onChangeReceiver}/>
+                    </View>
+                </View>
+                <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
+                    <View style={{flex:1}}>
+                        <Text style={{marginLeft: 10}}>Arrival</Text>
+                    </View>
+                    <View style={{flex:2, marginTop: 15}}>
+                        <SpinSelect value={moment(this.props.order.dateTime).format('MMM DD, YYYY')} onPrev={this.onChangeDate(-1)} onNext={this.onChangeDate(1)} />
+                    </View>
+                    <View style={{flex:2, marginTop: 15}}>
+                        <SpinSelect value={moment(this.props.order.dateTime).format('HH:mm')} onPrev={this.onChangeTime(-1)} onNext={this.onChangeTime(1)} />
+                    </View>
+                </View>
+
+                <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start'}}>
+                    <View style={{flex:1, justifyContent: 'center', alignItems: 'center'}}>
+                        <SelectDropdown label={'Type'} value={Orders.getType(this.props.order.type).desc} values={[''].concat(Orders.types.map((t) => t.desc))}
+                            onSelected={this.onChangeType}/>
+                    </View>
+                    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+                        <SelectDropdown label={'Method'} value={Orders.getMethod(this.props.order.method).desc} values={[''].concat(Orders.methods.map((m) => m.desc))}
+                            onSelected={this.onChangeMethod}/>
+                    </View>
+                </View>
+
+                <View style={{flex: 4}}>
+                    <TextInput style={{margin: 10, fontSize: Style.Font.medium()}} placeholder={'Instructions'} multiline={true} onChangeText={this.onChangeText}>{this.props.order.text}</TextInput>
+                </View>
+            </View>
+        );
+    }
+});
+
+const mapStateToProps = (state) => ({
+    order: state.order,
+    battle: getGame(state)
+});
+
+module.exports = connect(
+  mapStateToProps,
+  {setSender,setReceiver,setDateTime,setType,setMethod,setForce,setText,setStatus}
+)(OrderDetailView);

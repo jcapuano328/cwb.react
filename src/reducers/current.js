@@ -137,40 +137,6 @@ module.exports = (state = defaultState, action) => {
             }
         };
 
-    case types.SET_CSA_ORDER:
-        return {
-            ...state,
-            csa: {
-                ...state.csa,
-                orders: [...action.value]
-            }
-        };
-    case types.ADD_CSA_ORDER:
-        return {
-            ...state,
-            csa: {
-                ...state.csa,
-                orders: [...state.csa.orders, action.value]
-            }
-        };
-    case types.UPDATE_CSA_ORDER:
-        return {
-            ...state,
-            csa: {
-                ...state.csa,
-                orders: update(state.csa.orders, action.value)
-            }
-        };
-    case types.REMOVE_CSA_ORDER:
-        return {
-            ...state,
-            csa: {
-                ...state.csa,
-                orders: remove(state.csa.orders, action.value)
-            }
-        };
-
-
     case types.SET_USA_ARTYAMMO:
         return {
             ...state,
@@ -188,36 +154,31 @@ module.exports = (state = defaultState, action) => {
             }
         };
 
-    case types.SET_USA_ORDER:
+    case types.ADD_ORDER:
+        let country = action.value.country.toLowerCase();         
         return {
             ...state,
-            usa: {
-                ...state.usa,
-                orders: [...action.value]
+            [country]: {
+                ...state[country],
+                orders: [...state[country].orders, action.value]
             }
         };
-    case types.ADD_USA_ORDER:
+    case types.UPDATE_ORDER:
+        country = action.value.country.toLowerCase();
         return {
             ...state,
-            usa: {
-                ...state.usa,
-                orders: [...state.usa.orders, action.value]
+            [country]: {
+                ...state[country],
+                orders: update(state[country].orders, action.value)
             }
         };
-    case types.UPDATE_USA_ORDER:
+    case types.REMOVE_ORDER:
+        country = action.value.country.toLowerCase();
         return {
             ...state,
-            usa: {
-                ...state.usa,
-                orders: update(state.usa.orders, action.value)
-            }
-        };
-    case types.REMOVE_USA_ORDER:
-        return {
-            ...state,
-            usa: {
-                ...state.usa,
-                orders: remove(state.usa.orders, action.value)
+            [country]: {
+                ...state[country],
+                orders: remove(state[country].orders, action.value)
             }
         };
 

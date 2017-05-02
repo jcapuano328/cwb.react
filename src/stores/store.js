@@ -29,6 +29,19 @@ import rootReducer from '../reducers';
                 ammo: integer,
                 vp: integer
             }
+        },
+        order: {
+            id: int,
+            country: string,
+            army: string,
+            sender: string,
+            receiver: string,
+            dateTime: datetime,
+            type: string,
+            method: string,
+            force: string,
+            text: string,
+            status: string
         }
     }
 */
