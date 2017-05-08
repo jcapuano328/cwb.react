@@ -6,21 +6,8 @@ const defaultState =  {
     scenario: -1,
     turn: 1,
     phase: 0,
-    player: "first",
-    usa: {
-        roster: [],
-        orders: [],
-        ammo: 0,
-        vp: 0
-    },
-    csa: {
-        roster: [],
-        orders: [],                
-        ammo: 0,
-        vp: 0
-    }
+    player: "first"
 };
-
 
 const prevTurn = (t) => {    
     if (--t < 1) { t = 1; }
@@ -29,19 +16,6 @@ const prevTurn = (t) => {
 const nextTurn = (t,m) => {    
     if (++t > m) { t = m; }
     return t;    
-}
-
-const update = (_l, v) => {
-    let l = [..._l];
-    let i = l.findIndex((o) => o.id === v.id);
-    if (i > -1) {
-        l[i] = {...v};
-    }
-    return l;
-}
-
-const remove = (l, v) => {
-    return l.filter((o) => o.id !== v.id);
 }
 
 module.exports = (state = defaultState, action) => {
@@ -118,68 +92,6 @@ module.exports = (state = defaultState, action) => {
         return {
             ...state,
             player: action.value
-        };
-
-    case types.SET_CSA_ARTYAMMO:
-        return {
-            ...state,
-            csa: {
-                ...state.csa,
-                ammo: action.value
-            }            
-        };
-    case types.SET_CSA_VP:
-        return {
-            ...state,
-            csa: {
-                ...state.csa,
-                vp: action.value
-            }
-        };
-
-    case types.SET_USA_ARTYAMMO:
-        return {
-            ...state,
-            usa: {
-                ...state.usa,
-                ammo: action.value
-            }            
-        };
-    case types.SET_USA_VP:
-        return {
-            ...state,
-            usa: {
-                ...state.usa,
-                vp: action.value
-            }
-        };
-
-    case types.ADD_ORDER:
-        let country = action.value.country.toLowerCase();         
-        return {
-            ...state,
-            [country]: {
-                ...state[country],
-                orders: [...state[country].orders, action.value]
-            }
-        };
-    case types.UPDATE_ORDER:
-        country = action.value.country.toLowerCase();
-        return {
-            ...state,
-            [country]: {
-                ...state[country],
-                orders: update(state[country].orders, action.value)
-            }
-        };
-    case types.REMOVE_ORDER:
-        country = action.value.country.toLowerCase();
-        return {
-            ...state,
-            [country]: {
-                ...state[country],
-                orders: remove(state[country].orders, action.value)
-            }
         };
 
     default:

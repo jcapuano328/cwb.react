@@ -191,9 +191,21 @@ module.exports = {
 
 		return (method ? method.cost : 0) + (type ? type.cost : 0);
 	},
+	isPending(order) {
+		return order.status === '' || order.status === 'InTransit';
+	},
+	isDelayed(order) {
+		return order.status === 'Delay1' || order.status === 'Delay2';
+	},
+	isAccepted(order) {
+		return order.status === 'Accepted';
+	},
+	hasCurrent(orders,name) {		
+		return !!orders.find((o) => o.receiver === name && o.status === 'Accepted');
+	},
 	initiative(dice, initiative, antiinitiative) {
 		if (dice == 2) {
-			return "Loose Cannon";
+			return 'Loose Cannon';
 		}
 
 		let initpts = initiative - antiinitiative;
@@ -213,8 +225,8 @@ module.exports = {
 		return (dice >= init) ? 'Initiative' : 'Indecision';
 	},
     accept(dice, sender, receiver, currentorders, method, type) {
-		method = this.getMethod(order.method);
-        type = this.getType(order.type);
+		method = this.getMethod(method);
+        type = this.getType(type);
 
     	let accept = sender + receiver + method.acceptance + type.acceptance + (currentorders ? -1 : 0);
         let oa = acceptances.find((a) => accept <= a.acceptance);

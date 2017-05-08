@@ -1,53 +1,60 @@
 {
-    "armies" : [{
-            "id" : 13,
-            "name" : "ANVa",
-            "country" : "CSA",
-            "commander" : "Lee",
-            "roster" : {}
+	"armies": [{
+			"id": 13,
+			"name": "ANVa",
+			"country": "CSA",
+			"commander": {
+				"name": "Lee",
+				"rating": 1
+			},
+			"roster": {}
 
-        }, {
-            "id" : 14,
-            "name" : "APot",
-            "country" : "USA",
-            "commander" : "McClellan",
-            "roster" : {}
+		}, {
+			"id": 14,
+			"name": "APot",
+			"country": "USA",
+			"commander": {
+				"name": "McClellan",
+				"rating": 1
+			},
+			"roster": {}
 
-        }
-    ],
-    "scenarios" : [
-        {
-            "id" : 11,
-            "firstPlayer" : "USA",
-            "csaAmmo" : 150,
-            "csaCasualty" : 0,
-            "usaAmmo" : 250,
-            "usaCasualty" : 0,
-            "defaultOrders" : [{
-                    "country" : "USA",
-                    "army" : "APot",
-                    "orders" : []
-                }, {
-                    "country" : "CSA",
-                    "army" : "ANVa",
-                    "orders" : []
-                }]
-        }, {
-            "id" : 12,
-            "firstPlayer" : "USA",
-            "csaAmmo" : 150,
-            "csaCasualty" : 0,
-            "usaAmmo" : 250,
-            "usaCasualty" : 0,
-            "defaultOrders" : [{
-                    "country" : "USA",
-                    "army" : "APot",
-                    "orders" : []
-                }, {
-                    "country" : "CSA",
-                    "army" : "ANVa",
-                    "orders" : []
-                }]
-        }
-    ]    
+		}
+	],
+	"scenarios": [{
+			"id": 11,
+			"firstPlayer": "USA",
+			"csaAmmo": 150,
+			"csaCasualty": 0,
+			"usaAmmo": 250,
+			"usaCasualty": 0,
+			"defaultOrders": [{
+					"country": "USA",
+					"army": "APot",
+					"orders": []
+				}, {
+					"country": "CSA",
+					"army": "ANVa",
+					"orders": []
+				}
+			]
+		}, {
+			"id": 12,
+			"firstPlayer": "USA",
+			"csaAmmo": 150,
+			"csaCasualty": 0,
+			"usaAmmo": 250,
+			"usaCasualty": 0,
+			"defaultOrders": [{
+					"country": "USA",
+					"army": "APot",
+					"orders": []
+				}, {
+					"country": "CSA",
+					"army": "ANVa",
+					"orders": []
+				}
+			]
+		}
+	]
 }

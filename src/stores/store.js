@@ -16,20 +16,20 @@ import rootReducer from '../reducers';
             scenario: integer,
             turn: integer,
             phase: integer,
-            player: string,
-            usa: {
-                roster: [],
-                orders: [],
-                ammo: integer,
-                vp: integer
-            },
-            csa: {
-                roster: [],
-                orders: [],                
-                ammo: integer,
-                vp: integer
-            }
+            player: string
         },
+        usa: {
+            roster: [],
+            orders: [],
+            ammo: integer,
+            vp: integer
+        },
+        csa: {
+            roster: [],
+            orders: [],                
+            ammo: integer,
+            vp: integer
+        },        
         order: {
             id: int,
             country: string,
@@ -45,6 +45,9 @@ import rootReducer from '../reducers';
         }
     }
 */
-const store = Store(rootReducer);
-
+const store = Store(rootReducer, null, {
+    nologging: false//,
+    //predicate: (getState, action) => !action.type.toLowerCase().includes('rehydrate') 
+        //&& !action.type.toLowerCase().includes('roster')    
+});
 export default store;

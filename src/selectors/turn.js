@@ -18,6 +18,6 @@ export default createSelector(
 			let incr = getTimeIncrement(dt,game);
 			dt.add(incr, 'minutes');
 		}        
-        return dt.format("MMM DD, YYYY HH:mm");
+        return dt.toDate();//.format("MMM DD, YYYY HH:mm");
     }    
 );

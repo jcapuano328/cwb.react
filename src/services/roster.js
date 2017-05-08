@@ -39,7 +39,7 @@ var fireLevels = [
 let getSuperiorCommanders = (roster) => {
     let cmdrs = [];
     let add = (item) => {
-        if (cmdrs.indexOf(item.commander) < 0) {
+        if (!cmdrs.find((c) => c.name === item.commander.name)) {
             cmdrs.push(item.commander);
         }
         (item.divisions || []).forEach(add);
@@ -55,13 +55,13 @@ let getSuperiorCommanders = (roster) => {
 let getSubordinateCommanders = (roster) => {
     let cmdrs = [];
     let add = (item) => {
-        if (cmdrs.indexOf(item.commander) < 0) {
+        if (!cmdrs.find((c) => c.name === item.commander.name)) {
             cmdrs.push(item.commander);
         }
         (item.divisions || item.brigades || []).forEach(add);
     }
 
-    [roster.corps, roster.divisions, roster.independents].forEach((item) => {
+    [roster.corps||[], roster.divisions||[], roster.brigades||[], roster.independents||[]].forEach((item) => {
         item.forEach(add);
     });
 
@@ -115,11 +115,72 @@ let totalWreckedInArmy = (army, bycasualty) => {
 }
 
 module.exports = {
+    getArmyLeader(battle,country,army) {
+        //let c = this.getSuperiorLeaders(battle,country,army);
+        let armies = battle.armies.filter((a) => a.country == country && a.name == army) || [];
+        let commanders = armies.map((a) => a.commander);
+        return commanders && commanders.length > 0 ? commanders[0] : {};        
+    },
 	getSuperiorLeaders(battle,country,army) {
         return getCommandersForArmy(battle,country,army,true);
     },
     getSubordinateLeaders(battle,country,army) {
-		return getCommandersForArmy(battle,country,army);
+		let l = getCommandersForArmy(battle,country,army);        
+        return l;
+    },
+    getSubordinatesForLeader(battle,country,army,name) {
+        let formation = this.getFormationForLeader(battle,country,army,name);        
+        return formation
+            ? [formation.commander].concat(getSubordinateCommanders(formation))
+            : this.getSubordinateLeaders(battle,country,army);        
+    },
+    getLeader(battle,country,army,name) {
+        let l = getCommandersForArmy(battle,country,army,true);
+        return l.find((c) => c.name === name) || {name: name, rating: 1};
+    },
+    getFormationForLeader(battle,country,army,name) {
+        let armies = battle.armies.filter((a) => a.country == country && a.name == army) || [];
+        let formation = null;
+
+        armies.find((a) => {            
+            let find = (item) => {
+                if (item.commander && item.commander.name === name) {
+                    formation = item;
+                } else {
+                    formation = (item.divisions || item.brigades || []).find(find);
+                }
+                return formation;
+            }
+            
+            [a.roster.corps||[], a.roster.divisions||[],a.roster.independents||[]].find((item) => {                
+                item.find(find);
+                return formation;
+            });                
+
+            return formation;
+        });
+        return formation;        
+    },
+    getFormationForLeaderWreckStatus(battle,country,army,name) {
+        let formation = this.getFormationForLeader(battle,country,army,name);
+        if (formation) {
+            if (formation.brigades || formation.independents) {
+                return {
+                    name: formation.name,
+                    total: (formation.brigades||[]).length + (formation.independents||[]).length,
+                    wrecked: this.wreckedBrigades(formation)
+                };
+            }
+
+            if (formation.divisions) {
+                return {
+                    name: formation.name,
+                    total: formation.divisions.length,
+                    wrecked: this.wreckedDivisions(formation)
+                };
+            }            
+        }        
+        return {name: '', total: 0, wrecked: 0};
     },
     totalWrecked(battle,country) {        
         let armies = battle.armies.filter((a) => a.country == country) || [];
@@ -130,8 +191,7 @@ module.exports = {
     wreckedDivisions(item) {
         return item.divisions.reduce((p,c) => {
             return p + (this.wreckedBrigades(c)>=c.wreckLosses?1:0);
-        }, 0);
-    	return (item.losses + item.stragglers) >= item.wreckLosses;
+        }, 0);    	
     },
     wreckedBrigades(item) {
         return (item.brigades||item.independents).reduce((p,c) => {

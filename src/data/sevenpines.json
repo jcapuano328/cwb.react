@@ -1,733 +1,913 @@
 {
-    "armies" : [{
-            "id" : 19,
-            "name" : "APot",
-            "country" : "USA",
-            "commander" : "McClellan",
-            "roster" : {
-                "corps" : [{
-                        "id" : 453,
-                        "name" : "2 Corps",
-                        "commander" : "Sumner",
-                        "divisions" : [{
-                                "id" : 454,
-                                "name" : "1-2",
-                                "commander" : "Richardson",
-                                "wreckLosses" : 2,
-                                "brigades" : [{
-                                        "id" : 455,
-                                        "name" : "1-1-2",
-                                        "commander" : "Howard",
-                                        "moraleLevel" : "B",
-                                        "totalStrength" : 24,
-                                        "wreckLosses" : 11,
-                                        "losses" : 0,
-                                        "stragglers" : 0
-                                    }, {
-                                        "id" : 456,
-                                        "name" : "2-1-2",
-                                        "commander" : "Meagher",
-                                        "moraleLevel" : "A",
-                                        "totalStrength" : 20,
-                                        "wreckLosses" : 13,
-                                        "losses" : 0,
-                                        "stragglers" : 0
-                                    }, {
-                                        "id" : 457,
-                                        "name" : "3-1-2",
-                                        "commander" : "French",
-                                        "moraleLevel" : "C",
-                                        "totalStrength" : 23,
-                                        "wreckLosses" : 10,
-                                        "losses" : 0,
-                                        "stragglers" : 0
-                                    }
-                                ]
-                            }, {
-                                "id" : 458,
-                                "name" : "2-2",
-                                "commander" : "Sedgewick",
-                                "wreckLosses" : 2,
-                                "brigades" : [{
-                                        "id" : 459,
-                                        "name" : "1-2-2",
-                                        "commander" : "Gorman",
-                                        "moraleLevel" : "C",
-                                        "totalStrength" : 21,
-                                        "wreckLosses" : 9,
-                                        "losses" : 0,
-                                        "stragglers" : 0
-                                    }, {
-                                        "id" : 460,
-                                        "name" : "2-2-2",
-                                        "commander" : "Burns",
-                                        "moraleLevel" : "B",
-                                        "totalStrength" : 25,
-                                        "wreckLosses" : 11,
-                                        "losses" : 0,
-                                        "stragglers" : 0
-                                    }, {
-                                        "id" : 461,
-                                        "name" : "3-2-2",
-                                        "commander" : "Dana",
-                                        "moraleLevel" : "C",
-                                        "totalStrength" : 27,
-                                        "wreckLosses" : 11,
-                                        "losses" : 0,
-                                        "stragglers" : 0
-                                    }
-                                ]
-                            }
-                        ]
-                    }, {
-                        "id" : 462,
-                        "name" : "3 Corps",
-                        "commander" : "Heintzelman",
-                        "divisions" : [{
-                                "id" : 463,
-                                "name" : "2-3",
-                                "commander" : "Hooker",
-                                "wreckLosses" : 2,
-                                "brigades" : [{
-                                        "id" : 464,
-                                        "name" : "1-2-3",
-                                        "commander" : "Grover",
-                                        "moraleLevel" : "C",
-                                        "totalStrength" : 25,
-                                        "wreckLosses" : 9,
-                                        "losses" : 0,
-                                        "stragglers" : 0
-                                    }, {
-                                        "id" : 465,
-                                        "name" : "2-2-3",
-                                        "commander" : "Sickles",
-                                        "moraleLevel" : "B",
-                                        "totalStrength" : 23,
-                                        "wreckLosses" : 11,
-                                        "losses" : 0,
-                                        "stragglers" : 0
-                                    }, {
-                                        "id" : 466,
-                                        "name" : "3-2-3",
-                                        "commander" : "Patterson",
-                                        "moraleLevel" : "B",
-                                        "totalStrength" : 11,
-                                        "wreckLosses" : 6,
-                                        "losses" : 0,
-                                        "stragglers" : 0
-                                    }
-                                ]
-                            }, {
-                                "id" : 467,
-                                "name" : "3-3",
-                                "commander" : "Kearny",
-                                "wreckLosses" : 2,
-                                "brigades" : [{
-                                        "id" : 468,
-                                        "name" : "1-3-3",
-                                        "commander" : "Jameson",
-                                        "moraleLevel" : "C",
-                                        "totalStrength" : 22,
-                                        "wreckLosses" : 9,
-                                        "losses" : 0,
-                                        "stragglers" : 0
-                                    }, {
-                                        "id" : 469,
-                                        "name" : "2-3-3",
-                                        "commander" : "Birney",
-                                        "moraleLevel" : "C",
-                                        "totalStrength" : 13,
-                                        "wreckLosses" : 6,
-                                        "losses" : 0,
-                                        "stragglers" : 0
-                                    }, {
-                                        "id" : 470,
-                                        "name" : "3-3-3",
-                                        "commander" : "Berry",
-                                        "moraleLevel" : "C",
-                                        "totalStrength" : 24,
-                                        "wreckLosses" : 9,
-                                        "losses" : 0,
-                                        "stragglers" : 0
-                                    }
-                                ]
-                            }
-                        ]
-                    }, {
-                        "id" : 471,
-                        "name" : "4 Corps",
-                        "commander" : "Keyes",
-                        "divisions" : [{
-                                "id" : 472,
-                                "name" : "1-4",
-                                "commander" : "Couch",
-                                "wreckLosses" : 2,
-                                "brigades" : [{
-                                        "id" : 473,
-                                        "name" : "1-1-4",
-                                        "commander" : "Peck",
-                                        "moraleLevel" : "C",
-                                        "totalStrength" : 25,
-                                        "wreckLosses" : 9,
-                                        "losses" : 0,
-                                        "stragglers" : 0
-                                    }, {
-                                        "id" : 474,
-                                        "name" : "2-1-4",
-                                        "commander" : "Abercombie",
-                                        "moraleLevel" : "D",
-                                        "totalStrength" : 23,
-                                        "wreckLosses" : 7,
-                                        "losses" : 0,
-                                        "stragglers" : 0
-                                    }, {
-                                        "id" : 475,
-                                        "name" : "3-1-4",
-                                        "commander" : "Devens",
-                                        "moraleLevel" : "C",
-                                        "totalStrength" : 22,
-                                        "wreckLosses" : 9,
-                                        "losses" : 0,
-                                        "stragglers" : 0
-                                    }
-                                ]
-                            }, {
-                                "id" : 476,
-                                "name" : "2-4",
-                                "commander" : "Casey",
-                                "wreckLosses" : 1,
-                                "brigades" : [{
-                                        "id" : 477,
-                                        "name" : "1-2-4",
-                                        "commander" : "Naglee",
-                                        "moraleLevel" : "C",
-                                        "totalStrength" : 22,
-                                        "wreckLosses" : 9,
-                                        "losses" : 0,
-                                        "stragglers" : 0
-                                    }, {
-                                        "id" : 478,
-                                        "name" : "2-2-4",
-                                        "commander" : "Wessells",
-                                        "moraleLevel" : "D",
-                                        "totalStrength" : 20,
-                                        "wreckLosses" : 7,
-                                        "losses" : 0,
-                                        "stragglers" : 0
-                                    }, {
-                                        "id" : 479,
-                                        "name" : "3-2-4",
-                                        "commander" : "Palmer",
-                                        "moraleLevel" : "C",
-                                        "totalStrength" : 22,
-                                        "wreckLosses" : 9,
-                                        "losses" : 0,
-                                        "stragglers" : 0
-                                    }
-                                ]
-                            }
-                        ]
-                    }
-                ],
-                "divisions" : [],
-                "independents" : []
-            }
-        }, {
-            "id" : 20,
-            "name" : "ANVa",
-            "country" : "CSA",
-            "commander" : "Johnston",
-            "roster" : {
-                "corps" : [{
-                        "id" : 480,
-                        "name" : "Left Wing",
-                        "commander" : "Smith",
-                        "divisions" : [{
-                                "id" : 481,
-                                "name" : "M-L",
-                                "commander" : "Magruder",
-                                "wreckLosses" : 3,
-                                "brigades" : [{
-                                        "id" : 482,
-                                        "name" : "C-M-L",
-                                        "commander" : "Cobb",
-                                        "moraleLevel" : "D",
-                                        "totalStrength" : 29,
-                                        "wreckLosses" : 9,
-                                        "losses" : 0,
-                                        "stragglers" : 0
-                                    }, {
-                                        "id" : 483,
-                                        "name" : "G-M-L",
-                                        "commander" : "Griffith",
-                                        "moraleLevel" : "A",
-                                        "totalStrength" : 24,
-                                        "wreckLosses" : 14,
-                                        "losses" : 0,
-                                        "stragglers" : 0
-                                    }, {
-                                        "id" : 484,
-                                        "name" : "J-M-L",
-                                        "commander" : "DR Jones",
-                                        "moraleLevel" : "C",
-                                        "totalStrength" : 23,
-                                        "wreckLosses" : 9,
-                                        "losses" : 0,
-                                        "stragglers" : 0
-                                    }, {
-                                        "id" : 485,
-                                        "name" : "K-M-L",
-                                        "commander" : "Kershaw",
-                                        "moraleLevel" : "C",
-                                        "totalStrength" : 23,
-                                        "wreckLosses" : 9,
-                                        "losses" : 0,
-                                        "stragglers" : 0
-                                    }, {
-                                        "id" : 486,
-                                        "name" : "M-M-L",
-                                        "commander" : "McLaws",
-                                        "moraleLevel" : "B",
-                                        "totalStrength" : 19,
-                                        "wreckLosses" : 9,
-                                        "losses" : 0,
-                                        "stragglers" : 0
-                                    }, {
-                                        "id" : 487,
-                                        "name" : "T-M-L",
-                                        "commander" : "Toombs",
-                                        "moraleLevel" : "C",
-                                        "totalStrength" : 22,
-                                        "wreckLosses" : 8,
-                                        "losses" : 0,
-                                        "stragglers" : 0
-                                    }
-                                ]
-                            }, {
-                                "id" : 488,
-                                "name" : "S-L",
-                                "commander" : "Whiting",
-                                "wreckLosses" : 3,
-                                "brigades" : [{
-                                        "id" : 489,
-                                        "name" : "Hd-S-L",
-                                        "commander" : "Hood",
-                                        "moraleLevel" : "A",
-                                        "totalStrength" : 18,
-                                        "wreckLosses" : 12,
-                                        "losses" : 0,
-                                        "stragglers" : 0
-                                    }, {
-                                        "id" : 490,
-                                        "name" : "Hm-S-L",
-                                        "commander" : "Hampton",
-                                        "moraleLevel" : "B",
-                                        "totalStrength" : 21,
-                                        "wreckLosses" : 10,
-                                        "losses" : 0,
-                                        "stragglers" : 0
-                                    }, {
-                                        "id" : 491,
-                                        "name" : "Ht-S-L",
-                                        "commander" : "Hatton",
-                                        "moraleLevel" : "C",
-                                        "totalStrength" : 20,
-                                        "wreckLosses" : 8,
-                                        "losses" : 0,
-                                        "stragglers" : 0
-                                    }, {
-                                        "id" : 492,
-                                        "name" : "L-S-L",
-                                        "commander" : "Law",
-                                        "moraleLevel" : "B",
-                                        "totalStrength" : 20,
-                                        "wreckLosses" : 9,
-                                        "losses" : 0,
-                                        "stragglers" : 0
-                                    }, {
-                                        "id" : 493,
-                                        "name" : "P-S-L",
-                                        "commander" : "Pettigrew",
-                                        "moraleLevel" : "C",
-                                        "totalStrength" : 20,
-                                        "wreckLosses" : 8,
-                                        "losses" : 0,
-                                        "stragglers" : 0
-                                    }
-                                ]
-                            }
-                        ]
-                    }, {
-                        "id" : 494,
-                        "name" : "Right Wing",
-                        "commander" : "Longstreet",
-                        "divisions" : [{
-                                "id" : 495,
-                                "name" : "DH-R",
-                                "commander" : "DH Hill",
-                                "wreckLosses" : 2,
-                                "brigades" : [{
-                                        "id" : 496,
-                                        "name" : "F-DH-R",
-                                        "commander" : "Featherston",
-                                        "moraleLevel" : "C",
-                                        "totalStrength" : 19,
-                                        "wreckLosses" : 9,
-                                        "losses" : 0,
-                                        "stragglers" : 0
-                                    }, {
-                                        "id" : 497,
-                                        "name" : "G-DH-R",
-                                        "commander" : "Garland",
-                                        "moraleLevel" : "C",
-                                        "totalStrength" : 21,
-                                        "wreckLosses" : 9,
-                                        "losses" : 0,
-                                        "stragglers" : 0
-                                    }, {
-                                        "id" : 498,
-                                        "name" : "Ro-DH-R",
-                                        "commander" : "Rodes",
-                                        "moraleLevel" : "B",
-                                        "totalStrength" : 22,
-                                        "wreckLosses" : 8,
-                                        "losses" : 0,
-                                        "stragglers" : 0
-                                    }, {
-                                        "id" : 499,
-                                        "name" : "Rs-H-R",
-                                        "commander" : "Rains",
-                                        "moraleLevel" : "C",
-                                        "totalStrength" : 23,
-                                        "wreckLosses" : 8,
-                                        "losses" : 0,
-                                        "stragglers" : 0
-                                    }
-                                ]
-                            }, {
-                                "id" : 500,
-                                "name" : "L-R",
-                                "commander" : "Anderson",
-                                "wreckLosses" : 3,
-                                "brigades" : [{
-                                        "id" : 501,
-                                        "name" : "A-L-R",
-                                        "commander" : "Anderson",
-                                        "moraleLevel" : "B",
-                                        "totalStrength" : 16,
-                                        "wreckLosses" : 8,
-                                        "losses" : 0,
-                                        "stragglers" : 0
-                                    }, {
-                                        "id" : 502,
-                                        "name" : "C-L-R",
-                                        "commander" : "Colston",
-                                        "moraleLevel" : "C",
-                                        "totalStrength" : 17,
-                                        "wreckLosses" : 8,
-                                        "losses" : 0,
-                                        "stragglers" : 0
-                                    }, {
-                                        "id" : 503,
-                                        "name" : "K-L-R",
-                                        "commander" : "Kemper",
-                                        "moraleLevel" : "B",
-                                        "totalStrength" : 19,
-                                        "wreckLosses" : 9,
-                                        "losses" : 0,
-                                        "stragglers" : 0
-                                    }, {
-                                        "id" : 504,
-                                        "name" : "P-L-R",
-                                        "commander" : "Pickett",
-                                        "moraleLevel" : "A",
-                                        "totalStrength" : 17,
-                                        "wreckLosses" : 10,
-                                        "losses" : 0,
-                                        "stragglers" : 0
-                                    }, {
-                                        "id" : 505,
-                                        "name" : "Pr-L-R",
-                                        "commander" : "Pryor",
-                                        "moraleLevel" : "C",
-                                        "totalStrength" : 19,
-                                        "wreckLosses" : 9,
-                                        "losses" : 0,
-                                        "stragglers" : 0
-                                    }, {
-                                        "id" : 506,
-                                        "name" : "W-L-R",
-                                        "commander" : "Wilcox",
-                                        "moraleLevel" : "C",
-                                        "totalStrength" : 21,
-                                        "wreckLosses" : 9,
-                                        "losses" : 0,
-                                        "stragglers" : 0
-                                    }
-                                ]
-                            }
-                        ]
-                    }
-                ],
-                "divisions" : [{
-                        "id" : 507,
-                        "name" : "Hu-Div",
-                        "commander" : "Huger",
-                        "wreckLosses" : 2,
-                        "brigades" : [{
-                                "id" : 508,
-                                "name" : "A-Hu",
-                                "commander" : "Armistead",
-                                "moraleLevel" : "B",
-                                "totalStrength" : 23,
-                                "wreckLosses" : 11,
-                                "losses" : 0,
-                                "stragglers" : 0
-                            }, {
-                                "id" : 509,
-                                "name" : "B-Hu",
-                                "commander" : "Blanchard",
-                                "moraleLevel" : "C",
-                                "totalStrength" : 22,
-                                "wreckLosses" : 9,
-                                "losses" : 0,
-                                "stragglers" : 0
-                            }, {
-                                "id" : 510,
-                                "name" : "M-Hu",
-                                "commander" : "Mahone",
-                                "moraleLevel" : "C",
-                                "totalStrength" : 19,
-                                "wreckLosses" : 9,
-                                "losses" : 0,
-                                "stragglers" : 0
-                            }
-                        ]
-                    }
-                ],
-                "independents" : []
-            }
-        }
-    ],
+	"armies": [{
+			"id": 19,
+			"name": "APot",
+			"country": "USA",
+			"commander": {
+				"name": "McClellan",
+				"rating": 1
+			},
+			"roster": {
+				"corps": [{
+						"id": 453,
+						"name": "2 Corps",
+						"commander": {
+							"name": "Sumner",
+							"rating": 1
+						},
+						"divisions": [{
+								"id": 454,
+								"name": "1-2",
+								"commander": {
+									"name": "Richardson",
+									"rating": 1
+								},
+								"wreckLosses": 2,
+								"brigades": [{
+										"id": 455,
+										"name": "1-1-2",
+										"commander": {
+											"name": "Howard",
+											"rating": 1
+										},
+										"moraleLevel": "B",
+										"totalStrength": 24,
+										"wreckLosses": 11,
+										"losses": 0,
+										"stragglers": 0
+									}, {
+										"id": 456,
+										"name": "2-1-2",
+										"commander": {
+											"name": "Meagher",
+											"rating": 1
+										},
+										"moraleLevel": "A",
+										"totalStrength": 20,
+										"wreckLosses": 13,
+										"losses": 0,
+										"stragglers": 0
+									}, {
+										"id": 457,
+										"name": "3-1-2",
+										"commander": {
+											"name": "French",
+											"rating": 1
+										},
+										"moraleLevel": "C",
+										"totalStrength": 23,
+										"wreckLosses": 10,
+										"losses": 0,
+										"stragglers": 0
+									}
+								]
+							}, {
+								"id": 458,
+								"name": "2-2",
+								"commander": {
+									"name": "Sedgewick",
+									"rating": 1
+								},
+								"wreckLosses": 2,
+								"brigades": [{
+										"id": 459,
+										"name": "1-2-2",
+										"commander": {
+											"name": "Gorman",
+											"rating": 1
+										},
+										"moraleLevel": "C",
+										"totalStrength": 21,
+										"wreckLosses": 9,
+										"losses": 0,
+										"stragglers": 0
+									}, {
+										"id": 460,
+										"name": "2-2-2",
+										"commander": {
+											"name": "Burns",
+											"rating": 1
+										},
+										"moraleLevel": "B",
+										"totalStrength": 25,
+										"wreckLosses": 11,
+										"losses": 0,
+										"stragglers": 0
+									}, {
+										"id": 461,
+										"name": "3-2-2",
+										"commander": {
+											"name": "Dana",
+											"rating": 1
+										},
+										"moraleLevel": "C",
+										"totalStrength": 27,
+										"wreckLosses": 11,
+										"losses": 0,
+										"stragglers": 0
+									}
+								]
+							}
+						]
+					}, {
+						"id": 462,
+						"name": "3 Corps",
+						"commander": {
+							"name": "Heintzelman",
+							"rating": 1
+						},
+						"divisions": [{
+								"id": 463,
+								"name": "2-3",
+								"commander": {
+									"name": "Hooker",
+									"rating": 1
+								},
+								"wreckLosses": 2,
+								"brigades": [{
+										"id": 464,
+										"name": "1-2-3",
+										"commander": {
+											"name": "Grover",
+											"rating": 1
+										},
+										"moraleLevel": "C",
+										"totalStrength": 25,
+										"wreckLosses": 9,
+										"losses": 0,
+										"stragglers": 0
+									}, {
+										"id": 465,
+										"name": "2-2-3",
+										"commander": {
+											"name": "Sickles",
+											"rating": 1
+										},
+										"moraleLevel": "B",
+										"totalStrength": 23,
+										"wreckLosses": 11,
+										"losses": 0,
+										"stragglers": 0
+									}, {
+										"id": 466,
+										"name": "3-2-3",
+										"commander": {
+											"name": "Patterson",
+											"rating": 1
+										},
+										"moraleLevel": "B",
+										"totalStrength": 11,
+										"wreckLosses": 6,
+										"losses": 0,
+										"stragglers": 0
+									}
+								]
+							}, {
+								"id": 467,
+								"name": "3-3",
+								"commander": {
+									"name": "Kearny",
+									"rating": 1
+								},
+								"wreckLosses": 2,
+								"brigades": [{
+										"id": 468,
+										"name": "1-3-3",
+										"commander": {
+											"name": "Jameson",
+											"rating": 1
+										},
+										"moraleLevel": "C",
+										"totalStrength": 22,
+										"wreckLosses": 9,
+										"losses": 0,
+										"stragglers": 0
+									}, {
+										"id": 469,
+										"name": "2-3-3",
+										"commander": {
+											"name": "Birney",
+											"rating": 1
+										},
+										"moraleLevel": "C",
+										"totalStrength": 13,
+										"wreckLosses": 6,
+										"losses": 0,
+										"stragglers": 0
+									}, {
+										"id": 470,
+										"name": "3-3-3",
+										"commander": {
+											"name": "Berry",
+											"rating": 1
+										},
+										"moraleLevel": "C",
+										"totalStrength": 24,
+										"wreckLosses": 9,
+										"losses": 0,
+										"stragglers": 0
+									}
+								]
+							}
+						]
+					}, {
+						"id": 471,
+						"name": "4 Corps",
+						"commander": {
+							"name": "Keyes",
+							"rating": 1
+						},
+						"divisions": [{
+								"id": 472,
+								"name": "1-4",
+								"commander": {
+									"name": "Couch",
+									"rating": 1
+								},
+								"wreckLosses": 2,
+								"brigades": [{
+										"id": 473,
+										"name": "1-1-4",
+										"commander": {
+											"name": "Peck",
+											"rating": 1
+										},
+										"moraleLevel": "C",
+										"totalStrength": 25,
+										"wreckLosses": 9,
+										"losses": 0,
+										"stragglers": 0
+									}, {
+										"id": 474,
+										"name": "2-1-4",
+										"commander": {
+											"name": "Abercombie",
+											"rating": 1
+										},
+										"moraleLevel": "D",
+										"totalStrength": 23,
+										"wreckLosses": 7,
+										"losses": 0,
+										"stragglers": 0
+									}, {
+										"id": 475,
+										"name": "3-1-4",
+										"commander": {
+											"name": "Devens",
+											"rating": 1
+										},
+										"moraleLevel": "C",
+										"totalStrength": 22,
+										"wreckLosses": 9,
+										"losses": 0,
+										"stragglers": 0
+									}
+								]
+							}, {
+								"id": 476,
+								"name": "2-4",
+								"commander": {
+									"name": "Casey",
+									"rating": 1
+								},
+								"wreckLosses": 1,
+								"brigades": [{
+										"id": 477,
+										"name": "1-2-4",
+										"commander": {
+											"name": "Naglee",
+											"rating": 1
+										},
+										"moraleLevel": "C",
+										"totalStrength": 22,
+										"wreckLosses": 9,
+										"losses": 0,
+										"stragglers": 0
+									}, {
+										"id": 478,
+										"name": "2-2-4",
+										"commander": {
+											"name": "Wessells",
+											"rating": 1
+										},
+										"moraleLevel": "D",
+										"totalStrength": 20,
+										"wreckLosses": 7,
+										"losses": 0,
+										"stragglers": 0
+									}, {
+										"id": 479,
+										"name": "3-2-4",
+										"commander": {
+											"name": "Palmer",
+											"rating": 1
+										},
+										"moraleLevel": "C",
+										"totalStrength": 22,
+										"wreckLosses": 9,
+										"losses": 0,
+										"stragglers": 0
+									}
+								]
+							}
+						]
+					}
+				],
+				"divisions": [],
+				"independents": []
+			}
+		}, {
+			"id": 20,
+			"name": "ANVa",
+			"country": "CSA",
+			"commander": {
+				"name": "Johnston",
+				"rating": 1
+			},
+			"roster": {
+				"corps": [{
+						"id": 480,
+						"name": "Left Wing",
+						"commander": {
+							"name": "Smith",
+							"rating": 1
+						},
+						"divisions": [{
+								"id": 481,
+								"name": "M-L",
+								"commander": {
+									"name": "Magruder",
+									"rating": 1
+								},
+								"wreckLosses": 3,
+								"brigades": [{
+										"id": 482,
+										"name": "C-M-L",
+										"commander": {
+											"name": "Cobb",
+											"rating": 1
+										},
+										"moraleLevel": "D",
+										"totalStrength": 29,
+										"wreckLosses": 9,
+										"losses": 0,
+										"stragglers": 0
+									}, {
+										"id": 483,
+										"name": "G-M-L",
+										"commander": {
+											"name": "Griffith",
+											"rating": 1
+										},
+										"moraleLevel": "A",
+										"totalStrength": 24,
+										"wreckLosses": 14,
+										"losses": 0,
+										"stragglers": 0
+									}, {
+										"id": 484,
+										"name": "J-M-L",
+										"commander": {
+											"name": "DR Jones",
+											"rating": 1
+										},
+										"moraleLevel": "C",
+										"totalStrength": 23,
+										"wreckLosses": 9,
+										"losses": 0,
+										"stragglers": 0
+									}, {
+										"id": 485,
+										"name": "K-M-L",
+										"commander": {
+											"name": "Kershaw",
+											"rating": 1
+										},
+										"moraleLevel": "C",
+										"totalStrength": 23,
+										"wreckLosses": 9,
+										"losses": 0,
+										"stragglers": 0
+									}, {
+										"id": 486,
+										"name": "M-M-L",
+										"commander": {
+											"name": "McLaws",
+											"rating": 1
+										},
+										"moraleLevel": "B",
+										"totalStrength": 19,
+										"wreckLosses": 9,
+										"losses": 0,
+										"stragglers": 0
+									}, {
+										"id": 487,
+										"name": "T-M-L",
+										"commander": {
+											"name": "Toombs",
+											"rating": 1
+										},
+										"moraleLevel": "C",
+										"totalStrength": 22,
+										"wreckLosses": 8,
+										"losses": 0,
+										"stragglers": 0
+									}
+								]
+							}, {
+								"id": 488,
+								"name": "S-L",
+								"commander": {
+									"name": "Whiting",
+									"rating": 1
+								},
+								"wreckLosses": 3,
+								"brigades": [{
+										"id": 489,
+										"name": "Hd-S-L",
+										"commander": {
+											"name": "Hood",
+											"rating": 1
+										},
+										"moraleLevel": "A",
+										"totalStrength": 18,
+										"wreckLosses": 12,
+										"losses": 0,
+										"stragglers": 0
+									}, {
+										"id": 490,
+										"name": "Hm-S-L",
+										"commander": {
+											"name": "Hampton",
+											"rating": 1
+										},
+										"moraleLevel": "B",
+										"totalStrength": 21,
+										"wreckLosses": 10,
+										"losses": 0,
+										"stragglers": 0
+									}, {
+										"id": 491,
+										"name": "Ht-S-L",
+										"commander": {
+											"name": "Hatton",
+											"rating": 1
+										},
+										"moraleLevel": "C",
+										"totalStrength": 20,
+										"wreckLosses": 8,
+										"losses": 0,
+										"stragglers": 0
+									}, {
+										"id": 492,
+										"name": "L-S-L",
+										"commander": {
+											"name": "Law",
+											"rating": 1
+										},
+										"moraleLevel": "B",
+										"totalStrength": 20,
+										"wreckLosses": 9,
+										"losses": 0,
+										"stragglers": 0
+									}, {
+										"id": 493,
+										"name": "P-S-L",
+										"commander": {
+											"name": "Pettigrew",
+											"rating": 1
+										},
+										"moraleLevel": "C",
+										"totalStrength": 20,
+										"wreckLosses": 8,
+										"losses": 0,
+										"stragglers": 0
+									}
+								]
+							}
+						]
+					}, {
+						"id": 494,
+						"name": "Right Wing",
+						"commander": {
+							"name": "Longstreet",
+							"rating": 1
+						},
+						"divisions": [{
+								"id": 495,
+								"name": "DH-R",
+								"commander": {
+									"name": "DH Hill",
+									"rating": 1
+								},
+								"wreckLosses": 2,
+								"brigades": [{
+										"id": 496,
+										"name": "F-DH-R",
+										"commander": {
+											"name": "Featherston",
+											"rating": 1
+										},
+										"moraleLevel": "C",
+										"totalStrength": 19,
+										"wreckLosses": 9,
+										"losses": 0,
+										"stragglers": 0
+									}, {
+										"id": 497,
+										"name": "G-DH-R",
+										"commander": {
+											"name": "Garland",
+											"rating": 1
+										},
+										"moraleLevel": "C",
+										"totalStrength": 21,
+										"wreckLosses": 9,
+										"losses": 0,
+										"stragglers": 0
+									}, {
+										"id": 498,
+										"name": "Ro-DH-R",
+										"commander": {
+											"name": "Rodes",
+											"rating": 1
+										},
+										"moraleLevel": "B",
+										"totalStrength": 22,
+										"wreckLosses": 8,
+										"losses": 0,
+										"stragglers": 0
+									}, {
+										"id": 499,
+										"name": "Rs-H-R",
+										"commander": {
+											"name": "Rains",
+											"rating": 1
+										},
+										"moraleLevel": "C",
+										"totalStrength": 23,
+										"wreckLosses": 8,
+										"losses": 0,
+										"stragglers": 0
+									}
+								]
+							}, {
+								"id": 500,
+								"name": "L-R",
+								"commander": {
+									"name": "Anderson",
+									"rating": 1
+								},
+								"wreckLosses": 3,
+								"brigades": [{
+										"id": 501,
+										"name": "A-L-R",
+										"commander": {
+											"name": "Anderson",
+											"rating": 1
+										},
+										"moraleLevel": "B",
+										"totalStrength": 16,
+										"wreckLosses": 8,
+										"losses": 0,
+										"stragglers": 0
+									}, {
+										"id": 502,
+										"name": "C-L-R",
+										"commander": {
+											"name": "Colston",
+											"rating": 1
+										},
+										"moraleLevel": "C",
+										"totalStrength": 17,
+										"wreckLosses": 8,
+										"losses": 0,
+										"stragglers": 0
+									}, {
+										"id": 503,
+										"name": "K-L-R",
+										"commander": {
+											"name": "Kemper",
+											"rating": 1
+										},
+										"moraleLevel": "B",
+										"totalStrength": 19,
+										"wreckLosses": 9,
+										"losses": 0,
+										"stragglers": 0
+									}, {
+										"id": 504,
+										"name": "P-L-R",
+										"commander": {
+											"name": "Pickett",
+											"rating": 1
+										},
+										"moraleLevel": "A",
+										"totalStrength": 17,
+										"wreckLosses": 10,
+										"losses": 0,
+										"stragglers": 0
+									}, {
+										"id": 505,
+										"name": "Pr-L-R",
+										"commander": {
+											"name": "Pryor",
+											"rating": 1
+										},
+										"moraleLevel": "C",
+										"totalStrength": 19,
+										"wreckLosses": 9,
+										"losses": 0,
+										"stragglers": 0
+									}, {
+										"id": 506,
+										"name": "W-L-R",
+										"commander": {
+											"name": "Wilcox",
+											"rating": 1
+										},
+										"moraleLevel": "C",
+										"totalStrength": 21,
+										"wreckLosses": 9,
+										"losses": 0,
+										"stragglers": 0
+									}
+								]
+							}
+						]
+					}
+				],
+				"divisions": [{
+						"id": 507,
+						"name": "Hu-Div",
+						"commander": {
+							"name": "Huger",
+							"rating": 1
+						},
+						"wreckLosses": 2,
+						"brigades": [{
+								"id": 508,
+								"name": "A-Hu",
+								"commander": {
+									"name": "Armistead",
+									"rating": 1
+								},
+								"moraleLevel": "B",
+								"totalStrength": 23,
+								"wreckLosses": 11,
+								"losses": 0,
+								"stragglers": 0
+							}, {
+								"id": 509,
+								"name": "B-Hu",
+								"commander": {
+									"name": "Blanchard",
+									"rating": 1
+								},
+								"moraleLevel": "C",
+								"totalStrength": 22,
+								"wreckLosses": 9,
+								"losses": 0,
+								"stragglers": 0
+							}, {
+								"id": 510,
+								"name": "M-Hu",
+								"commander": {
+									"name": "Mahone",
+									"rating": 1
+								},
+								"moraleLevel": "C",
+								"totalStrength": 19,
+								"wreckLosses": 9,
+								"losses": 0,
+								"stragglers": 0
+							}
+						]
+					}
+				],
+				"independents": []
+			}
+		}
+	],
 
-    "scenarios" : [{
-            "id" : 19,
-            "firstPlayer" : "CSA",
-            "csaAmmo" : 45,
-            "csaCasualty" : 0,
-            "usaAmmo" : 55,
-            "usaCasualty" : 0,
-            "defaultOrders" : [{
-                    "country" : "CSA",
-                    "army" : "ANVa",
-                    "orders" : [{
-                            "id" : 87,
-                            "country" : "CSA",
-                            "army" : "ANVa",
-                            "sender" : "Johnston",
-                            "receiver" : "DH Hill",
-                            "dateTime" : "1862-05-31T17:00:00.000Z",
-                            "type" : "Complex",
-                            "method" : "AW",
-                            "force" : "F1",
-                            "text" : "Attack to capture Seven Pines, and then continue the attack to capture the crossroads at E26.31.",
-                            "status" : "Accepted"
-                        }, {
-                            "id" : 88,
-                            "country" : "CSA",
-                            "army" : "ANVa",
-                            "sender" : "Johnston",
-                            "receiver" : "Anderson",
-                            "dateTime" : "1862-05-31T17:00:00.000Z",
-                            "type" : "Simple",
-                            "method" : "AW",
-                            "force" : "F1",
-                            "text" : "Pickett is to the Rail Road at D17.25 and defend. Wilcox/Colston/Pryor are to move to join Huger and support him if attacked.",
-                            "status" : "Accepted"
-                        }, {
-                            "id" : 89,
-                            "country" : "CSA",
-                            "army" : "ANVa",
-                            "sender" : "Johnston",
-                            "receiver" : "Huger",
-                            "dateTime" : "1862-05-31T17:00:00.000Z",
-                            "type" : "Simple",
-                            "method" : "AW",
-                            "force" : "F1",
-                            "text" : "Defend the Charles City Road.",
-                            "status" : "Accepted"
-                        }, {
-                            "id" : 90,
-                            "country" : "CSA",
-                            "army" : "ANVa",
-                            "sender" : "Johnston",
-                            "receiver" : "Smith",
-                            "dateTime" : "1862-05-31T17:00:00.000Z",
-                            "type" : "Complex",
-                            "method" : "AW",
-                            "force" : "F1",
-                            "text" : "Attack towards FairOaks in support of DH Hill. Once FairOaks is captured, continue to capture Orchard Station.",
-                            "status" : "Delay2"
-                        }
-                    ]
-                }, {
-                    "country" : "USA",
-                    "army" : "APot",
-                    "orders" : [{
-                            "id" : 91,
-                            "country" : "USA",
-                            "army" : "APot",
-                            "sender" : "McClellan",
-                            "receiver" : "Sumner",
-                            "dateTime" : "1862-05-31T17:00:00.000Z",
-                            "type" : "Simple",
-                            "method" : "AW",
-                            "force" : "F1",
-                            "text" : "Move to the vicinity of FairOaks and defend that position, and protect the flank of the Seven Pines position.",
-                            "status" : "Accepted"
-                        }, {
-                            "id" : 92,
-                            "country" : "USA",
-                            "army" : "APot",
-                            "sender" : "McClellan",
-                            "receiver" : "Heintzelman",
-                            "dateTime" : "1862-05-31T17:00:00.000Z",
-                            "type" : "Simple",
-                            "method" : "AW",
-                            "force" : "F1",
-                            "text" : "Move to the support of Keyes, and help defend Seven Pines, counterattack if necessary to restore the Seven Pines position.",
-                            "status" : "Accepted"
-                        }, {
-                            "id" : 93,
-                            "country" : "USA",
-                            "army" : "APot",
-                            "sender" : "McClellan",
-                            "receiver" : "Keyes",
-                            "dateTime" : "1862-05-31T17:00:00.000Z",
-                            "type" : "Simple",
-                            "method" : "AW",
-                            "force" : "F1",
-                            "text" : "Defend the vicinity of Seven Pines.",
-                            "status" : "Accepted"
-                        }
-                    ]
-                }
-            ]
-        }, {
-            "id" : 20,
-            "firstPlayer" : "CSA",
-            "csaAmmo" : 45,
-            "csaCasualty" : 0,
-            "usaAmmo" : 55,
-            "usaCasualty" : 0,
-            "defaultOrders" : [{
-                    "country" : "CSA",
-                    "army" : "ANVa",
-                    "orders" : [{
-                            "id" : 94,
-                            "country" : "CSA",
-                            "army" : "ANVa",
-                            "sender" : "Johnston",
-                            "receiver" : "Anderson",
-                            "dateTime" : "1862-05-31T10:00:00.000Z",
-                            "type" : "Simple",
-                            "method" : "AW",
-                            "force" : "F1",
-                            "text" : "Move west via the Nine-Mile rd to the Darbytown rd, and then SE to cross Gillie's creek at hex D26.07. Once all units are across, the division must move off the road and halt, and wait for Huger to pass. Once Huger has passed the Williamsburg rd, move via the same to D27.30, halt and defend.",
-                            "status" : "Accepted"
-                        }, {
-                            "id" : 95,
-                            "country" : "CSA",
-                            "army" : "ANVa",
-                            "sender" : "Johnston",
-                            "receiver" : "Huger",
-                            "dateTime" : "1862-05-31T10:00:00.000Z",
-                            "type" : "Simple",
-                            "method" : "AW",
-                            "force" : "F1",
-                            "text" : "Move via the Darbytown rd, cross Gillie's creek via D26.07, after Anderson, and proceed to the Williamsburg rd. From there move to the Charles City rd, advance to E48.10 and defend.",
-                            "status" : "Accepted"
-                        }, {
-                            "id" : 96,
-                            "country" : "CSA",
-                            "army" : "ANVa",
-                            "sender" : "Johnston",
-                            "receiver" : "Rodes",
-                            "dateTime" : "1862-05-31T10:00:00.000Z",
-                            "type" : "Simple",
-                            "method" : "AW",
-                            "force" : "F1",
-                            "text" : "Defend the Charles City rd. Once relieved by Huger, rejoin the division.",
-                            "status" : "Accepted"
-                        }, {
-                            "id" : 97,
-                            "country" : "CSA",
-                            "army" : "ANVa",
-                            "sender" : "Johnston",
-                            "receiver" : "DH Hill",
-                            "dateTime" : "1862-05-31T10:00:00.000Z",
-                            "type" : "Complex",
-                            "method" : "AW",
-                            "force" : "F1",
-                            "text" : "Move east on the Williamsburg rd. Once Rodes arrives, attack the Federals along the rd to capture Seven Pines and the crossroads at E26.31.",
-                            "status" : "Accepted"
-                        }, {
-                            "id" : 98,
-                            "country" : "CSA",
-                            "army" : "ANVa",
-                            "sender" : "Johnston",
-                            "receiver" : "Whiting",
-                            "dateTime" : "1862-05-31T10:00:00.000Z",
-                            "type" : "Simple",
-                            "method" : "AW",
-                            "force" : "F1",
-                            "text" : "Move via the secondary rd NE around the racetrack to the Nine Mile rd, and then E along the road to Old Tavern. Halt and defend around E5.05.",
-                            "status" : "Accepted"
-                        }
-                    ]
-                }, {
-                    "country" : "USA",
-                    "army" : "APot",
-                    "orders" : [{
-                            "id" : 99,
-                            "country" : "USA",
-                            "army" : "APot",
-                            "sender" : "McClellan",
-                            "receiver" : "Sumner",
-                            "dateTime" : "1862-05-31T10:00:00.000Z",
-                            "type" : "Simple",
-                            "method" : "AW",
-                            "force" : "F1",
-                            "text" : "Move to the vicinity of FairOaks and defend that position, and protect the flank of the Seven Pines position.",
-                            "status" : "Accepted"
-                        }, {
-                            "id" : 100,
-                            "country" : "USA",
-                            "army" : "APot",
-                            "sender" : "McClellan",
-                            "receiver" : "Heintzelman",
-                            "dateTime" : "1862-05-31T10:00:00.000Z",
-                            "type" : "Simple",
-                            "method" : "AW",
-                            "force" : "F1",
-                            "text" : "Move to the support of Keyes, and help defend Seven Pines, counterattack if necessary to restore the Seven Pines position.",
-                            "status" : "Accepted"
-                        }, {
-                            "id" : 101,
-                            "country" : "USA",
-                            "army" : "APot",
-                            "sender" : "McClellan",
-                            "receiver" : "Keyes",
-                            "dateTime" : "1862-05-31T10:00:00.000Z",
-                            "type" : "Simple",
-                            "method" : "AW",
-                            "force" : "F1",
-                            "text" : "Defend the vicinity of Seven Pines.",
-                            "status" : "Accepted"
-                        }
-                    ]
-                }
-            ]
-        }
-    ]    
+	"scenarios": [{
+			"id": 19,
+			"firstPlayer": "CSA",
+			"csaAmmo": 45,
+			"csaCasualty": 0,
+			"usaAmmo": 55,
+			"usaCasualty": 0,
+			"defaultOrders": [{
+					"country": "CSA",
+					"army": "ANVa",
+					"orders": [{
+							"id": 87,
+							"country": "CSA",
+							"army": "ANVa",
+							"sender": "Johnston",
+							"receiver": "DH Hill",
+							"dateTime": "1862-05-31T17:00:00.000Z",
+							"type": "Complex",
+							"method": "AW",
+							"force": "F1",
+							"text": "Attack to capture Seven Pines, and then continue the attack to capture the crossroads at E26.31.",
+							"status": "Accepted"
+						}, {
+							"id": 88,
+							"country": "CSA",
+							"army": "ANVa",
+							"sender": "Johnston",
+							"receiver": "Anderson",
+							"dateTime": "1862-05-31T17:00:00.000Z",
+							"type": "Simple",
+							"method": "AW",
+							"force": "F1",
+							"text": "Pickett is to the Rail Road at D17.25 and defend. Wilcox/Colston/Pryor are to move to join Huger and support him if attacked.",
+							"status": "Accepted"
+						}, {
+							"id": 89,
+							"country": "CSA",
+							"army": "ANVa",
+							"sender": "Johnston",
+							"receiver": "Huger",
+							"dateTime": "1862-05-31T17:00:00.000Z",
+							"type": "Simple",
+							"method": "AW",
+							"force": "F1",
+							"text": "Defend the Charles City Road.",
+							"status": "Accepted"
+						}, {
+							"id": 90,
+							"country": "CSA",
+							"army": "ANVa",
+							"sender": "Johnston",
+							"receiver": "Smith",
+							"dateTime": "1862-05-31T17:00:00.000Z",
+							"type": "Complex",
+							"method": "AW",
+							"force": "F1",
+							"text": "Attack towards FairOaks in support of DH Hill. Once FairOaks is captured, continue to capture Orchard Station.",
+							"status": "Delay2"
+						}
+					]
+				}, {
+					"country": "USA",
+					"army": "APot",
+					"orders": [{
+							"id": 91,
+							"country": "USA",
+							"army": "APot",
+							"sender": "McClellan",
+							"receiver": "Sumner",
+							"dateTime": "1862-05-31T17:00:00.000Z",
+							"type": "Simple",
+							"method": "AW",
+							"force": "F1",
+							"text": "Move to the vicinity of FairOaks and defend that position, and protect the flank of the Seven Pines position.",
+							"status": "Accepted"
+						}, {
+							"id": 92,
+							"country": "USA",
+							"army": "APot",
+							"sender": "McClellan",
+							"receiver": "Heintzelman",
+							"dateTime": "1862-05-31T17:00:00.000Z",
+							"type": "Simple",
+							"method": "AW",
+							"force": "F1",
+							"text": "Move to the support of Keyes, and help defend Seven Pines, counterattack if necessary to restore the Seven Pines position.",
+							"status": "Accepted"
+						}, {
+							"id": 93,
+							"country": "USA",
+							"army": "APot",
+							"sender": "McClellan",
+							"receiver": "Keyes",
+							"dateTime": "1862-05-31T17:00:00.000Z",
+							"type": "Simple",
+							"method": "AW",
+							"force": "F1",
+							"text": "Defend the vicinity of Seven Pines.",
+							"status": "Accepted"
+						}
+					]
+				}
+			]
+		}, {
+			"id": 20,
+			"firstPlayer": "CSA",
+			"csaAmmo": 45,
+			"csaCasualty": 0,
+			"usaAmmo": 55,
+			"usaCasualty": 0,
+			"defaultOrders": [{
+					"country": "CSA",
+					"army": "ANVa",
+					"orders": [{
+							"id": 94,
+							"country": "CSA",
+							"army": "ANVa",
+							"sender": "Johnston",
+							"receiver": "Anderson",
+							"dateTime": "1862-05-31T10:00:00.000Z",
+							"type": "Simple",
+							"method": "AW",
+							"force": "F1",
+							"text": "Move west via the Nine-Mile rd to the Darbytown rd, and then SE to cross Gillie's creek at hex D26.07. Once all units are across, the division must move off the road and halt, and wait for Huger to pass. Once Huger has passed the Williamsburg rd, move via the same to D27.30, halt and defend.",
+							"status": "Accepted"
+						}, {
+							"id": 95,
+							"country": "CSA",
+							"army": "ANVa",
+							"sender": "Johnston",
+							"receiver": "Huger",
+							"dateTime": "1862-05-31T10:00:00.000Z",
+							"type": "Simple",
+							"method": "AW",
+							"force": "F1",
+							"text": "Move via the Darbytown rd, cross Gillie's creek via D26.07, after Anderson, and proceed to the Williamsburg rd. From there move to the Charles City rd, advance to E48.10 and defend.",
+							"status": "Accepted"
+						}, {
+							"id": 96,
+							"country": "CSA",
+							"army": "ANVa",
+							"sender": "Johnston",
+							"receiver": "Rodes",
+							"dateTime": "1862-05-31T10:00:00.000Z",
+							"type": "Simple",
+							"method": "AW",
+							"force": "F1",
+							"text": "Defend the Charles City rd. Once relieved by Huger, rejoin the division.",
+							"status": "Accepted"
+						}, {
+							"id": 97,
+							"country": "CSA",
+							"army": "ANVa",
+							"sender": "Johnston",
+							"receiver": "DH Hill",
+							"dateTime": "1862-05-31T10:00:00.000Z",
+							"type": "Complex",
+							"method": "AW",
+							"force": "F1",
+							"text": "Move east on the Williamsburg rd. Once Rodes arrives, attack the Federals along the rd to capture Seven Pines and the crossroads at E26.31.",
+							"status": "Accepted"
+						}, {
+							"id": 98,
+							"country": "CSA",
+							"army": "ANVa",
+							"sender": "Johnston",
+							"receiver": "Whiting",
+							"dateTime": "1862-05-31T10:00:00.000Z",
+							"type": "Simple",
+							"method": "AW",
+							"force": "F1",
+							"text": "Move via the secondary rd NE around the racetrack to the Nine Mile rd, and then E along the road to Old Tavern. Halt and defend around E5.05.",
+							"status": "Accepted"
+						}
+					]
+				}, {
+					"country": "USA",
+					"army": "APot",
+					"orders": [{
+							"id": 99,
+							"country": "USA",
+							"army": "APot",
+							"sender": "McClellan",
+							"receiver": "Sumner",
+							"dateTime": "1862-05-31T10:00:00.000Z",
+							"type": "Simple",
+							"method": "AW",
+							"force": "F1",
+							"text": "Move to the vicinity of FairOaks and defend that position, and protect the flank of the Seven Pines position.",
+							"status": "Accepted"
+						}, {
+							"id": 100,
+							"country": "USA",
+							"army": "APot",
+							"sender": "McClellan",
+							"receiver": "Heintzelman",
+							"dateTime": "1862-05-31T10:00:00.000Z",
+							"type": "Simple",
+							"method": "AW",
+							"force": "F1",
+							"text": "Move to the support of Keyes, and help defend Seven Pines, counterattack if necessary to restore the Seven Pines position.",
+							"status": "Accepted"
+						}, {
+							"id": 101,
+							"country": "USA",
+							"army": "APot",
+							"sender": "McClellan",
+							"receiver": "Keyes",
+							"dateTime": "1862-05-31T10:00:00.000Z",
+							"type": "Simple",
+							"method": "AW",
+							"force": "F1",
+							"text": "Defend the vicinity of Seven Pines.",
+							"status": "Accepted"
+						}
+					]
+				}
+			]
+		}
+	]
 }

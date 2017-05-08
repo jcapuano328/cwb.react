@@ -1,34 +1,44 @@
 import types from '../constants/actionTypes';
 import getGame from '../selectors/game';
 import {getTimeIncrement} from '../services/time';
+import Orders from '../services/orders';
+import Roster from '../services/roster';
 
 export const select = (item) => (dispatch) => {
     dispatch({type: types.SELECT_ORDER, value: item});
 }
 
-export const create = (country,army,dt,type,method,status) => (dispatch) => {
+export const create = (country,army,dt) => (dispatch,getState) => {
+    const game = getGame(getState());    
+
     select({
         id: null,
         country: country,
         army: army,
-        sender: '',
+        sender: Roster.getArmyLeader(game,country,army).name,
         receiver: '',
         dateTime: dt,
-        type: type,
-        method: method,
+        type: Orders.types[0].type,
+        method: Orders.methods[0].method,
         force: '',
         text: '',
-        status: status
+        status: Orders.statuses[0].type
     })(dispatch);
 }
 
 export const accept = () => (dispatch,getState) => {
     const {order} = getState();
-    dispatch({type: order.id ? types.UPDATE_ORDER : types.ADD_ORDER, value: order});
+    dispatch({name: order.country.toLowerCase(), type: order.id ? types.UPDATE_ORDER : types.ADD_ORDER, value: order});
+    dispatch({type: types.RESET_ORDER});
 }
 
-export const remove = (v) => (dispatch,getState) => {    
-    dispatch({type: types.REMOVE_ORDER, value: v});
+export const remove = (o) => (dispatch,getState) => {    
+    dispatch({name: o.country.toLowerCase(), type: types.REMOVE_ORDER, value: o});
+}
+
+export const updateStatus = (o,s) => (dispatch) => {
+    o.status = s;
+    dispatch({name: o.country.toLowerCase(), type: types.UPDATE_ORDER, value: o});
 }
 
 export const setSender = (v) => (dispatch) => {

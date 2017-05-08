@@ -1,12 +1,12 @@
 import React from 'react';
 import { View, Text, TextInput, Image, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
-import {SpinSelect,SelectDropdown,IconButton,Style} from 'react-native-nub';
+import {RadioButtonGroup,SpinSelect,SelectDropdown,SelectList,IconButton,Style} from 'react-native-nub';
 import Icons from '../res';
 import moment from 'moment';
 import getGame from '../selectors/game';
-import Orders from './services/orders';
-import Roster from './services/roster';
+import Orders from '../services/orders';
+import Roster from '../services/roster';
 import {setSender,setReceiver,setDateTime,setType,setMethod,setForce,setText,setStatus,adjustDate,adjustTime} from '../actions/order';
 
 var OrderDetailView = React.createClass({
@@ -29,18 +29,22 @@ var OrderDetailView = React.createClass({
             this.props.adjustTime(this.props.order.dateTime,mod);
         }
     },
-    onChangedType(v) {
-        this.props.setType(Orders.getTypeByDesc(v).type || this.props.order.type);
+    onChangeType(v) {
+        this.props.setType(v || this.props.order.type);
     },
     onChangeMethod(v) {
-        this.props.setMethod(Orders.getMethodByDesc(v).method || this.props.order.method);        
+        this.props.setMethod(v || this.props.order.method);        
     },
     onChangeText(v) {
         this.props.setText(v);
     },
-    render() {
+    render() {        
+        let superiors = Roster.getSuperiorLeaders(this.props.battle,this.props.order.country,this.props.order.army);
+        let subordinates = //Roster.getSubordinateLeaders(this.props.battle,this.props.order.country,this.props.order.army);
+            Roster.getSubordinatesForLeader(this.props.battle,this.props.order.country,this.props.order.army,this.props.order.sender);
         return (
-            <View style={{flex: 1}}>
+            <View style={{flex: 1, marginTop: Style.Scaling.scale(44), 
+                marginLeft: 10, marginRight: 10, marginBottom: 10}}>
                 <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start'}}>
                     <View style={{flex:1, justifyContent: 'center', alignItems: 'center'}}>
                         <Image style={{flex: 1,marginRight: 15, width: 64,height: 64,resizeMode: 'contain'}} source={Icons[this.props.order.country]} />
@@ -54,14 +58,27 @@ var OrderDetailView = React.createClass({
                         </TouchableOpacity>
                     </View>
                 </View>
-                <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start'}}>
+                <View style={{flex: 4, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start'}}>
                     <View style={{flex:1, justifyContent: 'center', alignItems: 'center'}}>
-                        <SelectDropdown label={'Sender'} value={this.props.order.sender} values={[''].concat(Roster.getSuperiorLeaders(this.props.battle,this.props.order.country,this.props.order.army))}
+                        {/*
+                        <SelectDropdown label={'Sender'} value={this.props.order.sender} values={[''].concat(Roster.getSuperiorLeaders(this.props.battle,this.props.order.country,this.props.order.army).map((c) => c.name))}
+                            onSelected={this.onChangeSender}/>                        
+                        <SelectList title={'Sender'} titleonly={true} items={Roster.getSuperiorLeaders(this.props.battle,this.props.order.country,this.props.order.army).map((c) => c.name)} selected={this.props.order.sender} onChanged={this.onChangeSender}/>                        
+                        */}
+                        <RadioButtonGroup title={'Sender'} direction={'vertical'}
+                            buttons={superiors.map((c) => {return {label:c.name,value:c.name};})}
+                            state={this.props.order.sender}
                             onSelected={this.onChangeSender}/>
                     </View>
                     <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-                        <SelectDropdown label={'Receiver'} value={this.props.order.receiver} values={[''].concat(Roster.getSubordinateLeaders(this.props.battle,this.props.order.country,this.props.order.army))}
+                        {/*
+                        <SelectDropdown label={'Receiver'} value={this.props.order.receiver} values={[''].concat(Roster.getSubordinateLeaders(this.props.battle,this.props.order.country,this.props.order.army).map((c) => c.name))}
                             onSelected={this.onChangeReceiver}/>
+                        */}
+                        <SelectList title={'Receiver'} titleonly={true} 
+                            items={subordinates.map((c) => c.name)} 
+                            selected={this.props.order.receiver} 
+                            onChanged={this.onChangeReceiver}/>                            
                     </View>
                 </View>
                 <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
@@ -76,13 +93,27 @@ var OrderDetailView = React.createClass({
                     </View>
                 </View>
 
-                <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start'}}>
+                <View style={{flex: 3, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start'}}>
                     <View style={{flex:1, justifyContent: 'center', alignItems: 'center'}}>
+                        {/*
                         <SelectDropdown label={'Type'} value={Orders.getType(this.props.order.type).desc} values={[''].concat(Orders.types.map((t) => t.desc))}
                             onSelected={this.onChangeType}/>
+                        <SelectList title={'Type'} titleonly={true} items={Orders.types.map((t) => t.desc)} selected={Orders.getType(this.props.order.type).desc} onChanged={this.onChangeType}/>                        
+                        */}
+                        <RadioButtonGroup title={'Type'} direction={'vertical'}
+                            buttons={Orders.types.map((t) => {return {label:t.desc,value:t.type};})}
+                            state={this.props.order.type}
+                            onSelected={this.onChangeType}/>                                                        
                     </View>
                     <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+                        {/*
                         <SelectDropdown label={'Method'} value={Orders.getMethod(this.props.order.method).desc} values={[''].concat(Orders.methods.map((m) => m.desc))}
+                            onSelected={this.onChangeMethod}/>
+                        <SelectList title={'Method'} titleonly={true} items={Orders.methods.map((m) => m.desc)} selected={Orders.getMethod(this.props.order.method).desc} onChanged={this.onChangeMethod}/>
+                        */}
+                        <RadioButtonGroup title={'Method'} direction={'vertical'}
+                            buttons={Orders.methods.map((m) => {return {label:m.desc,value:m.method};})}
+                            state={this.props.order.method}
                             onSelected={this.onChangeMethod}/>
                     </View>
                 </View>

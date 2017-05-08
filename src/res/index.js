@@ -7,9 +7,25 @@ module.exports = {
 	"info": Icons['info-dark'],
 	"refresh": Icons['refresh-dark'],
 	"back": Icons['chevron-left-dark'],
+	"accept": Icons['accept'],
+	"discard": Icons['discard'],
 
 	"USA": require('./USA.png'),
 	"CSA": require('./CSA.png'),
+
+	"Accepted": require('../res/Accepted.png'),
+	"InTransit": require('../res/InTransit.png'),
+	"Delay1": require('../res/Delay1.png'),
+	"Delay2": require('../res/Delay2.png'),
+	"Distorted": require('../res/Distorted.png'),
+	"Stopped": require('../res/Stopped.png'),	
+
+	"orderadd": require('../res/orderadd.png'),
+	"orderremove": require('../res/orderremove.png'),
+	"orderinitiative": require('../res/orderinitiative.png'),
+	"orderaccept": require('../res/orderaccept.png'),
+	"orderreduce": require('../res/orderreduce.png'),
+	"orderstop": require('../res/orderstop.png'),
 
 	"intheirquietfields": require('./intheirquietfields.jpg'),	
 	"thunderatthecrossroads": require('./thunderatthecrossroads.jpg'),

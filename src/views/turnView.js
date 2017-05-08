@@ -8,6 +8,7 @@ import {prevTurn,nextTurn,prevPhase,nextPhase} from '../actions/current';
 import getGame from '../selectors/game';
 import getTurn from '../selectors/turn';
 import getPhase from '../selectors/phase';
+import moment from 'moment';
 
 var TurnView = React.createClass({
     getInitialState() {
@@ -56,7 +57,7 @@ var TurnView = React.createClass({
                 <Image style={{width: iconwidth,height: iconheight,resizeMode: 'contain'}} source={this.props.logo}/>
             </View>
             <View style={{flex: 4}}>
-                <SpinSelect value={this.props.turn} onPrev={this.onPrevTurn} onNext={this.onNextTurn} />
+                <SpinSelect value={moment(this.props.turn).format("MMM DD, YYYY HH:mm")} onPrev={this.onPrevTurn} onNext={this.onNextTurn} />
                 <SpinSelect value={this.props.phase} onPrev={this.onPrevPhase} onNext={this.onNextPhase} />
             </View>
             <View style={{flex: 1}}>

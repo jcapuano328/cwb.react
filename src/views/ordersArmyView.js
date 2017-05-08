@@ -1,8 +1,12 @@
 import React from 'react';
 import { View, TouchableOpacity, Text, Image } from 'react-native';
 import { connect } from 'react-redux';
+import {Actions} from 'react-native-router-flux';
 import {Arrow,IconButton,Style} from 'react-native-nub';
 import Icons from '../res';
+import getTurn from '../selectors/turn';
+import {select,create} from '../actions/order';
+import Orders from '../services/orders';
 import OrdersItemView from './ordersItemView';
 
 var OrdersArmyHeader = React.createClass({
@@ -32,9 +36,10 @@ var OrdersArmyHeader = React.createClass({
                 }} source={Icons[this.props.army.country]} />
                 <View style={{flex: 1, flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center'}}>
                     <Text style={{flex: 1, fontSize: Style.Font.large(),textAlign: 'center',margin: 10}}>{this.props.army.name}</Text>
-                    <Text style={{flex: 1, fontSize: Style.Font.medium(),textAlign: 'center',margin: 10}}>{this.props.army.commander}</Text>
+                    <Text style={{flex: 1, fontSize: Style.Font.medium(),textAlign: 'center',margin: 10}}>{this.props.army.commander.name}</Text>
                 </View>
-                <IconButton image={'add'} onPress={this.props.onAdd} />
+                <IconButton image={Icons['orderinitiative']} onPress={this.props.onInitiative} />
+                <IconButton image={Icons['orderadd']} onPress={this.props.onAdd} />                
             </View>            
         );
     }
@@ -49,29 +54,47 @@ var OrdersArmyView = React.createClass({
     onPress() {
         this.setState({expanded: !this.state.expanded});
     },
+    onInitiative() {
+        this.props.select({country: this.props.army.country, army: this.props.army.name});
+        Actions.orderinitiative({title: 'Order Initiative', subtitle: this.props.army.country + ' - ' + this.props.army.name});
+    },            
+    onAdd() {
+        this.props.create(this.props.army.country,this.props.army.name,this.props.turn);
+        Actions.order({title: 'Order', subtitle: this.props.army.name + ' - New'});
+    },        
     render() {        
-        let orders = this.state.expanded ? 
-            ((this.props[this.props.army.country.toLowerCase()] || []).find((o) => o.army == this.props.army.name) || {orders:[]}).orders
-            : [];
         return (
-            <TouchableOpacity onPress={this.onPress}>
-                <View style={{flex: 1}}>
-                    <OrdersArmyHeader army={this.props.army} expanded={this.state.expanded} onAdd={this.onAdd} />
-                    {this.state.expanded
-                        ? orders.map((o,i) => <OrdersItemView key={i} army={this.props.army} order={o} />)
-                        : <Text/>
-                    }
+            <View style={{flex: 1}}>
+                <View style={{flex:1}}>
+                    <TouchableOpacity onPress={this.onPress}>                
+                        <OrdersArmyHeader army={this.props.army} expanded={this.state.expanded} onAdd={this.onAdd} onInitiative={this.onInitiative} />
+                    </TouchableOpacity>
                 </View>
-            </TouchableOpacity>
+                {this.renderOrders()}
+            </View>            
         );
+    },
+    renderOrders() {
+        if (this.state.expanded) {
+            let orders = ((this.props[this.props.army.country.toLowerCase()] || []).find((o) => o.army == this.props.army.name) || {orders:[]}).orders            
+            return (
+                <View>
+                    {([]||orders).map((o,i) => <OrdersItemView key={i} army={this.props.army} order={o} />)}
+                </View>
+            );
+
+        }
+        return null;        
     }
 });
 
 const mapStateToProps = (state) => ({
-    usa: state.current.usa.orders,
-    csa: state.current.csa.orders
+    usa: state.usa.orders,
+    csa: state.csa.orders,
+    turn: getTurn(state)    
 });
 
 module.exports = connect(
-  mapStateToProps
+  mapStateToProps,
+  {select,create}
 )(OrdersArmyView);

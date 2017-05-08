@@ -1,6 +1,6 @@
 import moment from 'moment';
 
-let isNight = (dt, battle) => {
+export const isNight = (dt, battle) => {
 	var now = moment(dt);
 
 	var dawn = moment(now.format('YYYY-MM-DD') + 'T' + battle.dawnTime);

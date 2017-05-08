@@ -1,4 +1,5 @@
 import types from '../constants/actionTypes';
+import Phases from '../services/phases';
 import getGame from '../selectors/game';
 import getMaxTurns from '../selectors/maxturns';
 
@@ -6,34 +7,38 @@ export const reset = (e) => (dispatch,getState) => {
     const {current} = getState();        
     e = e || {battle: current.battle, scenario: current.scenario};
     const game = getGame({current: {battle: e.battle, scenario: e.scenario}});
-    let data = {
+
+    dispatch({type: types.RESET});
+
+    dispatch({type: types.SET_CURRENT, value: {
         "battle": e.battle,
         "scenario": e.scenario,
         "turn": 1,
         "phase": 0,
-        "player": "first",
-        "usa": {
-            "roster": game.armies.filter((a) => a.country == 'USA').map((a,i) => {
-                return {...a, id: i};
-            }),
-            "orders": game.scenario.defaultOrders.filter((o) => o.country == 'USA').map((o,i) => {
-                return {...o, id: i};
-            }),
-            "ammo": game.scenario.usaAmmo,
-            "vp": 0
-        },
-        "csa": {
-            "roster": game.armies.filter((a) => a.country == 'CSA').map((a,i) => {
-                return {...a, id: i};
-            }),
-            "orders": game.scenario.defaultOrders.filter((o) => o.country == 'CSA').map((o,i) => {
-                return {...o, id: i};
-            }),
-            "ammo": game.scenario.csaAmmo,
-            "vp": 0
-        }
-    }    
-    dispatch({type: types.SET_CURRENT, value: data});
+        "player": "first"
+    }});
+
+    dispatch({name: 'usa', type: types.SET_COUNTRY, value: {
+        "roster": []/*game.armies.filter((a) => a.country == 'USA').map((a,i) => {
+            return {...a, id: i};
+        })*/,
+        "orders": game.scenario.defaultOrders.filter((o) => o.country == 'USA').map((o,i) => {
+            return {...o, id: i};
+        }),
+        "ammo": game.scenario.usaAmmo,
+        "vp": 0        
+    }});
+
+    dispatch({name: 'csa', type: types.SET_COUNTRY, value: {
+        "roster": []/*game.armies.filter((a) => a.country == 'CSA').map((a,i) => {
+            return {...a, id: i};
+        })*/,
+        "orders": game.scenario.defaultOrders.filter((o) => o.country == 'CSA').map((o,i) => {
+            return {...o, id: i};
+        }),
+        "ammo": game.scenario.csaAmmo,
+        "vp": 0        
+    }});    
 }
 
 export const prevTurn = () => (dispatch) => {    
@@ -59,34 +64,33 @@ export const nextPlayer = () => (dispatch) => {
 }
 
 export const setCsaArtyAmmo = (v) => (dispatch) => {    
-    dispatch({type: types.SET_CSA_ARTYAMMO, value: v});
+    dispatch({name: 'csa', type: types.SET_ARTYAMMO, value: v});
 }
 export const setCsaVp = (v) => (dispatch) => {    
-    dispatch({type: types.SET_CSA_VP, value: v});
+    dispatch({name: 'csa', type: types.SET_VP, value: v});
 }
 export const addCsaOrder = (o) => (dispatch) => {    
-    dispatch({type: types.ADD_CSA_ORDER, value: v});
+    dispatch({name: 'csa', type: types.ADD_ORDER, value: v});
 }
 export const updateCsaOrder = (o) => (dispatch) => {    
-    dispatch({type: types.UPDATE_CSA_ORDER, value: v});
+    dispatch({name: 'csa', type: types.UPDATE_ORDER, value: v});
 }
 export const removeCsaOrder = (o) => (dispatch) => {    
-    dispatch({type: types.REMOVE_CSA_ORDER, value: v});
+    dispatch({name: 'csa', type: types.REMOVE_ORDER, value: v});
 }
-
 
 export const setUsaArtyAmmo = (v) => (dispatch) => {    
-    dispatch({type: types.SET_USA_ARTYAMMO, value: v});
+    dispatch({name: 'usa', type: types.SET_ARTYAMMO, value: v});
 }
 export const setUsaVp = (v) => (dispatch) => {    
-    dispatch({type: types.SET_USA_VP, value: v});
+    dispatch({name: 'usa', type: types.SET_VP, value: v});
 }
 export const addUsaOrder = (o) => (dispatch) => {    
-    dispatch({type: types.ADD_USA_ORDER, value: v});
+    dispatch({name: 'usa', type: types.ADD_ORDER, value: v});
 }
 export const updateUsaOrder = (o) => (dispatch) => {    
-    dispatch({type: types.UPDATE_USA_ORDER, value: v});
+    dispatch({name: 'usa', type: types.UPDATE_ORDER, value: v});
 }
 export const removeUsaOrder = (o) => (dispatch) => {    
-    dispatch({type: types.REMOVE_USA_ORDER, value: v});
+    dispatch({name: 'usa', type: types.REMOVE_ORDER, value: v});
 }

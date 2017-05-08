@@ -35,6 +35,9 @@ module.exports = (state = {}, action) => {
             [action.value.field]: action.value.value
         };
 
+    case types.RESET_ORDER:
+        return {};
+
     default:
         return state;
     }
