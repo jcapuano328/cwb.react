@@ -19,14 +19,30 @@ import rootReducer from '../reducers';
             player: string
         },
         usa: {
-            roster: [],
-            orders: [],
+            roster: {
+                "army": [],
+                "army": [],
+                ...
+            },
+            orders: {
+                "army": [{sender,receiver,...},...],
+                "army": [{sender,receiver,...},...],
+                ...
+            },
             ammo: integer,
             vp: integer
         },
         csa: {
-            roster: [],
-            orders: [],                
+            roster: {
+                "army": [],
+                "army": [],
+                ...
+            },
+            orders: {
+                "army": [{sender,receiver,...},...],
+                "army": [{sender,receiver,...},...],
+                ...
+            },
             ammo: integer,
             vp: integer
         },        
@@ -46,7 +62,7 @@ import rootReducer from '../reducers';
     }
 */
 const store = Store(rootReducer, null, {
-    nologging: false//,
+    nologging: true//,
     //predicate: (getState, action) => !action.type.toLowerCase().includes('rehydrate') 
         //&& !action.type.toLowerCase().includes('roster')    
 });

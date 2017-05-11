@@ -3,6 +3,33 @@ import Phases from '../services/phases';
 import getGame from '../selectors/game';
 import getMaxTurns from '../selectors/maxturns';
 
+const make = (game, country) => {
+    let d = {
+        "roster": {},
+        "orders": {},
+        "ammo": game.scenario.usaAmmo,
+        "vp": 0        
+    };
+
+    /*
+    game.armies.filter((a) => a.country == 'USA').forEach((a,i) => {
+        if (!d.roster[a.name]) {
+            d.roster[a.name] = [];
+        }
+        d.roster[a.name].push({...a, id: i});
+    });
+    */
+
+    game.scenario.defaultOrders.filter((a) => a.country == 'USA').forEach((a) => {        
+        if (!d.orders[a.army]) {
+            d.orders[a.army] = [];
+        }        
+        d.orders[a.army] = d.orders[a.army].concat(a.orders.map((o,i) => ({...o, id: i})));
+    });    
+
+    return d;
+}
+
 export const reset = (e) => (dispatch,getState) => {
     const {current} = getState();        
     e = e || {battle: current.battle, scenario: current.scenario};
@@ -17,28 +44,8 @@ export const reset = (e) => (dispatch,getState) => {
         "phase": 0,
         "player": "first"
     }});
-
-    dispatch({name: 'usa', type: types.SET_COUNTRY, value: {
-        "roster": []/*game.armies.filter((a) => a.country == 'USA').map((a,i) => {
-            return {...a, id: i};
-        })*/,
-        "orders": game.scenario.defaultOrders.filter((o) => o.country == 'USA').map((o,i) => {
-            return {...o, id: i};
-        }),
-        "ammo": game.scenario.usaAmmo,
-        "vp": 0        
-    }});
-
-    dispatch({name: 'csa', type: types.SET_COUNTRY, value: {
-        "roster": []/*game.armies.filter((a) => a.country == 'CSA').map((a,i) => {
-            return {...a, id: i};
-        })*/,
-        "orders": game.scenario.defaultOrders.filter((o) => o.country == 'CSA').map((o,i) => {
-            return {...o, id: i};
-        }),
-        "ammo": game.scenario.csaAmmo,
-        "vp": 0        
-    }});    
+    dispatch({name: 'usa', type: types.SET_COUNTRY, value: make(game, 'usa')});
+    dispatch({name: 'csa', type: types.SET_COUNTRY, value: make(game, 'csa')});
 }
 
 export const prevTurn = () => (dispatch) => {    

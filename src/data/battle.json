@@ -1,0 +1,1623 @@
+{
+	"armies": {
+		"usa": [
+
+		],
+		"csa": [
+			
+		]
+	}
+	
+	[{
+			"id": 4,
+			"name": "AVa",
+			"country": "USA",
+			"commander": {
+				"name": "Pope",
+				"rating": 1
+			},
+			"roster": {
+				"corps": [{
+						"id": 87,
+						"name": "1 Va",
+						"commander": {
+							"name": "Sigel",
+							"rating": 1
+						},
+						"divisions": [{
+								"id": 88,
+								"name": "1-1 Va",
+								"commander": {
+									"name": "Schenk",
+									"rating": 1
+								},
+								"wreckLosses": 1,
+								"brigades": [{
+										"id": 89,
+										"name": "1-1-1",
+										"commander": {
+											"name": "Stahel",
+											"rating": 1
+										},
+										"moraleLevel": "C",
+										"totalStrength": 16,
+										"wreckLosses": 7,
+										"losses": 0,
+										"stragglers": 0
+									}, {
+										"id": 90,
+										"name": "2-1-1",
+										"commander": {
+											"name": "McClean",
+											"rating": 1
+										},
+										"moraleLevel": "B",
+										"totalStrength": 10,
+										"wreckLosses": 5,
+										"losses": 0,
+										"stragglers": 0
+									}
+								]
+							}, {
+								"id": 91,
+								"name": "3-1 Va",
+								"commander": {
+									"name": "Schurz",
+									"rating": 1
+								},
+								"wreckLosses": 2,
+								"brigades": [{
+										"id": 92,
+										"name": "1-3-1",
+										"commander": {
+											"name": "Schmmlfnng",
+											"rating": 1
+										},
+										"moraleLevel": "C",
+										"totalStrength": 12,
+										"wreckLosses": 6,
+										"losses": 0,
+										"stragglers": 0
+									}, {
+										"id": 93,
+										"name": "2-3-1",
+										"commander": {
+											"name": "Krzyznwski",
+											"rating": 1
+										},
+										"moraleLevel": "C",
+										"totalStrength": 14,
+										"wreckLosses": 6,
+										"losses": 0,
+										"stragglers": 0
+									}, {
+										"id": 94,
+										"name": "3-3-1",
+										"commander": {
+											"name": "Koltes",
+											"rating": 1
+										},
+										"moraleLevel": "B",
+										"totalStrength": 10,
+										"wreckLosses": 5,
+										"losses": 0,
+										"stragglers": 0
+									}
+								]
+							}
+						]
+					}, {
+						"id": 95,
+						"name": "2 Va",
+						"commander": {
+							"name": "Banks",
+							"rating": 1
+						},
+						"divisions": [{
+								"id": 96,
+								"name": "1-2 Va",
+								"commander": {
+									"name": "Williams",
+									"rating": 1
+								},
+								"wreckLosses": 1,
+								"brigades": [{
+										"id": 97,
+										"name": "1-1-2",
+										"commander": {
+											"name": "Crawford",
+											"rating": 1
+										},
+										"moraleLevel": "C",
+										"totalStrength": 9,
+										"wreckLosses": 4,
+										"losses": 0,
+										"stragglers": 0
+									}, {
+										"id": 98,
+										"name": "3-1-2",
+										"commander": {
+											"name": "Gordon",
+											"rating": 1
+										},
+										"moraleLevel": "B",
+										"totalStrength": 10,
+										"wreckLosses": 5,
+										"losses": 0,
+										"stragglers": 0
+									}
+								]
+							}, {
+								"id": 99,
+								"name": "2-2 Va",
+								"commander": {
+									"name": "Greene",
+									"rating": 1
+								},
+								"wreckLosses": 2,
+								"brigades": [{
+										"id": 100,
+										"name": "1-2-2",
+										"commander": {
+											"name": "Candy",
+											"rating": 1
+										},
+										"moraleLevel": "B",
+										"totalStrength": 11,
+										"wreckLosses": 6,
+										"losses": 0,
+										"stragglers": 0
+									}, {
+										"id": 101,
+										"name": "2-2-2",
+										"commander": {
+											"name": "Schlaudecker",
+											"rating": 1
+										},
+										"moraleLevel": "C",
+										"totalStrength": 12,
+										"wreckLosses": 6,
+										"losses": 0,
+										"stragglers": 0
+									}, {
+										"id": 102,
+										"name": "3-2-2",
+										"commander": {
+											"name": "Tait",
+											"rating": 1
+										},
+										"moraleLevel": "C",
+										"totalStrength": 11,
+										"wreckLosses": 5,
+										"losses": 0,
+										"stragglers": 0
+									}
+								]
+							}
+						]
+					}, {
+						"id": 103,
+						"name": "3 Va",
+						"commander": {
+							"name": "McDowell",
+							"rating": 1
+						},
+						"divisions": [{
+								"id": 104,
+								"name": "1-3 Va",
+								"commander": {
+									"name": "Hatch",
+									"rating": 1
+								},
+								"wreckLosses": 3,
+								"brigades": [{
+										"id": 105,
+										"name": "1-1-3",
+										"commander": {
+											"name": "Sullivan",
+											"rating": 1
+										},
+										"moraleLevel": "B",
+										"totalStrength": 15,
+										"wreckLosses": 8,
+										"losses": 0,
+										"stragglers": 0
+									}, {
+										"id": 106,
+										"name": "2-1-3",
+										"commander": {
+											"name": "Doubleday",
+											"rating": 1
+										},
+										"moraleLevel": "B",
+										"totalStrength": 14,
+										"wreckLosses": 7,
+										"losses": 0,
+										"stragglers": 0
+									}, {
+										"id": 107,
+										"name": "3-1-3",
+										"commander": {
+											"name": "Patrick",
+											"rating": 1
+										},
+										"moraleLevel": "C",
+										"totalStrength": 17,
+										"wreckLosses": 7,
+										"losses": 0,
+										"stragglers": 0
+									}, {
+										"id": 108,
+										"name": "4-1-3",
+										"commander": {
+											"name": "Gibbon",
+											"rating": 1
+										},
+										"moraleLevel": "A",
+										"totalStrength": 20,
+										"wreckLosses": 14,
+										"losses": 0,
+										"stragglers": 0
+									}
+								]
+							}, {
+								"id": 109,
+								"name": "2-3 Va",
+								"commander": {
+									"name": "Ricketts",
+									"rating": 1
+								},
+								"wreckLosses": 3,
+								"brigades": [{
+										"id": 110,
+										"name": "1-2-3",
+										"commander": {
+											"name": "Duryea",
+											"rating": 1
+										},
+										"moraleLevel": "C",
+										"totalStrength": 15,
+										"wreckLosses": 6,
+										"losses": 0,
+										"stragglers": 0
+									}, {
+										"id": 111,
+										"name": "2-2-3",
+										"commander": {
+											"name": "Tower",
+											"rating": 1
+										},
+										"moraleLevel": "B",
+										"totalStrength": 17,
+										"wreckLosses": 8,
+										"losses": 0,
+										"stragglers": 0
+									}, {
+										"id": 112,
+										"name": "3-2-3",
+										"commander": {
+											"name": "Stiles",
+											"rating": 1
+										},
+										"moraleLevel": "B",
+										"totalStrength": 19,
+										"wreckLosses": 9,
+										"losses": 0,
+										"stragglers": 0
+									}, {
+										"id": 113,
+										"name": "4-2-3",
+										"commander": {
+											"name": "Thoburn",
+											"rating": 1
+										},
+										"moraleLevel": "C",
+										"totalStrength": 15,
+										"wreckLosses": 6,
+										"losses": 0,
+										"stragglers": 0
+									}
+								]
+							}, {
+								"id": 114,
+								"name": "Pa-3 Va",
+								"commander": {
+									"name": "Reynolds",
+									"rating": 1
+								},
+								"wreckLosses": 2,
+								"brigades": [{
+										"id": 115,
+										"name": "1-Pa-3",
+										"commander": {
+											"name": "Meade",
+											"rating": 1
+										},
+										"moraleLevel": "B",
+										"totalStrength": 15,
+										"wreckLosses": 7,
+										"losses": 0,
+										"stragglers": 0
+									}, {
+										"id": 116,
+										"name": "2-Pa-3",
+										"commander": {
+											"name": "Seymour",
+											"rating": 1
+										},
+										"moraleLevel": "B",
+										"totalStrength": 15,
+										"wreckLosses": 7,
+										"losses": 0,
+										"stragglers": 0
+									}, {
+										"id": 117,
+										"name": "3-Pa-3",
+										"commander": {
+											"name": "Jackson",
+											"rating": 1
+										},
+										"moraleLevel": "B",
+										"totalStrength": 12,
+										"wreckLosses": 6,
+										"losses": 0,
+										"stragglers": 0
+									}
+								]
+							}
+						]
+					}
+				],
+				"divisions": [],
+				"independents": []
+			}
+		}, {
+			"id": 5,
+			"name": "APot",
+			"country": "USA",
+			"commander": {
+				"name": "McClellan",
+				"rating": 1
+			},
+			"roster": {
+				"corps": [{
+						"id": 118,
+						"name": "2 Corps",
+						"commander": {
+							"name": "Sumner",
+							"rating": 1
+						},
+						"divisions": [{
+								"id": 119,
+								"name": "1-2",
+								"commander": {
+									"name": "Richardson",
+									"rating": 1
+								},
+								"wreckLosses": 3,
+								"brigades": [{
+										"id": 120,
+										"name": "1-1-2",
+										"commander": {
+											"name": "Caldwell",
+											"rating": 1
+										},
+										"moraleLevel": "B",
+										"totalStrength": 16,
+										"wreckLosses": 8,
+										"losses": 0,
+										"stragglers": 0
+									}, {
+										"id": 121,
+										"name": "2-1-2",
+										"commander": {
+											"name": "Irish",
+											"rating": 1
+										},
+										"moraleLevel": "A",
+										"totalStrength": 14,
+										"wreckLosses": 9,
+										"losses": 0,
+										"stragglers": 0
+									}, {
+										"id": 122,
+										"name": "3-1-2",
+										"commander": {
+											"name": "French",
+											"rating": 1
+										},
+										"moraleLevel": "B",
+										"totalStrength": 13,
+										"wreckLosses": 7,
+										"losses": 0,
+										"stragglers": 0
+									}
+								]
+							}, {
+								"id": 123,
+								"name": "2-2",
+								"commander": {
+									"name": "Sedgewick",
+									"rating": 1
+								},
+								"wreckLosses": 2,
+								"brigades": [{
+										"id": 124,
+										"name": "1-2-2",
+										"commander": {
+											"name": "Sulley",
+											"rating": 1
+										},
+										"moraleLevel": "B",
+										"totalStrength": 20,
+										"wreckLosses": 10,
+										"losses": 0,
+										"stragglers": 0
+									}, {
+										"id": 125,
+										"name": "2-2-2",
+										"commander": {
+											"name": "Philadelphia",
+											"rating": 1
+										},
+										"moraleLevel": "C",
+										"totalStrength": 13,
+										"wreckLosses": 6,
+										"losses": 0,
+										"stragglers": 0
+									}, {
+										"id": 126,
+										"name": "3-2-2",
+										"commander": {
+											"name": "Dana",
+											"rating": 1
+										},
+										"moraleLevel": "B",
+										"totalStrength": 19,
+										"wreckLosses": 9,
+										"losses": 0,
+										"stragglers": 0
+									}
+								]
+							}
+						]
+					}, {
+						"id": 127,
+						"name": "3 Corps",
+						"commander": {
+							"name": "Heintzelman",
+							"rating": 1
+						},
+						"divisions": [{
+								"id": 128,
+								"name": "1-3",
+								"commander": {
+									"name": "Kearny",
+									"rating": 1
+								},
+								"wreckLosses": 2,
+								"brigades": [{
+										"id": 129,
+										"name": "1-1-3",
+										"commander": {
+											"name": "Robinson",
+											"rating": 1
+										},
+										"moraleLevel": "B",
+										"totalStrength": 7,
+										"wreckLosses": 4,
+										"losses": 0,
+										"stragglers": 0
+									}, {
+										"id": 130,
+										"name": "2-1-3",
+										"commander": {
+											"name": "Birney",
+											"rating": 1
+										},
+										"moraleLevel": "B",
+										"totalStrength": 17,
+										"wreckLosses": 8,
+										"losses": 0,
+										"stragglers": 0
+									}, {
+										"id": 131,
+										"name": "3-1-3",
+										"commander": {
+											"name": "Poe",
+											"rating": 1
+										},
+										"moraleLevel": "B",
+										"totalStrength": 12,
+										"wreckLosses": 6,
+										"losses": 0,
+										"stragglers": 0
+									}
+								]
+							}, {
+								"id": 132,
+								"name": "2-3",
+								"commander": {
+									"name": "Hooker",
+									"rating": 1
+								},
+								"wreckLosses": 2,
+								"brigades": [{
+										"id": 133,
+										"name": "1-2-3",
+										"commander": {
+											"name": "Grover",
+											"rating": 1
+										},
+										"moraleLevel": "A",
+										"totalStrength": 16,
+										"wreckLosses": 10,
+										"losses": 0,
+										"stragglers": 0
+									}, {
+										"id": 134,
+										"name": "2-2-3",
+										"commander": {
+											"name": "Excelsior",
+											"rating": 1
+										},
+										"moraleLevel": "B",
+										"totalStrength": 7,
+										"wreckLosses": 3,
+										"losses": 0,
+										"stragglers": 0
+									}, {
+										"id": 135,
+										"name": "3-2-3",
+										"commander": {
+											"name": "Carr",
+											"rating": 1
+										},
+										"moraleLevel": "B",
+										"totalStrength": 19,
+										"wreckLosses": 9,
+										"losses": 0,
+										"stragglers": 0
+									}
+								]
+							}
+						]
+					}, {
+						"id": 136,
+						"name": "5 Corps",
+						"commander": {
+							"name": "Porter",
+							"rating": 1
+						},
+						"divisions": [{
+								"id": 137,
+								"name": "1-5",
+								"commander": {
+									"name": "Morrell",
+									"rating": 1
+								},
+								"wreckLosses": 2,
+								"brigades": [{
+										"id": 138,
+										"name": "1-1-5",
+										"commander": {
+											"name": "Roberts",
+											"rating": 1
+										},
+										"moraleLevel": "B",
+										"totalStrength": 17,
+										"wreckLosses": 8,
+										"losses": 0,
+										"stragglers": 0
+									}, {
+										"id": 139,
+										"name": "2-1-5",
+										"commander": {
+											"name": "Griffin",
+											"rating": 1
+										},
+										"moraleLevel": "C",
+										"totalStrength": 18,
+										"wreckLosses": 7,
+										"losses": 0,
+										"stragglers": 0
+									}, {
+										"id": 140,
+										"name": "3-1-5",
+										"commander": {
+											"name": "Butterfield",
+											"rating": 1
+										},
+										"moraleLevel": "B",
+										"totalStrength": 17,
+										"wreckLosses": 8,
+										"losses": 0,
+										"stragglers": 0
+									}
+								]
+							}, {
+								"id": 141,
+								"name": "2-5",
+								"commander": {
+									"name": "Sykes",
+									"rating": 1
+								},
+								"wreckLosses": 2,
+								"brigades": [{
+										"id": 142,
+										"name": "1-2-5",
+										"commander": {
+											"name": "Buchanan",
+											"rating": 1
+										},
+										"moraleLevel": "A",
+										"totalStrength": 17,
+										"wreckLosses": 10,
+										"losses": 0,
+										"stragglers": 0
+									}, {
+										"id": 143,
+										"name": "2-2-5",
+										"commander": {
+											"name": "Chapman",
+											"rating": 1
+										},
+										"moraleLevel": "B",
+										"totalStrength": 15,
+										"wreckLosses": 8,
+										"losses": 0,
+										"stragglers": 0
+									}, {
+										"id": 144,
+										"name": "3-2-5",
+										"commander": {
+											"name": "Warren",
+											"rating": 1
+										},
+										"moraleLevel": "C",
+										"totalStrength": 10,
+										"wreckLosses": 5,
+										"losses": 0,
+										"stragglers": 0
+									}
+								]
+							}
+						]
+					}, {
+						"id": 145,
+						"name": "6 Corps",
+						"commander": {
+							"name": "Franklin",
+							"rating": 1
+						},
+						"divisions": [{
+								"id": 146,
+								"name": "1-6",
+								"commander": {
+									"name": "Slocum",
+									"rating": 1
+								},
+								"wreckLosses": 2,
+								"brigades": [{
+										"id": 147,
+										"name": "2-1-6",
+										"commander": {
+											"name": "Bartlett",
+											"rating": 1
+										},
+										"moraleLevel": "B",
+										"totalStrength": 18,
+										"wreckLosses": 9,
+										"losses": 0,
+										"stragglers": 0
+									}, {
+										"id": 148,
+										"name": "3-1-6",
+										"commander": {
+											"name": "Newton",
+											"rating": 1
+										},
+										"moraleLevel": "B",
+										"totalStrength": 14,
+										"wreckLosses": 7,
+										"losses": 0,
+										"stragglers": 0
+									}
+								]
+							}, {
+								"id": 149,
+								"name": "2-6",
+								"commander": {
+									"name": "Smith",
+									"rating": 1
+								},
+								"wreckLosses": 2,
+								"brigades": [{
+										"id": 150,
+										"name": "1-2-6",
+										"commander": {
+											"name": "Hancock",
+											"rating": 1
+										},
+										"moraleLevel": "C",
+										"totalStrength": 14,
+										"wreckLosses": 6,
+										"losses": 0,
+										"stragglers": 0
+									}, {
+										"id": 151,
+										"name": "2-2-6",
+										"commander": {
+											"name": "Brooks",
+											"rating": 1
+										},
+										"moraleLevel": "B",
+										"totalStrength": 21,
+										"wreckLosses": 10,
+										"losses": 0,
+										"stragglers": 0
+									}, {
+										"id": 152,
+										"name": "3-2-6",
+										"commander": {
+											"name": "Davidson",
+											"rating": 1
+										},
+										"moraleLevel": "B",
+										"totalStrength": 19,
+										"wreckLosses": 9,
+										"losses": 0,
+										"stragglers": 0
+									}
+								]
+							}
+						]
+					}, {
+						"id": 153,
+						"name": "9 Corps",
+						"commander": {
+							"name": "Reno",
+							"rating": 1
+						},
+						"divisions": [{
+								"id": 154,
+								"name": "1-9",
+								"commander": {
+									"name": "Stevens",
+									"rating": 1
+								},
+								"wreckLosses": 2,
+								"brigades": [{
+										"id": 155,
+										"name": "1-1-9",
+										"commander": {
+											"name": "Christ",
+											"rating": 1
+										},
+										"moraleLevel": "C",
+										"totalStrength": 12,
+										"wreckLosses": 6,
+										"losses": 0,
+										"stragglers": 0
+									}, {
+										"id": 156,
+										"name": "2-1-9",
+										"commander": {
+											"name": "Leasure",
+											"rating": 1
+										},
+										"moraleLevel": "B",
+										"totalStrength": 9,
+										"wreckLosses": 5,
+										"losses": 0,
+										"stragglers": 0
+									}, {
+										"id": 157,
+										"name": "3-1-9",
+										"commander": {
+											"name": "Farnsworth",
+											"rating": 1
+										},
+										"moraleLevel": "C",
+										"totalStrength": 8,
+										"wreckLosses": 4,
+										"losses": 0,
+										"stragglers": 0
+									}
+								]
+							}, {
+								"id": 158,
+								"name": "2-9",
+								"commander": {
+									"name": "Reno",
+									"rating": 1
+								},
+								"wreckLosses": 2,
+								"brigades": [{
+										"id": 159,
+										"name": "1-2-9",
+										"commander": {
+											"name": "Nagle",
+											"rating": 1
+										},
+										"moraleLevel": "B",
+										"totalStrength": 11,
+										"wreckLosses": 6,
+										"losses": 0,
+										"stragglers": 0
+									}, {
+										"id": 160,
+										"name": "2-2-9",
+										"commander": {
+											"name": "Ferrero",
+											"rating": 1
+										},
+										"moraleLevel": "C",
+										"totalStrength": 13,
+										"wreckLosses": 6,
+										"losses": 0,
+										"stragglers": 0
+									}
+								]
+							}
+						]
+					}
+				],
+				"divisions": [],
+				"independents": []
+			}
+		}, {
+			"id": 6,
+			"name": "ANVa",
+			"country": "CSA",
+			"commander": {
+				"name": "Lee",
+				"rating": 1
+			},
+			"roster": {
+				"corps": [{
+						"id": 161,
+						"name": "J Wing",
+						"commander": {
+							"name": "Jackson",
+							"rating": 1
+						},
+						"divisions": [{
+								"id": 162,
+								"name": "E-J",
+								"commander": {
+									"name": "Ewell",
+									"rating": 1
+								},
+								"wreckLosses": 3,
+								"brigades": [{
+										"id": 163,
+										"name": "E-E-J",
+										"commander": {
+											"name": "Early",
+											"rating": 1
+										},
+										"moraleLevel": "B",
+										"totalStrength": 20,
+										"wreckLosses": 10,
+										"losses": 0,
+										"stragglers": 0
+									}, {
+										"id": 164,
+										"name": "F-E-J",
+										"commander": {
+											"name": "Forno",
+											"rating": 1
+										},
+										"moraleLevel": "A",
+										"totalStrength": 19,
+										"wreckLosses": 12,
+										"losses": 0,
+										"stragglers": 0
+									}, {
+										"id": 165,
+										"name": "L-E-J",
+										"commander": {
+											"name": "Lawton",
+											"rating": 1
+										},
+										"moraleLevel": "B",
+										"totalStrength": 21,
+										"wreckLosses": 10,
+										"losses": 0,
+										"stragglers": 0
+									}, {
+										"id": 166,
+										"name": "T-E-J",
+										"commander": {
+											"name": "Trimble",
+											"rating": 1
+										},
+										"moraleLevel": "B",
+										"totalStrength": 12,
+										"wreckLosses": 6,
+										"losses": 0,
+										"stragglers": 0
+									}
+								]
+							}, {
+								"id": 167,
+								"name": "H-J",
+								"commander": {
+									"name": "AP Hill",
+									"rating": 1
+								},
+								"wreckLosses": 5,
+								"brigades": [{
+										"id": 168,
+										"name": "A-H-J",
+										"commander": {
+											"name": "Archer",
+											"rating": 1
+										},
+										"moraleLevel": "B",
+										"totalStrength": 13,
+										"wreckLosses": 7,
+										"losses": 0,
+										"stragglers": 0
+									}, {
+										"id": 169,
+										"name": "B-H-J",
+										"commander": {
+											"name": "Branch",
+											"rating": 1
+										},
+										"moraleLevel": "B",
+										"totalStrength": 11,
+										"wreckLosses": 6,
+										"losses": 0,
+										"stragglers": 0
+									}, {
+										"id": 170,
+										"name": "F-H-J",
+										"commander": {
+											"name": "Field",
+											"rating": 1
+										},
+										"moraleLevel": "C",
+										"totalStrength": 8,
+										"wreckLosses": 4,
+										"losses": 0,
+										"stragglers": 0
+									}, {
+										"id": 171,
+										"name": "G-H-J",
+										"commander": {
+											"name": "Gregg",
+											"rating": 1
+										},
+										"moraleLevel": "B",
+										"totalStrength": 14,
+										"wreckLosses": 7,
+										"losses": 0,
+										"stragglers": 0
+									}, {
+										"id": 172,
+										"name": "P-H-J",
+										"commander": {
+											"name": "Pender",
+											"rating": 1
+										},
+										"moraleLevel": "B",
+										"totalStrength": 14,
+										"wreckLosses": 7,
+										"losses": 0,
+										"stragglers": 0
+									}, {
+										"id": 173,
+										"name": "T-H-J",
+										"commander": {
+											"name": "Thomas",
+											"rating": 1
+										},
+										"moraleLevel": "C",
+										"totalStrength": 11,
+										"wreckLosses": 5,
+										"losses": 0,
+										"stragglers": 0
+									}
+								]
+							}, {
+								"id": 174,
+								"name": "T-J",
+								"commander": {
+									"name": "Taliaferro",
+									"rating": 1
+								},
+								"wreckLosses": 3,
+								"brigades": [{
+										"id": 175,
+										"name": "J-T-J",
+										"commander": {
+											"name": "Johnson",
+											"rating": 1
+										},
+										"moraleLevel": "B",
+										"totalStrength": 9,
+										"wreckLosses": 5,
+										"losses": 0,
+										"stragglers": 0
+									}, {
+										"id": 176,
+										"name": "S-T-J",
+										"commander": {
+											"name": "Starke",
+											"rating": 1
+										},
+										"moraleLevel": "A",
+										"totalStrength": 15,
+										"wreckLosses": 10,
+										"losses": 0,
+										"stragglers": 0
+									}, {
+										"id": 177,
+										"name": "Stwl-T-J",
+										"commander": {
+											"name": "Stonewall",
+											"rating": 1
+										},
+										"moraleLevel": "A",
+										"totalStrength": 8,
+										"wreckLosses": 5,
+										"losses": 0,
+										"stragglers": 0
+									}, {
+										"id": 178,
+										"name": "T-T-J",
+										"commander": {
+											"name": "Taliaferro",
+											"rating": 1
+										},
+										"moraleLevel": "B",
+										"totalStrength": 13,
+										"wreckLosses": 7,
+										"losses": 0,
+										"stragglers": 0
+									}
+								]
+							}
+						]
+					}, {
+						"id": 179,
+						"name": "L Wing",
+						"commander": {
+							"name": "Longstreet",
+							"rating": 1
+						},
+						"divisions": [{
+								"id": 180,
+								"name": "A-L",
+								"commander": {
+									"name": "Anderson",
+									"rating": 1
+								},
+								"wreckLosses": 2,
+								"brigades": [{
+										"id": 181,
+										"name": "A-A-L",
+										"commander": {
+											"name": "Armistead",
+											"rating": 1
+										},
+										"moraleLevel": "B",
+										"totalStrength": 25,
+										"wreckLosses": 11,
+										"losses": 0,
+										"stragglers": 0
+									}, {
+										"id": 182,
+										"name": "M-A-L",
+										"commander": {
+											"name": "Mahone",
+											"rating": 1
+										},
+										"moraleLevel": "B",
+										"totalStrength": 22,
+										"wreckLosses": 10,
+										"losses": 0,
+										"stragglers": 0
+									}, {
+										"id": 183,
+										"name": "W-A-L",
+										"commander": {
+											"name": "Wright",
+											"rating": 1
+										},
+										"moraleLevel": "B",
+										"totalStrength": 18,
+										"wreckLosses": 9,
+										"losses": 0,
+										"stragglers": 0
+									}
+								]
+							}, {
+								"id": 184,
+								"name": "H-L",
+								"commander": {
+									"name": "Hood",
+									"rating": 1
+								},
+								"wreckLosses": 2,
+								"brigades": [{
+										"id": 185,
+										"name": "L-H-L",
+										"commander": {
+											"name": "Law",
+											"rating": 1
+										},
+										"moraleLevel": "B",
+										"totalStrength": 18,
+										"wreckLosses": 9,
+										"losses": 0,
+										"stragglers": 0
+									}, {
+										"id": 186,
+										"name": "Tex-H-L",
+										"commander": {
+											"name": "Texas",
+											"rating": 1
+										},
+										"moraleLevel": "A",
+										"totalStrength": 20,
+										"wreckLosses": 14,
+										"losses": 0,
+										"stragglers": 0
+									}
+								]
+							}, {
+								"id": 187,
+								"name": "J-L",
+								"commander": {
+									"name": "Jones",
+									"rating": 1
+								},
+								"wreckLosses": 2,
+								"brigades": [{
+										"id": 188,
+										"name": "A-J-L",
+										"commander": {
+											"name": "GT Anderson",
+											"rating": 1
+										},
+										"moraleLevel": "B",
+										"totalStrength": 22,
+										"wreckLosses": 10,
+										"losses": 0,
+										"stragglers": 0
+									}, {
+										"id": 189,
+										"name": "B-J-L",
+										"commander": {
+											"name": "Benning",
+											"rating": 1
+										},
+										"moraleLevel": "B",
+										"totalStrength": 10,
+										"wreckLosses": 5,
+										"losses": 0,
+										"stragglers": 0
+									}, {
+										"id": 190,
+										"name": "D-J-L",
+										"commander": {
+											"name": "Drayton",
+											"rating": 1
+										},
+										"moraleLevel": "C",
+										"totalStrength": 15,
+										"wreckLosses": 6,
+										"losses": 0,
+										"stragglers": 0
+									}
+								]
+							}, {
+								"id": 191,
+								"name": "K-L",
+								"commander": {
+									"name": "Kemper",
+									"rating": 1
+								},
+								"wreckLosses": 2,
+								"brigades": [{
+										"id": 192,
+										"name": "C-K-L",
+										"commander": {
+											"name": "Corse",
+											"rating": 1
+										},
+										"moraleLevel": "B",
+										"totalStrength": 14,
+										"wreckLosses": 6,
+										"losses": 0,
+										"stragglers": 0
+									}, {
+										"id": 193,
+										"name": "H-K-L",
+										"commander": {
+											"name": "Hunton",
+											"rating": 1
+										},
+										"moraleLevel": "B",
+										"totalStrength": 19,
+										"wreckLosses": 9,
+										"losses": 0,
+										"stragglers": 0
+									}, {
+										"id": 194,
+										"name": "J-K-L",
+										"commander": {
+											"name": "Jenkins",
+											"rating": 1
+										},
+										"moraleLevel": "B",
+										"totalStrength": 17,
+										"wreckLosses": 8,
+										"losses": 0,
+										"stragglers": 0
+									}
+								]
+							}, {
+								"id": 195,
+								"name": "W-L",
+								"commander": {
+									"name": "Wilcox",
+									"rating": 1
+								},
+								"wreckLosses": 2,
+								"brigades": [{
+										"id": 196,
+										"name": "F-W-L",
+										"commander": {
+											"name": "Featherston",
+											"rating": 1
+										},
+										"moraleLevel": "B",
+										"totalStrength": 13,
+										"wreckLosses": 7,
+										"losses": 0,
+										"stragglers": 0
+									}, {
+										"id": 197,
+										"name": "P-W-L",
+										"commander": {
+											"name": "Pryor",
+											"rating": 1
+										},
+										"moraleLevel": "B",
+										"totalStrength": 14,
+										"wreckLosses": 7,
+										"losses": 0,
+										"stragglers": 0
+									}, {
+										"id": 198,
+										"name": "W-W-L",
+										"commander": {
+											"name": "Wilcox",
+											"rating": 1
+										},
+										"moraleLevel": "B",
+										"totalStrength": 14,
+										"wreckLosses": 7,
+										"losses": 0,
+										"stragglers": 0
+									}
+								]
+							}
+						]
+					}, {
+						"id": 199,
+						"name": "H Wing",
+						"commander": {
+							"name": "DH Hill",
+							"rating": 1
+						},
+						"divisions": [{
+								"id": 200,
+								"name": "H-H",
+								"commander": {
+									"name": "DH Hill",
+									"rating": 1
+								},
+								"wreckLosses": 3,
+								"brigades": [{
+										"id": 201,
+										"name": "A-H-H",
+										"commander": {
+											"name": "GB Anderson",
+											"rating": 1
+										},
+										"moraleLevel": "B",
+										"totalStrength": 12,
+										"wreckLosses": 6,
+										"losses": 0,
+										"stragglers": 0
+									}, {
+										"id": 202,
+										"name": "C-H-H",
+										"commander": {
+											"name": "Colquit",
+											"rating": 1
+										},
+										"moraleLevel": "B",
+										"totalStrength": 13,
+										"wreckLosses": 7,
+										"losses": 0,
+										"stragglers": 0
+									}, {
+										"id": 203,
+										"name": "M-H-H",
+										"commander": {
+											"name": "McRae",
+											"rating": 1
+										},
+										"moraleLevel": "C",
+										"totalStrength": 15,
+										"wreckLosses": 7,
+										"losses": 0,
+										"stragglers": 0
+									}, {
+										"id": 204,
+										"name": "Rd-H-H",
+										"commander": {
+											"name": "Rodes",
+											"rating": 1
+										},
+										"moraleLevel": "B",
+										"totalStrength": 12,
+										"wreckLosses": 6,
+										"losses": 0,
+										"stragglers": 0
+									}, {
+										"id": 205,
+										"name": "Rp-H-H",
+										"commander": {
+											"name": "Ripley",
+											"rating": 1
+										},
+										"moraleLevel": "B",
+										"totalStrength": 9,
+										"wreckLosses": 5,
+										"losses": 0,
+										"stragglers": 0
+									}
+								]
+							}, {
+								"id": 206,
+								"name": "M-H",
+								"commander": {
+									"name": "McLaws",
+									"rating": 1
+								},
+								"wreckLosses": 3,
+								"brigades": [{
+										"id": 207,
+										"name": "B-M-H",
+										"commander": {
+											"name": "Barksdale",
+											"rating": 1
+										},
+										"moraleLevel": "B",
+										"totalStrength": 12,
+										"wreckLosses": 6,
+										"losses": 0,
+										"stragglers": 0
+									}, {
+										"id": 208,
+										"name": "K-M-H",
+										"commander": {
+											"name": "Kershaw",
+											"rating": 1
+										},
+										"moraleLevel": "B",
+										"totalStrength": 12,
+										"wreckLosses": 6,
+										"losses": 0,
+										"stragglers": 0
+									}, {
+										"id": 209,
+										"name": "Sa-M-H",
+										"commander": {
+											"name": "Sanders",
+											"rating": 1
+										},
+										"moraleLevel": "B",
+										"totalStrength": 15,
+										"wreckLosses": 8,
+										"losses": 0,
+										"stragglers": 0
+									}, {
+										"id": 210,
+										"name": "Se-M-H",
+										"commander": {
+											"name": "Semmes",
+											"rating": 1
+										},
+										"moraleLevel": "B",
+										"totalStrength": 9,
+										"wreckLosses": 5,
+										"losses": 0,
+										"stragglers": 0
+									}
+								]
+							}, {
+								"id": 211,
+								"name": "W-H",
+								"commander": {
+									"name": "Walker",
+									"rating": 1
+								},
+								"wreckLosses": 1,
+								"brigades": [{
+										"id": 212,
+										"name": "R-W-H",
+										"commander": {
+											"name": "Ransom",
+											"rating": 1
+										},
+										"moraleLevel": "B",
+										"totalStrength": 16,
+										"wreckLosses": 8,
+										"losses": 0,
+										"stragglers": 0
+									}, {
+										"id": 213,
+										"name": "M-W-H",
+										"commander": {
+											"name": "Manning",
+											"rating": 1
+										},
+										"moraleLevel": "C",
+										"totalStrength": 14,
+										"wreckLosses": 7,
+										"losses": 0,
+										"stragglers": 0
+									}
+								]
+							}
+						]
+					}
+				],
+				"divisions": [{
+						"id": 214,
+						"name": "Cav",
+						"commander": {
+							"name": "Stuart",
+							"rating": 1
+						},
+						"wreckLosses": 2,
+						"brigades": [{
+								"id": 215,
+								"name": "L-Cav",
+								"commander": {
+									"name": "Fitz Lee",
+									"rating": 1
+								},
+								"moraleLevel": "C",
+								"totalStrength": 10,
+								"wreckLosses": 3,
+								"losses": 0,
+								"stragglers": 0
+							}, {
+								"id": 216,
+								"name": "R-Cav",
+								"commander": {
+									"name": "Robertson",
+									"rating": 1
+								},
+								"moraleLevel": "C",
+								"totalStrength": 11,
+								"wreckLosses": 3,
+								"losses": 0,
+								"stragglers": 0
+							}, {
+								"id": 217,
+								"name": "H-Cav",
+								"commander": {
+									"name": "Hampton",
+									"rating": 1
+								},
+								"moraleLevel": "B",
+								"totalStrength": 15,
+								"wreckLosses": 4,
+								"losses": 0,
+								"stragglers": 0
+							}
+						]
+					}
+				],
+				"independents": []
+			}
+		}
+	],
+	"scenarios": [{
+			"id": 31,
+			"firstPlayer": "CSA",
+			"csaAmmo": 300,
+			"csaCasualty": 0,
+			"usaAmmo": 350,
+			"usaCasualty": 0,
+			"defaultOrders": [{
+					"country": "CSA",
+					"army": "ANVa",
+					"orders": [{
+							"id": 10,
+							"country": "CSA",
+							"army": "ANVa",
+							"sender": "Jackson",
+							"receiver": "Jackson",
+							"dateTime": "1862-08-28T21:30:00.000Z",
+							"type": "Complex",
+							"method": "Init",
+							"force": "F1",
+							"text": "Attack between the Groveton rd and Pageland ln, in order to control the turnpike and prevent the movement of Union troops eastward. At nightfall, fall back to Unfinished rr and defend.",
+							"status": "Accepted"
+						}, {
+							"id": 11,
+							"country": "CSA",
+							"army": "ANVa",
+							"sender": "Jackson",
+							"receiver": "AP Hill",
+							"dateTime": "1862-08-28T21:30:00.000Z",
+							"type": "Simple",
+							"method": "AW",
+							"force": "F1",
+							"text": "Defend the Unfinished rr between the Groveton-Sudley rd and Bull Run.",
+							"status": "Accepted"
+						}
+					]
+				}, {
+					"country": "USA",
+					"army": "AVa",
+					"orders": [{
+							"id": 112,
+							"country": "USA",
+							"army": "AVa",
+							"sender": "McDowell",
+							"receiver": "Ricketts",
+							"dateTime": "1862-08-28T21:30:00.000Z",
+							"type": "Simple",
+							"method": "AW",
+							"force": "F1",
+							"text": "Do something to help, why don't ya?",
+							"status": "InTransit"
+						}, {
+							"id": 12,
+							"country": "USA",
+							"army": "AVa",
+							"sender": "McDowell",
+							"receiver": "Hatch",
+							"dateTime": "1862-08-28T21:30:00.000Z",
+							"type": "Simple",
+							"method": "AW",
+							"force": "F1",
+							"text": "Defend the area north of Warrenton Turnpike, between Pageland ln and Groveton-Sudley rd, against Confederate attack.",
+							"status": "Accepted"
+						}, {
+							"id": 13,
+							"country": "USA",
+							"army": "AVa",
+							"sender": "McDowell",
+							"receiver": "Reynolds",
+							"dateTime": "1862-08-28T21:30:00.000Z",
+							"type": "Simple",
+							"method": "AW",
+							"force": "F1",
+							"text": "Move to within one hex of B33.19 and go into line and halt for the night.",
+							"status": "Accepted"
+						}
+					]
+				}, {
+					"country": "USA",
+					"army": "APot",
+					"orders": []
+				}
+			]
+		}
+	]
+
+}

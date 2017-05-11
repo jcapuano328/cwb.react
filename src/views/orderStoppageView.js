@@ -45,8 +45,6 @@ var OrderStoppageView = React.createClass({
         this.onResolve();
     },
     onResolve() {        
-        let orders = ((this.props[this.props.order.country.toLowerCase()] || []).find((o) => o.army == this.props.order.army) || {orders:[]}).orders;
-
         let status = Orders.stop(this.state.die1 + this.state.die2, 
             this.state.total, 
             this.state.wrecked, 
@@ -108,9 +106,7 @@ var OrderStoppageView = React.createClass({
 const mapStateToProps = (state) => ({    
     battle: getGame(state),
     turn: getTurn(state),
-    order: state.order,    
-    usa: state.usa.orders,
-    csa: state.csa.orders    
+    order: state.order
 });
 
 module.exports = connect(

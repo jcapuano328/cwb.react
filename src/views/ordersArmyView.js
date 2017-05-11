@@ -76,10 +76,10 @@ var OrdersArmyView = React.createClass({
     },
     renderOrders() {
         if (this.state.expanded) {
-            let orders = ((this.props[this.props.army.country.toLowerCase()] || []).find((o) => o.army == this.props.army.name) || {orders:[]}).orders            
+            let orders = this.props[this.props.army.country.toLowerCase()][this.props.army.name] || [];
             return (
                 <View>
-                    {([]||orders).map((o,i) => <OrdersItemView key={i} army={this.props.army} order={o} />)}
+                    {orders.map((o,i) => <OrdersItemView key={i} army={this.props.army} order={o} />)}
                 </View>
             );
 

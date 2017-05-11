@@ -8,8 +8,8 @@ import createFilteredReducer from './createFilteredReducer';
 
 const appReducer = combineReducers({
     current: current,
-    usa: createFilteredReducer(country, action => action.name === 'usa'),
-    csa: createFilteredReducer(country, action => action.name === 'csa'),
+    usa: country('usa'),//createFilteredReducer(country, action => action.name === 'usa'),
+    csa: country('csa'),//createFilteredReducer(country, action => action.name === 'csa'),
     order: order,    
     info: info,
     toast: toast
