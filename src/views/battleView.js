@@ -32,7 +32,7 @@ var BattleView = React.createClass({
                     <RosterView tabLabel="Roster" />
                     <FireCombatView tabLabel="Fire" />
                     <MoraleView tabLabel="Morale" />
-                    <CloseCombatView tabLabel="CC" />
+                    <CloseCombatView tabLabel="Cls Combat" />
                     <VictoryView tabLabel="Victory" />
                 </ScrollableTabView>
             </View>

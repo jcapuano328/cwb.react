@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Image, Text, Picker } from 'react-native';
-import { SelectList, MultiSelectList } from 'react-native-nub';
+import { SelectList, MultiSelectList, RadioButtonGroup } from 'react-native-nub';
 import {DiceRoll} from 'react-native-dice';
 import Icons from '../res';
 import CloseCombat from '../services/closecombat';
@@ -83,15 +83,20 @@ let CloseCombatView = React.createClass({
                     </View>
                 </View>
                 
-                <View style={{flex: 6, flexDirection: 'row'}}>
+                <View style={{flex: 7, flexDirection: 'row'}}>
                     <View style={{flex:1, justifyContent: 'flex-start', alignItems: 'center',
                                     borderRightColor: 'gray', borderRightWidth: 1}}>
                         <View style={{flex: 2, flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'flex-start'}}>
-                            <SelectList title={'Attacker'} titleonly={true} items={CloseCombat.levels.map((l) => l.code)} selected={this.state.attackstrength} onChanged={this.onChangeAttackStrength}/>
+                            {/*<SelectList title={'Attacker'} titleonly={true} items={CloseCombat.levels.map((l) => l.code)} selected={this.state.attackstrength} onChanged={this.onChangeAttackStrength}/>*/}
+                            <RadioButtonGroup title={'Attacker'} direction={'vertical'}
+                                buttons={CloseCombat.levels.map((v) => ({label:v.code,value:v.code}))}
+                                state={this.state.attackstrength}
+                                onSelected={this.onChangeAttackStrength}/>                                
                         </View>
                         <View style={{flex: 1, flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'flex-start'}}>
                             <MultiSelectList title={'Modifiers'} items={CloseCombat.attackModifiers.map((m) => {return {name: m, selected: this.state.attackmods[m]};})} onChanged={this.onChangeAttackMod}/>
                         </View>
+                        <View style={{flex:2}} />
                     </View>
                     <View style={{flex:1}}>
                         <View style={{flex: 2, flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'flex-start'}}>
@@ -100,6 +105,7 @@ let CloseCombatView = React.createClass({
                         <View style={{flex: 1, justifyContent: 'flex-start', alignItems: 'flex-start', flexDirection: 'row'}}>
                             <MultiSelectList title={'Modifiers'} items={CloseCombat.defendModifiers.map((m) => {return {name: m, selected: this.state.defendmods[m]};})} onChanged={this.onChangeDefendMod}/>
                         </View>
+                        <View style={{flex:2}} />                    
                     </View>
                 </View>
             </View>

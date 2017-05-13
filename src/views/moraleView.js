@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Image, Text, Picker } from 'react-native';
-import {SpinNumeric, MultiSelectList, SelectDropdown} from 'react-native-nub';
+import {RadioButtonGroup,SpinNumeric, MultiSelectList, SelectDropdown} from 'react-native-nub';
 import {DiceRoll} from 'react-native-dice';
 import Icons from '../res';
 import Morale from '../services/morale';
@@ -110,31 +110,38 @@ let MoraleView = React.createClass({
                     </View>
                 </View>
                 
-                <View style={{flex: 6, flexDirection: 'row'}}>
+                <View style={{flex: 8, flexDirection: 'row'}}>
                     <View style={{flex:1, justifyContent: 'flex-start', alignItems: 'center'}}>
-                        <View style={{flex: 1, flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'flex-start'}}>
-                            <SelectDropdown label={'Morale'} values={Morale.levels} value={this.state.moralelevel} onSelected={this.onChangeMoraleLevel} />
-                        </View>
-                        <View style={{flex: 1, flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'flex-start'}}>
-                            <SelectDropdown label={'State'} values={Morale.states.map((s) => s.desc)} value={this.state.moralestate} onSelected={this.onChangeMoraleState} />
-                        </View>
-                        <View style={{flex: 1, flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'flex-start'}}>
-                            <View style={{flex: 1, justifyContent: 'flex-end', marginLeft: 10, marginTop: 20}}>
-                                <Text>Leader</Text>
+                        <View style={{flex:3, flexDirection:'row'}}>
+                            <View style={{flex:1}}>
+                                <RadioButtonGroup title={'Morale'} direction={'vertical'}
+                                    buttons={Morale.levels.map((v) => ({label:v,value:v}))}
+                                    state={this.state.moralelevel}
+                                    onSelected={this.onChangeMoraleLevel}/>
                             </View>
-                            <View style={{flex: 3}}>
-                                <SpinNumeric value={this.state.leader} min={0} max={4} onChanged={this.onChangeLeader} />
-                            </View>
-                        </View>
-                        <View style={{flex: 1, flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'flex-start'}}>
-                            <View style={{flex: 1, justifyContent: 'flex-end', marginLeft: 10, marginTop: 20}}>
-                                <Text>Mod</Text>
-                            </View>
-                            <View style={{flex: 3}}>
-                                <SpinNumeric value={this.state.mod} min={0} max={2} onChanged={this.onChangeLeaderSpecialMod} />
-                            </View>
-                        </View>
-                        <View style={{flex: 4}} />
+                            <View style={{flex:2}}>                            
+                                <RadioButtonGroup title={'State'} direction={'vertical'}
+                                    buttons={Morale.states.map((v) => ({label:v.desc,value:v.code}))}
+                                    state={this.state.moralestate}
+                                    onSelected={this.onChangeMoraleState}/>
+                            </View>                            
+                            <View style={{flex:1}}>
+                                <RadioButtonGroup title={'Leader'} direction={'vertical'}
+                                    buttons={[0,1,2,3,4].map((v) => ({label:v.toString(),value:v}))}
+                                    state={this.state.leader}
+                                    onSelected={this.onChangeLeader}/>
+                            </View>                            
+                        </View>    
+                        <View style={{flex:1, flexDirection:'row'}}>
+                            <View style={{flex:1}}>
+                                <RadioButtonGroup title={'Spec Mod'} direction={'horizontal'}
+                                    buttons={[0,1,2].map((v) => ({label:v.toString(),value:v}))}
+                                    state={this.state.mod}
+                                    onSelected={this.onChangeLeaderSpecialMod}/>
+                            </View>                            
+                            <View style={{flex:1}} />    
+                        </View>    
+                        <View style={{flex:4}} />
                     </View>
                     <View style={{flex:1}}>
                         <MultiSelectList title={'Modifiers'} items={Morale.modifiers.map((m) => {return {name: m, selected: this.state.mods[m]};})} onChanged={this.onChangeMod}/>

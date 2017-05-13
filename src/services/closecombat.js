@@ -1,6 +1,4 @@
-'use strict'
-
-var levels = [
+const levels = [
 	{
 		code: 'AA',
 		points: 6
@@ -27,7 +25,7 @@ var levels = [
 	}
 ];
 
-var results = [
+const results = [
 	{
 		odds: -2,
 		results: ['Defender', 'Defender', 'Defender', 'Defender', 'Defender', 'Attacker']
@@ -50,7 +48,7 @@ var results = [
 	}
 ];
 
-let ccPoints = (lvls) => {
+const ccPoints = (lvls) => {
 	let pts = lvls.reduce((p, lvl) => {
 		var l = levels.find((level) => level.code == lvl) || {points: 0};
 		return p + l.points;
@@ -58,7 +56,7 @@ let ccPoints = (lvls) => {
 	return Math.min(pts, 6);
 }
 
-let getCCPoints = (attacklevels, defendlevels, defendtrench) => {
+const getCCPoints = (attacklevels, defendlevels, defendtrench) => {
 	let attackpts = ccPoints(attacklevels);
 	let defendpts = ccPoints(defendlevels);
 
@@ -71,7 +69,7 @@ let getCCPoints = (attacklevels, defendlevels, defendtrench) => {
 	};
 }
 
-let calcOdds = (attacklevels, defendlevels, defendtrench) => {
+const calcOdds = (attacklevels, defendlevels, defendtrench) => {
 	let pts = getCCPoints(attacklevels, defendlevels, defendtrench);
 
 	let odds = (pts.attacker >= pts.defender)
