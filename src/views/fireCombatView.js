@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Image, Text } from 'react-native';
 import { connect } from 'react-redux';
-import {SpinNumeric,MultiSelectList,SelectDropdown,Style} from 'react-native-nub';
+import {SpinNumeric,MultiSelectList,SelectDropdown,RadioButtonGroup,Style} from 'react-native-nub';
 import {DiceRoll} from 'react-native-dice';
 import Icons from '../res';
 import FireCombat from '../services/firecombat';
@@ -26,7 +26,7 @@ let FireCombatView = React.createClass({
             attackmods: {},
 
             defendmoralelevel: Morale.levels[1],
-            defendmoralestate: Morale.states[1].desc,
+            defendmoralestate: Morale.states[1].code,
             defendleader: '1',
             defendmods: {},
 
@@ -131,7 +131,7 @@ let FireCombatView = React.createClass({
 
         return (
             <View style={{flex: 1}}>
-                <View style={{flex: 1, backgroundColor: 'whitesmoke', justifyContent:'flex-start'}}>
+                <View style={{flex: 1.5, backgroundColor: 'whitesmoke', justifyContent:'flex-start'}}>
                     <View style={{flex: .75, flexDirection: 'row', alignItems: 'center', marginTop:5}}>
                         <DiceRoll dice={this.dice} values={[this.state.die1,this.state.die2,this.state.die3,this.state.die4,this.state.die5,this.state.die6,this.state.die7,this.state.die8]}
                             onRoll={this.onDiceRoll} onDie={this.onDieChanged}/>
@@ -175,8 +175,94 @@ let FireCombatView = React.createClass({
                         </View>
                     </View>                    
                 </View>
+                {/* fire */}
+                <View style={{flex: 3, flexDirection: 'row'}}>
+                    {/* attack */}
+                    <View style={{flex:1,borderRightColor: 'gray', borderRightWidth: 1}}>
+                        <View style={{flex: .25, alignItems: 'center'}}>
+                            <Text style={{fontSize: Style.Font.medium(), fontWeight:'bold'}}>Attack</Text>                            
+                        </View>
+                        <View style={{flex: 1, flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'flex-start'}}>
+                            <View style={{flex:2}}>
+                                <RadioButtonGroup title={'Points'} direction={'vertical'}
+                                    buttons={FireCombat.points.map((v) => ({label:v.code,value:v.code}))}
+                                    state={this.state.attackstrength}
+                                    onSelected={this.onChangeAttackStrength}/>                                
+                            </View>
+                            <View style={{flex:3, justifyContent:'flex-start'}}>
+                                <View style={{flex: 1}}>
+                                    <Text style={{fontSize: Style.Font.medium(), backgroundColor: 'silver', textAlign: 'center'}}>Arty Ammo</Text>                                    
+                                </View>                                
+                                <View style={{flex: 1, flexDirection:'row', alignItems:'center', marginRight: 10}}>
+                                    <View style={{flex: 1}}>
+                                        <Text>USA</Text>
+                                    </View>
+                                    <View style={{flex: 2}}>
+                                        <SpinNumeric value={this.props.usa.ammo.toString()} min={0} max={this.props.battle.scenario.usaAmmo} onChanged={this.onChangeUSAArtyAmmo} />
+                                    </View>
+                                </View>
+                                <View style={{flex: 1, flexDirection: 'row', alignItems:'center', marginRight: 10}}>
+                                    <View style={{flex: 1}}>
+                                        <Text>CSA</Text>
+                                    </View>
+                                    <View style={{flex: 2}}>
+                                        <SpinNumeric value={this.props.csa.ammo.toString()} min={0} max={this.props.battle.scenario.csaAmmo} onChanged={this.onChangeCSAArtyAmmo} />
+                                    </View>
+                                </View>  
+                                <View style={{flex:3}}/>
+                            </View>                            
+                        </View>                        
+                    </View>
+                    {/* defend */}
+                    <View style={{flex:1}}>
+                        <View style={{flex: .25, alignItems: 'center'}}>
+                            <Text style={{fontSize: Style.Font.medium(), fontWeight:'bold'}}>Defend</Text>
+                        </View>
+                        <View style={{flex: 1, flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'flex-start'}}>
+                            <View style={{flex:1}}>
+                                <RadioButtonGroup title={'Morale'} direction={'vertical'}
+                                    buttons={Morale.levels.map((v) => ({label:v,value:v}))}
+                                    state={this.state.defendmoralelevel}
+                                    onSelected={this.onChangeDefendMoraleLevel}/>
+                            </View>
+                            <View style={{flex:2}}>                            
+                                <RadioButtonGroup title={'State'} direction={'vertical'}
+                                    buttons={Morale.states.map((v) => ({label:v.desc,value:v.code}))}
+                                    state={this.state.defendmoralestate}
+                                    onSelected={this.onChangeDefendMoraleState}/>
+                            </View>
+                            <View style={{flex:1}}>
+                                <RadioButtonGroup title={'Leader'} direction={'vertical'}
+                                    buttons={[0,1,2,3,4].map((v) => ({label:v.toString(),value:v}))}
+                                    state={this.state.defendleader}
+                                    onSelected={this.onChangeDefendLeader}/>
+                            </View>
+                        </View>                        
+                    </View>
+                </View>
+                {/* modifiers */}
+                <View style={{flex: 2, flexDirection: 'row'}}>
+                    {/* attack */}                    
+                    <View style={{flex:1,borderRightColor: 'gray', borderRightWidth: 1}}>
+                        <MultiSelectList title={'Modifiers'} 
+                            items={FireCombat.attackModifiers.map((m) => ({name: m.name, selected: this.state.attackmods[m.name]}))} 
+                            onChanged={this.onChangeAttackMod}/>
+                    </View>
+                    {/* defend */}
+                    <View style={{flex:1}}>
+                        <MultiSelectList title={'Modifiers'} 
+                            items={FireCombat.defendModifiers.map((m) => ({name: m.name, selected: this.state.defendmods[m.name]}))} 
+                            onChanged={this.onChangeDefendMod}/>
+                    </View>                    
+                </View>
                 
+                {/*
                 <View style={{flex: 4, flexDirection: 'row'}}>
+                    <View style={{flex:1, justifyContent: 'flex-start', alignItems: 'center',
+                                    borderRightColor: 'gray', borderRightWidth: 1}}>
+                    </View>
+
+
                     <View style={{flex:1, justifyContent: 'flex-start', alignItems: 'center',
                                     borderRightColor: 'gray', borderRightWidth: 1}}>
                         <View style={{flex: .25, alignItems: 'center'}}>
@@ -211,24 +297,31 @@ let FireCombatView = React.createClass({
                             <Text>Defend</Text>
                         </View>
                         <View style={{flex: 1, flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'flex-start'}}>
-                            <SelectDropdown label={'Morale'} values={Morale.levels} value={this.state.defendmoralelevel} onSelected={this.onChangeDefendMoraleLevel} />
-                        </View>
-                        <View style={{flex: 1, flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'flex-start'}}>
-                            <SelectDropdown label={'State'} values={Morale.states.map((s) => s.desc)} value={this.state.defendmoralestate} onSelected={this.onChangeDefendMoraleState} />
-                        </View>
-                        <View style={{flex: 1, flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'flex-start'}}>
-                            <View style={{flex: 1, justifyContent: 'flex-end', marginLeft: 10, marginTop: 20}}>
-                                <Text>Leader</Text>
+                            <View style={{flex:1}}>
+                                <RadioButtonGroup title={'Morale'} direction={'vertical'}
+                                    buttons={Morale.levels.map((v) => ({label:v,value:v}))}
+                                    state={this.state.defendmoralelevel}
+                                    onSelected={this.onChangeDefendMoraleLevel}/>
                             </View>
-                            <View style={{flex: 3}}>
-                                <SpinNumeric value={this.state.defendleader} min={0} max={4} onChanged={this.onChangeDefendLeader} />
+                            <View style={{flex:1}}>                            
+                                <RadioButtonGroup title={'State'} direction={'vertical'}
+                                    buttons={Morale.states.map((v) => ({label:v.desc,value:v.code}))}
+                                    state={this.state.defendmoralestate}
+                                    onSelected={this.onChangeDefendMoraleState}/>
+                            </View>
+                            <View style={{flex:1}}>
+                                <RadioButtonGroup title={'Leader'} direction={'vertical'}
+                                    buttons={[0,1,2,3,4].map((v) => ({label:v.toString(),value:v}))}
+                                    state={this.state.defendleader}
+                                    onSelected={this.onChangeDefendLeader}/>
                             </View>
                         </View>
                         <View style={{flex: 6, justifyContent: 'flex-start', alignItems: 'flex-start', flexDirection: 'row'}}>
-                            <MultiSelectList title={'Modifiers'} items={FireCombat.defendModifiers.map((m) => {return {name: m.name, selected: this.state.defendmods[m.name]};})} onChanged={this.onChangeDefendMod}/>
+                            <MultiSelectList title={'Modifiers'} items={FireCombat.defendModifiers.map((m) => ({name: m.name, selected: this.state.defendmods[m.name]}))} onChanged={this.onChangeDefendMod}/>
                         </View>
                     </View>
                 </View>
+                */}
             </View>
         );
     }

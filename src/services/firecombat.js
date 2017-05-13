@@ -157,7 +157,7 @@ const findResult = (firepoints, attackupslope, attacknight, attacklowammo, attac
 		index--;
 	}
 	if (defendcolumn ||
-		Morale.isDisorganized(Morale.getStateByDesc(defendmoralestate).code) || Morale.isRouted(Morale.getStateByDesc(defendmoralestate).code)) {
+		Morale.isDisorganized(defendmoralestate) || Morale.isRouted(defendmoralestate)) {
 		index += 2;
 	}
 	if (defendmounted) {
@@ -230,7 +230,7 @@ module.exports = {
 			}
 			if (moralecheck) {
 				morale = Morale.check(moraledice,
-							defendmoralelevel, defendleaderrating, leaderloss, defendmoralestate.code,
+							defendmoralelevel, defendleaderrating, leaderloss, defendmoralestate,
 							defendunlimbarty, defendwreckedbde, defendwreckeddiv,
 							defendtrench, attacknight, defendcolumn, defendlowammo,
 							defendccdefend, defendccattack, defendccattackspecial, moralemod);

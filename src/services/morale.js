@@ -1,11 +1,10 @@
-'use strict'
-var cStateBloodLust = 'BL';
-var cStateNormal = 'N';
-var cStateShaken = 'SH';
-var cStateDisorganized = 'DG';
+const cStateBloodLust = 'BL';
+const cStateNormal = 'N';
+const cStateShaken = 'SH';
+const cStateDisorganized = 'DG';
 var cStateRouted = 'R';
 
-var states = [
+const states = [
 	{
     	code: cStateBloodLust,
         desc: 'Blood Lust'
@@ -28,7 +27,7 @@ var states = [
 	}
 ];
 
-var levels = ['A','B','C','D','E'];
+const levels = ['A','B','C','D','E'];
 
 /*
 var cResultBloodLust = states[0].desc;//cStateBloodLust;
@@ -39,18 +38,18 @@ var cResultDisorganizedBack1 = states[3].desc + ' b1 *';//cStateDisorganized + '
 var cResultDisorganizedBack2 = states[3].desc + ' b2 s1 **';//cStateDisorganized + ' b2 s1 **';
 var cResultRouted = states[4].desc + ' b2 s3 **';//cStateRouted + ' b2 s3 **';
 */
-var cResultNE = {morale: 'NE',retreat: 0, stragglers: 0};
-var cResultRemoveBloodLust = {morale: 'Remove ' + cStateBloodLust,retreat: 0, stragglers: 0};
-var cResultBloodLust = {morale: states[0].code, retreat: 0, stragglers: 0};
-var cResultNormal = {morale: states[1].code, retreat: 0, stragglers: 0};
-var cResultShaken = {morale: states[2].code, retreat: 0, stragglers: 0};
-var cResultShakenBack1 = {morale: states[2].code, retreat: 1, stragglers: 0};
-var cResultDisorganizedBack1 = {morale: states[3].code, retreat: 1, stragglers: 0};
-var cResultDisorganizedBack2 = {morale: states[3].code, retreat: 2, stragglers: 1};
-var cResultRouted = {morale: states[4].code, retreat: 2, stragglers: 3};
-var cResultRemainRouted = {morale: states[4].code,retreat: 0, stragglers: 0};
+const cResultNE = {morale: 'NE',retreat: 0, stragglers: 0};
+const cResultRemoveBloodLust = {morale: 'Remove ' + cStateBloodLust,retreat: 0, stragglers: 0};
+const cResultBloodLust = {morale: states[0].code, retreat: 0, stragglers: 0};
+const cResultNormal = {morale: states[1].code, retreat: 0, stragglers: 0};
+const cResultShaken = {morale: states[2].code, retreat: 0, stragglers: 0};
+const cResultShakenBack1 = {morale: states[2].code, retreat: 1, stragglers: 0};
+const cResultDisorganizedBack1 = {morale: states[3].code, retreat: 1, stragglers: 0};
+const cResultDisorganizedBack2 = {morale: states[3].code, retreat: 2, stragglers: 1};
+const cResultRouted = {morale: states[4].code, retreat: 2, stragglers: 3};
+const cResultRemainRouted = {morale: states[4].code,retreat: 0, stragglers: 0};
 
-var results = [
+const results = [
 	{
     	level: 'A+',
         results: [
@@ -234,7 +233,7 @@ var results = [
     }
 ];
 
-var modifiers = [
+const modifiers = [
 	'Low Ammo',
 	'w/Unlimb Arty',
 	'Trench',
