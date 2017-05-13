@@ -7,43 +7,8 @@ import Icons from '../res';
 import getTurn from '../selectors/turn';
 import {select,create} from '../actions/order';
 import Orders from '../services/orders';
+import CollapsibleHeader from '../components/collapsibleHeader';
 import OrdersItemView from './ordersItemView';
-
-var OrdersArmyHeader = React.createClass({
-    render() {
-        return (
-            <View style={{
-                alignItems: 'center',
-                justifyContent: 'flex-start',
-                flex: 1,
-                flexDirection: 'row',
-                margin: 5,
-                padding: 5,
-                //backgroundColor: '#eaeaea',
-                borderRadius: 3
-            }}>
-                <View style={{marginTop: 0, marginRight: 5}}>
-                    <Arrow size={18} direction={this.props.expanded ? 'down' : 'right'} />
-                </View>
-                <Image style={{
-                    //flex: 1,
-                    //width: null,
-                    //height: null,
-                    width: 96,
-                    height: 96,
-                    resizeMode: 'contain',
-                    //backgroundColor: 'transparent',
-                }} source={Icons[this.props.army.country]} />
-                <View style={{flex: 1, flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center'}}>
-                    <Text style={{flex: 1, fontSize: Style.Font.large(),textAlign: 'center',margin: 10}}>{this.props.army.name}</Text>
-                    <Text style={{flex: 1, fontSize: Style.Font.medium(),textAlign: 'center',margin: 10}}>{this.props.army.commander.name}</Text>
-                </View>
-                <IconButton image={Icons['orderinitiative']} onPress={this.props.onInitiative} />
-                <IconButton image={Icons['orderadd']} onPress={this.props.onAdd} />                
-            </View>            
-        );
-    }
-});
 
 var OrdersArmyView = React.createClass({
     getInitialState() {
@@ -51,7 +16,7 @@ var OrdersArmyView = React.createClass({
             expanded: false,
         };
     },
-    onPress() {
+    onToggle() {
         this.setState({expanded: !this.state.expanded});
     },
     onInitiative() {
@@ -65,11 +30,10 @@ var OrdersArmyView = React.createClass({
     render() {        
         return (
             <View style={{flex: 1}}>
-                <View style={{flex:1}}>
-                    <TouchableOpacity onPress={this.onPress}>                
-                        <OrdersArmyHeader army={this.props.army} expanded={this.state.expanded} onAdd={this.onAdd} onInitiative={this.onInitiative} />
-                    </TouchableOpacity>
-                </View>
+                <CollapsibleHeader image={this.props.army.country} title={this.props.army.name} subtitle={this.props.army.commander.name} expanded={this.state.expanded} onPress={this.onToggle}>
+                    <IconButton image={Icons['orderinitiative']} onPress={this.onInitiative} />
+                    <IconButton image={Icons['orderadd']} onPress={this.onAdd} />                            
+                </CollapsibleHeader>                
                 {this.renderOrders()}
             </View>            
         );

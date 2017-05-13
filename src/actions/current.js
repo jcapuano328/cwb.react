@@ -11,16 +11,11 @@ const make = (game, country) => {
         "vp": 0        
     };
 
-    /*
-    game.armies.filter((a) => a.country == 'USA').forEach((a,i) => {
-        if (!d.roster[a.name]) {
-            d.roster[a.name] = [];
-        }
-        d.roster[a.name].push({...a, id: i});
+    game.armies.filter((a) => a.country == country).forEach((a,i) => {
+        d.roster[a.name] = {...a, id: i};
     });
-    */
 
-    game.scenario.defaultOrders.filter((a) => a.country == 'USA').forEach((a) => {        
+    game.scenario.defaultOrders.filter((a) => a.country == country).forEach((a) => {        
         if (!d.orders[a.army]) {
             d.orders[a.army] = [];
         }        
@@ -44,8 +39,8 @@ export const reset = (e) => (dispatch,getState) => {
         "phase": 0,
         "player": "first"
     }});
-    dispatch({name: 'usa', type: types.SET_COUNTRY, value: make(game, 'usa')});
-    dispatch({name: 'csa', type: types.SET_COUNTRY, value: make(game, 'csa')});
+    dispatch({name: 'usa', type: types.SET_COUNTRY, value: make(game, 'USA')});
+    dispatch({name: 'csa', type: types.SET_COUNTRY, value: make(game, 'CSA')});
 }
 
 export const prevTurn = () => (dispatch) => {    

@@ -36,7 +36,7 @@ var fireLevels = [
   }
 ];
 
-let getSuperiorCommanders = (roster) => {
+const getSuperiorCommanders = (roster) => {
     let cmdrs = [];
     let add = (item) => {
         if (!cmdrs.find((c) => c.name === item.commander.name)) {
@@ -52,7 +52,7 @@ let getSuperiorCommanders = (roster) => {
     return cmdrs;
 }
 
-let getSubordinateCommanders = (roster) => {
+const getSubordinateCommanders = (roster) => {
     let cmdrs = [];
     let add = (item) => {
         if (!cmdrs.find((c) => c.name === item.commander.name)) {
@@ -68,7 +68,7 @@ let getSubordinateCommanders = (roster) => {
     return cmdrs;
 }
 
-let getCommandersForArmy = (battle,country,army,superiors) => {    
+const getCommandersForArmy = (battle,country,army,superiors) => {    
     let armies = battle.armies.filter((a) => a.country == country && a.name == army) || [];
     let commanders = superiors ? armies.map((a) => a.commander) : [];
     return commanders.concat(armies.map((a) =>
@@ -76,39 +76,39 @@ let getCommandersForArmy = (battle,country,army,superiors) => {
     ).reduce((a,b) => a.concat(b),[]));
 }
 
-let isWrecked = (item, bycasualty) => {
+const isWrecked = (item, bycasualty) => {
     if (bycasualty) {
         item.losses >= item.wreckLosses;
     }
     return (item.losses + item.stragglers) >= item.wreckLosses;
 }
-let isDestroyed = (item, bycasualty) => {
+const isDestroyed = (item, bycasualty) => {
     if (bycasualty) {
         return item.losses >= item.totalStrength;
     }
     return (item.losses + item.stragglers) >= item.totalStrength;
 }
 
-let totalWreckedBrigades = (brigades, bycasualty) => {
+const totalWreckedBrigades = (brigades, bycasualty) => {
     return (brigades||[]).reduce((p,c) => {
         return p + isWrecked(c, bycasualty);
     }, 0);
 }
 
-let totalWreckedInDivisions = (divisions, bycasualty) => {
+const totalWreckedInDivisions = (divisions, bycasualty) => {
     return (divisions||[]).reduce((p,c) => {
         return p + totalWreckedBrigades(c.brigades, bycasualty);
     }, 0);
 }
 
-let totalWreckedInCorps = (corps, bycasualty) => {
+const totalWreckedInCorps = (corps, bycasualty) => {
     return corps.reduce((p,c) => {
         return p + totalWreckedInDivisions(c.divisions, bycasualty) +
             totalWreckedBrigades(c.independents, bycasualty);
     }, 0);
 }
 
-let totalWreckedInArmy = (army, bycasualty) => {
+const totalWreckedInArmy = (army, bycasualty) => {
     return totalWreckedInCorps(army.roster.corps, bycasualty) +
         totalWreckedInDivisions(army.roster.divisions, bycasualty) +
         totalWreckedBrigades(army.roster.independents);
@@ -125,8 +125,7 @@ module.exports = {
         return getCommandersForArmy(battle,country,army,true);
     },
     getSubordinateLeaders(battle,country,army) {
-		let l = getCommandersForArmy(battle,country,army);        
-        return l;
+        return getCommandersForArmy(battle,country,army);        
     },
     getSubordinatesForLeader(battle,country,army,name) {
         let formation = this.getFormationForLeader(battle,country,army,name);        
@@ -182,10 +181,26 @@ module.exports = {
         }        
         return {name: '', total: 0, wrecked: 0};
     },
-    totalWrecked(battle,country) {        
+    getBrigade(roster, brigade) {
+        let formation = null;
+        const find = (item) => {
+            if (item.id === brigade.id) {
+                formation = item;
+            } else {
+                [item.divisions||[], item.brigades||[], item.independents||[]].find((iitem) => iitem.find(find));
+            }
+            return formation;
+        }    
+        [roster.corps||[], roster.divisions||[], roster.brigades||[], roster.independents||[]].find((item) => {
+            item.find(find);
+            return formation;
+        });        
+        return formation;    
+    },
+    totalWrecked(battle,country,bycasualty) {
         let armies = battle.armies.filter((a) => a.country == country) || [];
         return armies.reduce((p,c) => {
-            return p + totalWreckedInArmy(c);
+            return p + totalWreckedInArmy(c,bycasualty);
         }, 0);
     },
     wreckedDivisions(item) {

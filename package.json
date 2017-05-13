@@ -14,10 +14,12 @@
     "install-stg": "adb -d install -r android/app/build/outputs/apk/cwb-releaseStaging-1.0.apk",
     "install-rel": "adb -d install -r android/app/build/outputs/apk/cwb-release-1.0.apk",
     "push": "code-push release-react CWBAssistant android",
-  	"promote": "code-push promote CWBAssistant Staging Production --description '' --mandatory",  
+    "promote": "code-push promote CWBAssistant Staging Production --description '' --mandatory",
     "bridge": "adb reverse tcp:8081 tcp:8081",
     "menu": "adb shell input keyevent 82",
-    "logs": "adb logcat *:S ReactNative:V ReactNativeJS:V"    
+    "logs": "adb logcat *:S ReactNative:V ReactNativeJS:V",
+    "test": "jest -- ",
+    "test-spec": "jest roster-spec.js --watch"    
   },
   "dependencies": {
     "moment": "^2.14.1",
@@ -27,6 +29,15 @@
     "react-native-dice": "https://git@github.com/jcapuano328/react-native-dice.git",
     "react-native-nub": "https://git@github.com/jcapuano328/react-native-nub.git",
     "react-native-scrollable-tab-view": "^0.5.3",
-    "reselect": "^2.5.4"    
+    "reselect": "^2.5.4"
+  },
+  "jest": {
+    "preset": "react-native"
+  },  
+  "devDependencies": {
+    "babel-jest": "^19.0.0",
+    "babel-preset-react-native": "^1.9.1",
+    "jest": "^19.0.2",
+    "react-test-renderer": "^15.5.4"
   }
 }

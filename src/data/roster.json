@@ -1,0 +1,63 @@
+{
+	"armies": [
+		{	// army
+			"id": int,
+			"country": string,
+			"name": string,
+			"commander": {
+				"name": string,
+				"rating": int
+			},
+			"roster": {
+				"corps": [
+					{	// corps
+						"id": int,
+						"name": string,
+						"commander": {
+							"name": string,
+							"rating": int
+						},
+						"divisions": [
+							{	// division
+								"id": int,
+								"name": string,
+								"commander": {
+									"name": string,
+									"rating": int
+								},
+								"brigades": [
+									{	// brigade
+										"id": int,
+										"name": string,
+										"commander": {
+											"name": string,
+											"rating": int
+										},
+										"moraleLevel": string,
+										"totalStrength": int,
+										"wreckLosses": int,
+										"losses": int,
+										"stragglers": int
+									}
+								]
+							}
+						],
+						"independents": [
+							{	// brigade
+							}
+						]						
+					}
+				],
+				"divisions": [
+					{	// division
+					}
+				],
+				"independents": [
+					{	// brigade
+					}
+				]
+			}
+		}
+	]
+
+}

@@ -1,21 +1,20 @@
 import {REHYDRATE} from 'react-native-nub';
 import types from '../constants/actionTypes';
+import Roster from '../services/roster';
 
 const defaultState =  {
-    roster: [],
-    orders: [],
+    roster: {},
+    orders: {},
     ammo: 0,
     vp: 0
 };
 
-const add = (orders, order) => {
-    //{...action.value, id: state.orders.length+1}    
-    let l = [...orders];
-    let a = l.find((o) => o.country == order.country && o.army == order.army);
-    if (a) {
-        a.orders.push({...order});
-    }    
-    return l;    
+const updateBrigade = (roster, brigade) => {
+    let b = Roster.getBrigade(roster, brigade);
+    if (b) {
+        b.losses = brigade.losses;
+        b.stragglers = brigade.stragglers;
+    }
 }
 
 module.exports = (name) => {
@@ -53,7 +52,7 @@ module.exports = (name) => {
         case types.SET_ORDERS:    
             return {
                 ...state,
-                orders: [...action.value]            
+                orders: {...action.value}
             };
 
         case types.ADD_ORDER:            
@@ -92,6 +91,24 @@ module.exports = (name) => {
                 orders: {
                     ...state.orders,
                     [action.value.army]: state.orders[action.value.army].filter((o) => o.id !== action.value.id)
+                }
+            };
+
+        case types.SET_ROSTER:    
+            return {
+                ...state,
+                roster: {...action.value}
+            };
+
+        case types.UPDATE_BRIGADE:    
+            updateBrigade(state.roster[action.value.army].roster, action.value.unit);
+            return {
+                ...state,
+                roster: {
+                    ...state.roster,
+                    [action.value.army]: {
+                        ...state.roster[action.value.army]
+                    }                    
                 }
             };
 

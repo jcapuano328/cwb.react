@@ -4,6 +4,7 @@ import toast from './toast';
 import current from './current';
 import country from './country';
 import order from './order';
+import brigade from './brigade';
 import createFilteredReducer from './createFilteredReducer';
 
 const appReducer = combineReducers({
@@ -11,6 +12,7 @@ const appReducer = combineReducers({
     usa: country('usa'),//createFilteredReducer(country, action => action.name === 'usa'),
     csa: country('csa'),//createFilteredReducer(country, action => action.name === 'csa'),
     order: order,    
+    brigade: brigade,
     info: info,
     toast: toast
 });

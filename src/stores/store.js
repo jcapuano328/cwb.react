@@ -20,8 +20,8 @@ import rootReducer from '../reducers';
         },
         usa: {
             roster: {
-                "army": [],
-                "army": [],
+                "army": {name, commander, roster},
+                "army": {name, commander, roster},
                 ...
             },
             orders: {
@@ -34,8 +34,8 @@ import rootReducer from '../reducers';
         },
         csa: {
             roster: {
-                "army": [],
-                "army": [],
+                "army": {name, commander, roster},
+                "army": {name, commander, roster},
                 ...
             },
             orders: {
