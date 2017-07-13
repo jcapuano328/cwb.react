@@ -1,46 +1,40 @@
 import React from 'react';
 import { View, ScrollView } from 'react-native';
 import { connect } from 'react-redux';
+import SelectableHeader from '../components/selectableHeader';
 import RosterArmyView from './rosterArmyView';
 //import RosterBrigadeView from './rosterBrigadeView';
 
 var RosterView = React.createClass({
+    getInitialState() {
+        return {
+            selected: null
+        };
+    },
+    onSelectArmy(a) {
+        var army = (this.armies()||[]).find((ia) => ia.name == a.name);
+        this.setState({selected:army});
+    },        
     render() {
-        let armies = this.armies();
+        let armies = this.armies() || [];
         return (
             <View style={{flex: 1,justifyContent: 'flex-start'}}>
-                <ScrollView
-                    automaticallyAdjustContentInsets={false}
-                    scrollEventThrottle={200}>
-                    {(armies||[]).map((army, i) => {
-                        return (
-                            <RosterArmyView key={i} army={army} />
-                        );
-                    })}
-                    {/*<RosterBrigadeView country={'USA'} army={'APot'} brigade={{
-                        id: 570,
-                        name: '2-3-9',
-                        commander: 'Humphrey',
-                        moraleLevel: 'C',
-                        totalStrength: 23,
-                        losses: 0,
-                        stragglers: 0,
-                        wreckLosses: 10
-                    }} events={this.props.events} />*/}
-                    {/*<RosterBrigadeView country={'USA'} army={'APot'} brigade={{
-                        id: 512,
-                        name: '1-1-2',
-                        commander: 'Miles',
-                        moraleLevel: 'B',
-                        totalStrength: 11,
-                        losses: 0,
-                        stragglers: 0,
-                        wreckLosses: 5
-                    }} events={this.props.events} />*/}
-                </ScrollView>
+                <SelectableHeader items={armies.map((army) => ({name:army.name,image:army.country}))} 
+                    selected={this.state.selected} onSelected={this.onSelectArmy} />
+                <View style={{flex:6}}>
+                    {this.renderRoster()}
+                </View>
             </View>
         );
     },
+    renderRoster() {
+        if (this.state.selected) {
+            return (                
+                <RosterArmyView army={this.state.selected} />
+            );
+        }
+        return null;
+    },    
     armies() {
         let l = [];
         [this.props.usa,this.props.csa].forEach((c) => {
