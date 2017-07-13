@@ -17,7 +17,7 @@ var RosterArmyView = React.createClass({
     },
     render() {
         return (
-            <View style={{flex: 1}}>
+            <View style={{flex: 1/*, backgroundColor:this.getBackground()*/}}>
                 <CollapsibleHeader image={this.props.army.country} title={this.props.army.name} subtitle={this.props.army.commander.name} expanded={this.state.expanded} onPress={this.onToggle} />
                 {this.renderSubordinates()}
             </View>            
@@ -48,7 +48,10 @@ var RosterArmyView = React.createClass({
                 })}
             </View>
         );
-    }
+    },
+    getBackground() {
+        return this.props.army.country.toLowerCase() == 'usa' ? 'rgba(0,0,139,0.5)' : 'darkgray';
+    }    
 });
 
 module.exports = RosterArmyView;

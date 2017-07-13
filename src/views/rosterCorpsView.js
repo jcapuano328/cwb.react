@@ -18,9 +18,8 @@ var RosterCorpsView = React.createClass({
     },
     render() {
         return (
-            <View style={{flex: 1}}>
-                <View style={{flex: 1,flexDirection: 'row',justifyContent: 'flex-start',alignItems: 'center',
-                                margin: 5,padding: 5,borderRadius: 3}}>                
+            <View style={{flex: 1, marginRight: 5,paddingRight: 5}}>
+                <View style={{flex: 1,flexDirection: 'row',justifyContent: 'flex-start',alignItems: 'center'}}>                
                     <View style={{flex: 3}}>
                         <CollapsibleHeader image={this.props.country.toLowerCase()+'-corps'} imagesize={64}
                             title={this.props.corps.name} subtitle={this.props.corps.commander.name} 

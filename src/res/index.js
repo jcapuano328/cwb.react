@@ -46,6 +46,7 @@ module.exports = {
 	"checkmark": require('./checkmark.png'),
 	"casualty": require('./casualty.png'),
 	"straggler": require('./straggler.png'),
+	"wounded": require('./wounded.png'),
 	"skull": require('./skull.png'),
 
 	"casualty-1": require('./casualty1.png'),

@@ -179,10 +179,10 @@ let FireCombatView = React.createClass({
                 <View style={{flex: 3, flexDirection: 'row'}}>
                     {/* attack */}
                     <View style={{flex:1,borderRightColor: 'gray', borderRightWidth: 1}}>
-                        <View style={{flex: .25, alignItems: 'center'}}>
+                        <View style={{flex: 1, alignItems: 'center'}}>
                             <Text style={{fontSize: Style.Font.medium(), fontWeight:'bold'}}>Attack</Text>                            
                         </View>
-                        <View style={{flex: 1, flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'flex-start'}}>
+                        <View style={{flex: 8, flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'flex-start'}}>
                             <View style={{flex:2}}>
                                 <RadioButtonGroup title={'Points'} direction={'vertical'}
                                     buttons={FireCombat.points.map((v) => ({label:v.code,value:v.code}))}
@@ -215,10 +215,10 @@ let FireCombatView = React.createClass({
                     </View>
                     {/* defend */}
                     <View style={{flex:1}}>
-                        <View style={{flex: .25, alignItems: 'center'}}>
+                        <View style={{flex: 1, alignItems: 'center'}}>
                             <Text style={{fontSize: Style.Font.medium(), fontWeight:'bold'}}>Defend</Text>
                         </View>
-                        <View style={{flex: 1, flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'flex-start'}}>
+                        <View style={{flex: 8, flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'flex-start'}}>
                             <View style={{flex:1}}>
                                 <RadioButtonGroup title={'Morale'} direction={'vertical'}
                                     buttons={Morale.levels.map((v) => ({label:v,value:v}))}

@@ -18,9 +18,8 @@ var RosterDivisionView = React.createClass({
     },
     render() {
         return (
-            <View style={{flex: 1}}>
-                <View style={{flex: 1,flexDirection: 'row',justifyContent: 'flex-start',alignItems: 'center',
-                                margin: 5,padding: 5,borderRadius: 3}}>                
+            <View style={{flex: 1,marginRight: 5, paddingRight: 5, borderColor: 'gray',borderStyle: 'solid',borderWidth: 1,borderRadius: 10}}>
+                <View style={{flex: 1,flexDirection: 'row',justifyContent: 'flex-start',alignItems: 'center'}}>                
                     <View style={{flex: 1}}>
                         <CollapsibleHeader image={this.getImage()} imagesize={32}
                             title={this.props.division.name} subtitle={this.props.division.commander.name} 
@@ -55,8 +54,8 @@ var RosterDivisionView = React.createClass({
         return (
             <View style={{marginLeft: 20}}>
                 {this.props.division.brigades.map((b,i) => {
-                    return (
-                        <RosterBrigadeView key={i} country={this.props.country} army={this.props.army} brigade={b} />
+                    return (                        
+                        <RosterBrigadeView key={i} country={this.props.country} army={this.props.army} brigade={b} />                        
                     );
                 })}
             </View>
